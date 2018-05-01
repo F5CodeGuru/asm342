@@ -1,5 +1,5 @@
-Lab 2.1: User Session Tracking
-----------------------------------------
+Lab 2.1: Intro to ASM Rest API using curl
+-------------------------------------------
 
-Task 1 - Explore the API using the TMOS Web Interface
+Task 1 - Explore the API using curl 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

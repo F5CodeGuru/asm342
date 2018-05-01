@@ -1,4 +1,4 @@
-Module 1: Positive Security
+Module 1: Ansible 
 ===================================================
 Expected time to complete: **1 hours**
 

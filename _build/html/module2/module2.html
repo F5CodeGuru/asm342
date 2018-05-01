@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Module 2: Beyond Signatures and Positive Security &mdash; ASM 341 Docs 1.0 documentation</title>
+  <title>Module 2: Manipulating Rest API via curl and Postman &mdash; ASM 342 Docs 1.0 documentation</title>
   
 
   
@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Lab 2.1: User Session Tracking" href="lab1/lab1.html" />
+    <link rel="next" title="Lab 2.1: Intro to ASM Rest API using curl" href="lab1/lab1.html" />
     <link rel="prev" title="Review" href="../module1/review.html" /> 
 
   
@@ -49,7 +49,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> ASM 341 Docs
+            <a href="../index.html" class="icon icon-home"> ASM 342 Docs
           
 
           
@@ -87,13 +87,10 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../intro.html">Welcome to Agility Labs 2018!</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../labinfo/labinfo.html">Lab Topology &amp; Tools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../module1/module1.html">Module 1: Positive Security</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Module 2: Beyond Signatures and Positive Security</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="lab1/lab1.html">Lab 2.1: User Session Tracking</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lab2/lab2.html">Lab 2.2: Session Hijacking Protection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lab3/lab3.html">Lab 2.3: Credential Stuffing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lab4/lab4.html">Lab 2.4: Data Guard</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lab5/lab5.html">Lab 2.5: DAST Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../module1/module1.html">Module 1: Ansible</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Module 2: Manipulating Rest API via curl and Postman</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lab1/lab1.html">Lab 2.1: Intro to ASM Rest API using curl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab2/lab2.html">Lab 2.2: Using Postman to manioulate the Rest API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="review.html">Review</a></li>
 </ul>
 </li>
@@ -113,7 +110,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">ASM 341 Docs</a>
+          <a href="../index.html">ASM 342 Docs</a>
         
       </nav>
 
@@ -144,7 +141,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Module 2: Beyond Signatures and Positive Security</li>
+      <li>Module 2: Manipulating Rest API via curl and Postman</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -163,17 +160,14 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-2-beyond-signatures-and-positive-security">
-<h1>Module 2: Beyond Signatures and Positive Security<a class="headerlink" href="#module-2-beyond-signatures-and-positive-security" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-2-manipulating-rest-api-via-curl-and-postman">
+<h1>Module 2: Manipulating Rest API via curl and Postman<a class="headerlink" href="#module-2-manipulating-rest-api-via-curl-and-postman" title="Permalink to this headline">¶</a></h1>
 <p>Expected time to complete: <strong>1 hours</strong></p>
-<p>This introductory class covers the following topics:</p>
+<p>Topics:</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="lab1/lab1.html">Lab 2.1: User Session Tracking</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab2/lab2.html">Lab 2.2: Session Hijacking Protection</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab3/lab3.html">Lab 2.3: Credential Stuffing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab4/lab4.html">Lab 2.4: Data Guard</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab5/lab5.html">Lab 2.5: DAST Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab1/lab1.html">Lab 2.1: Intro to ASM Rest API using curl</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab2/lab2.html">Lab 2.2: Using Postman to manioulate the Rest API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="review.html">Review</a></li>
 </ul>
 </div>
@@ -187,7 +181,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="lab1/lab1.html" class="btn btn-neutral float-right" title="Lab 2.1: User Session Tracking" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="lab1/lab1.html" class="btn btn-neutral float-right" title="Lab 2.1: Intro to ASM Rest API using curl" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../module1/review.html" class="btn btn-neutral" title="Review" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -199,7 +193,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Chad Fazio.
+        &copy; Copyright 2018, ASM 342 Team.
 
     </p>
   </div>

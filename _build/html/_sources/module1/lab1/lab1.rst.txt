@@ -1,5 +1,5 @@
-Lab 1.1: Allowed URL List
+Lab 1.1: Ansible Policy Creation 
 ----------------------------------------
 
-Task 1 - Explore the API using the TMOS Web Interface
+Task 1 - Using Ansible to create a ASM Policy
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

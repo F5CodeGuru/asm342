@@ -1,10 +1,10 @@
 Welcome to Agility Labs 2018!
 -----------------------------	
 
-Introduction
-~~~~~~~~~~~~~
+Introduction to ASM 342 - WAF Programmability
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Welcome to F5's Agility Labs, 2018 edition! In this sessions we will explore to interact with ASM using the REST API and what can be achieved. 
+Welcome to F5's Agility Labs, 2018 edition! This class will focus on how to interact with ASM using the REST API, demonstrating  how the API can be used to help with daily tasks and improve security.
 
 This is the 4th class in a four part series based on
 

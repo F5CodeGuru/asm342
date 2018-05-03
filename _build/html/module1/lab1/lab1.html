@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Lab 1.1: Ansible Tower Policy Creation" href="../lab2/lab2.html" />
+    <link rel="next" title="Lab 2.1: Ansible Tower Policy Creation" href="../lab2/lab2.html" />
     <link rel="prev" title="Module 1: Ansible" href="../module1.html" /> 
 
   
@@ -92,11 +92,11 @@
 <li class="toctree-l3"><a class="reference internal" href="#task-1-using-ansible-to-create-a-asm-policy">Task 1 - Using Ansible to create a ASM Policy</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../lab2/lab2.html">Lab 1.1: Ansible Tower Policy Creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lab2/lab2.html">Lab 2.1: Ansible Tower Policy Creation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../review.html">Review</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../module2/module2.html">Module 2: Manipulating Rest API via curl and Postman</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../module2/module2.html">Module 2: Viewing and Manipulating the Rest API via curl and Postman</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../module3/module3.html">Module 3: Advanced WAF</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../module4/module4.html">Module 4: Stuff that needs to get done….</a></li>
 </ul>
@@ -169,12 +169,13 @@
 <h1>Lab 1.1: Ansible Policy Creation<a class="headerlink" href="#lab-1-1-ansible-policy-creation" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="task-1-using-ansible-to-create-a-asm-policy">
 <h2>Task 1 - Using Ansible to create a ASM Policy<a class="headerlink" href="#task-1-using-ansible-to-create-a-asm-policy" title="Permalink to this headline">¶</a></h2>
-<p>Create asn ASM policy using ansible</p>
+<p>Run the following command to create an ASM policy named ansible1</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>client01# ansible-playbook createasmpolicyansible1.yaml
 </pre></div>
 </div>
 <p>Go to the Bigip WebUI and navigate to Security-&gt;Application Security-&gt;Security Policies-&gt;Policies List</p>
-<p>You should now a policy named ansible1</p>
+<p>You should now see a policy named ansible1</p>
+<p>Inspect the policy</p>
 </div>
 </div>
 
@@ -186,7 +187,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../lab2/lab2.html" class="btn btn-neutral float-right" title="Lab 1.1: Ansible Tower Policy Creation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../lab2/lab2.html" class="btn btn-neutral float-right" title="Lab 2.1: Ansible Tower Policy Creation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../module1.html" class="btn btn-neutral" title="Module 1: Ansible" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

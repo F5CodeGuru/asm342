@@ -4,7 +4,7 @@ Lab 1.1: Ansible Policy Creation
 Task 1 - Using Ansible to create a ASM Policy
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Create asn ASM policy using ansible
+Run the following command to create an ASM policy named ansible1
 
 .. code-block:: bash
         
@@ -13,4 +13,6 @@ Create asn ASM policy using ansible
 
 Go to the Bigip WebUI and navigate to Security->Application Security->Security Policies->Policies List
 
-You should now a policy named ansible1
+You should now see a policy named ansible1
+
+Inspect the policy

@@ -1,4 +1,4 @@
-Module 2: Manipulating Rest API via curl and Postman 
+Module 2: Viewing and Manipulating the Rest API via curl and Postman 
 =====================================================
 Expected time to complete: **1 hours**
 

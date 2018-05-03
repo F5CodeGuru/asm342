@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Lab Topology &amp; Tools &mdash; ASM 342 Docs 1.0 documentation</title>
+  <title>Lab Environment &amp; Topology &mdash; ASM 342 Docs 1.0 documentation</title>
   
 
   
@@ -86,17 +86,9 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../intro.html">Welcome to Agility Labs 2018!</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Lab Topology &amp; Tools</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Lab Environment &amp; Topology</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#environment">Environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#lab-topology">Lab Topology</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#lab-tools">Lab Tools</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#f5-virtual-edition-asm">F5 Virtual Edition (ASM)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#kali-linux">Kali Linux</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#hackazon">Hackazon</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#lab-logins">Lab Logins</a><ul class="simple">
-</ul>
-</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../module1/module1.html">Module 1: Ansible</a></li>
@@ -148,7 +140,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Lab Topology &amp; Tools</li>
+      <li>Lab Environment &amp; Topology</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -167,115 +159,99 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="lab-topology-tools">
-<h1>Lab Topology &amp; Tools<a class="headerlink" href="#lab-topology-tools" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="lab-environment-topology">
+<h1>Lab Environment &amp; Topology<a class="headerlink" href="#lab-environment-topology" title="Permalink to this headline">¶</a></h1>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">All work for this lab will be performed exclusively from the Windows
-Jumphost. No installation or interaction with your local system is
-required.</p>
+<p class="last">All work is done from the Linux client/jumphost (client01), which can be access via RDP (Windows Remote Desktop) or ssh. No installation or interaction with your local system is required.</p>
 </div>
 <p>All pre-built environments implement the Lab Topology shown below.  Please
 review the topology first, then find the section matching the lab environment
 you are using for connection instructions.</p>
+<div class="section" id="environment">
+<h2>Environment<a class="headerlink" href="#environment" title="Permalink to this headline">¶</a></h2>
+<p>Linux client (client01):</p>
+<ul class="simple">
+<li>Web Attack Tools:</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="https://github.com/jseidl/GoldenEye">Goldeneye</a> - HTTP DOS Tool</li>
+<li><a class="reference external" href="https://www.metasploit.com/">Metasploit</a> - Pen testing framework</li>
+<li><a class="reference external" href="https://nmap.org/">nmap/nping</a> - Network mapper</li>
+<li><a class="reference external" href="https://github.com/shekyan/slowhttptest">Slowhttptest</a> - HTTP DOS Tool</li>
+<li><a class="reference external" href="http://wapiti.sourceforge.net/">wapiti</a> - web application auditor</li>
+<li><a class="reference external" href="http://w3af.org/">w3af</a> - web application auditor</li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li>Api Tools:</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="https://www.ansible.com/">Ansible</a> - Automation platform</li>
+<li><a class="reference external" href="https://curl.haxx.se/">curl</a> - command line webclient, will be used to interact with the iControl Rest API</li>
+<li><a class="reference external" href="https://www.getpostman.com/">Postman</a> - Graphical based Restful Client, will be used to interact with the iControl Rest API</li>
+<li><a class="reference external" href="https://www.python.org/">python</a> - general programming language used to interact with the iControl Rest API</li>
+</ul>
+</div></blockquote>
+<p>Linux server (server01):</p>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/WebGoat/WebGoat/wiki">WebGoat 8</a> - deliberately insecure application</li>
+</ul>
+</div>
 <div class="section" id="lab-topology">
 <span id="id1"></span><h2>Lab Topology<a class="headerlink" href="#lab-topology" title="Permalink to this headline">¶</a></h2>
-<p>The network topology implemented for this lab is very simple. Since the
+<p>The network topology implemented for this lab is very simple, since the
 focus of the lab is Control Plane programmability rather than Data Plane
 traffic flow we can keep the data plane fairly simple. The following
 components have been included in your lab environment:</p>
 <ul class="simple">
-<li>1 x F5 BIG-IP VE (v13.1.0.5)</li>
-<li>1 x Kali Server</li>
-<li>1 x Windows Jumpbox</li>
-<li>1 x Vulnerable Web App (Hackazon)</li>
+<li>1 x Ubuntu Linux 16.04 client - aptly named: client01</li>
+<li>1 x F5 BIG-IP VE (v13.1.0.5) running ASM and LTM - aptly named: bigip01</li>
+<li>1 x Ubuntu Linux 16.04 server - aptly named: server01</li>
 </ul>
 <p>The following table lists VLANS, IP Addresses and Credentials for all
 components:</p>
 <table border="1" class="colwidths-given docutils">
 <colgroup>
-<col width="14%" />
-<col width="29%" />
-<col width="29%" />
-<col width="29%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head stub"><strong>Component</strong></th>
-<th class="head"><strong>Management IP</strong></th>
-<th class="head"><strong>VLAN/IP Address(es)</strong></th>
+<th class="head"><strong>mgmtnet IP</strong></th>
+<th class="head"><strong>clientnet IP</strong></th>
+<th class="head"><strong>servernet IP</strong></th>
 <th class="head"><strong>Credentials</strong></th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><th class="stub">Linux Jumphost</th>
-<td>10.1.1.20</td>
-<td><p class="first"><strong>Internal:</strong> 10.1.10.20</p>
-<p class="last"><strong>External:</strong> 10.1.20.20</p>
-</td>
-<td><code class="docutils literal notranslate"><span class="pre">ubuntu/supernetops</span></code></td>
-</tr>
-<tr class="row-odd"><th class="stub">BIG-IP A</th>
-<td>10.1.1.10</td>
-<td><p class="first"><strong>Internal:</strong> 10.1.10.10</p>
-<p><strong>Internal (Float):</strong> 10.1.10.13</p>
-<p><strong>External:</strong> 10.1.20.10</p>
-<p class="last"><strong>External (VIPs):</strong> 10.1.20.120-130</p>
-</td>
-<td><p class="first"><code class="docutils literal notranslate"><span class="pre">admin/admin</span></code></p>
-<p class="last"><code class="docutils literal notranslate"><span class="pre">root/default</span></code></p>
-</td>
-</tr>
-<tr class="row-even"><th class="stub">BIG-IP B</th>
-<td>10.1.1.11</td>
-<td><p class="first"><strong>Internal:</strong> 10.1.10.11</p>
-<p><strong>Internal (Float):</strong> 10.1.10.13</p>
-<p><strong>External:</strong> 10.1.20.11</p>
-<p class="last"><strong>External (VIPs):</strong> 10.1.20.120-130</p>
-</td>
-<td><p class="first"><code class="docutils literal notranslate"><span class="pre">admin/admin</span></code></p>
-<p class="last"><code class="docutils literal notranslate"><span class="pre">root/default</span></code></p>
-</td>
-</tr>
-<tr class="row-odd"><th class="stub">iWorkflow</th>
-<td>10.1.1.12</td>
+<tr class="row-even"><th class="stub">Linux Client (client01)</th>
+<td>10.1.1.51</td>
+<td>10.1.10.51</td>
 <td>N/A</td>
-<td><p class="first"><code class="docutils literal notranslate"><span class="pre">admin/admin</span></code></p>
-<p class="last"><code class="docutils literal notranslate"><span class="pre">root/default</span></code></p>
-</td>
+<td>https-<code class="docutils literal notranslate"><span class="pre">f5student:f5DEMOs4u!</span></code></td>
 </tr>
-<tr class="row-even"><th class="stub">Linux Server</th>
-<td>10.1.1.15</td>
-<td><strong>Internal:</strong> 10.1.10.100-103</td>
-<td><code class="docutils literal notranslate"><span class="pre">root/default</span></code></td>
+<tr class="row-odd"><th class="stub">Bigip (bigip01)</th>
+<td>10.1.1.245</td>
+<td>10.1.10.245</td>
+<td>10.1.20.245</td>
+<td>https - <code class="docutils literal notranslate"><span class="pre">admin:f5DEMOs4u!</span></code> ssh - <code class="docutils literal notranslate"><span class="pre">f5student:f5DEMOs4u!</span></code></td>
+</tr>
+<tr class="row-even"><th class="stub">Linux Server (server01)</th>
+<td>10.1.1.252</td>
+<td>N/A</td>
+<td>10.1.20.252</td>
+<td>ssh - <code class="docutils literal notranslate"><span class="pre">f5student:f5DEMOs4u!</span></code></td>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="lab-tools">
-<h2>Lab Tools<a class="headerlink" href="#lab-tools" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="f5-virtual-edition-asm">
-<h3>F5 Virtual Edition (ASM)<a class="headerlink" href="#f5-virtual-edition-asm" title="Permalink to this headline">¶</a></h3>
-<p>F5’s latest version of the BIG-IP application proxy running as a virtual appliance.  The BIG-IP instance we are using today will be provisioned for both Local Traffic Management as well as Web Application Firewall, to allow us to detect and respond to various application attacks.</p>
-</div>
-<div class="section" id="kali-linux">
-<h3>Kali Linux<a class="headerlink" href="#kali-linux" title="Permalink to this headline">¶</a></h3>
-<p>A Debian based Linux distro designed for digital forensics and security testing, comes pre-loaded with many of the tools we will be using in today’s lab.  Reason’s to give it a try:</p>
-<ul class="simple">
-<li>Single user, root access by design</li>
-<li>Network Services disabled by default</li>
-<li>Custom Linux Kernel</li>
-<li>A minimal and trusted set of repositories</li>
-</ul>
-</div>
-<div class="section" id="hackazon">
-<h3>Hackazon<a class="headerlink" href="#hackazon" title="Permalink to this headline">¶</a></h3>
-<p>Our vulnerable web application.  Designed with the best of intentions, but with more holes than a sieve.</p>
-</div>
-</div>
-<div class="section" id="lab-logins">
-<h2>Lab Logins<a class="headerlink" href="#lab-logins" title="Permalink to this headline">¶</a></h2>
-<div class="toctree-wrapper compound">
-</div>
+<p>A graphical representation of the lab:</p>
+<img alt="../_images/Agility2018LabDiagram.png" src="../_images/Agility2018LabDiagram.png" />
 </div>
 </div>
 

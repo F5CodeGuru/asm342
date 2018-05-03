@@ -6,14 +6,17 @@ Introduction
 
 Welcome to F5's Agility Labs, 2018 edition! In this sessions we will explore to interact with ASM using the REST API and what can be achieved. 
 
-This is the 4th class in a for part series based on
+This is the 4th class in a four part series based on
 
-Succeeding with Application Security
+`Succeeding with Application Security <https://support.f5.com/csp/article/K07359270>`_
 
-https://support.f5.com/csp/article/K07359270#Link26
+Here is a complete listing of all ASM classes offered at this years agility.
 
-The other classes are
+ASM141 - Good WAF Security - Getting started with ASM
 
-ASM141
-ASM241
-ASM341
+ASM241 - Elevated WAF Security - Elevating ASM Protection
+
+ASM341 - High and Maximum WAF Security - Maximizing ASM Protection
+
+ASM342 - WAF Programmability - Enhancing ASM Security and Manageability
+

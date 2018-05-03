@@ -9,3 +9,4 @@ F5 Agility 2018 Labs - ASM 341
    intro*
    labinfo/lab*
    module*/module*
+   module*/lab*/answer*

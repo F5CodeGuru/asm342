@@ -1,5 +1,5 @@
-Module 3: Advanced WAF
-===================================================
+Module 3: Viewing and manipulating the Rest API using Postman  
+===============================================================
 Expected time to complete: **1 hours**
 
 .. toctree::

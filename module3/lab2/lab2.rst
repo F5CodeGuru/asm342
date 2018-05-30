@@ -1,5 +1,5 @@
-Lab 3.2: DataSafe
+Lab 3.2:
 ----------------------------------------
 
-Task 1 - Explore the API using the TMOS Web Interface
+Task 1 - 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

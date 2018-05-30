@@ -1,5 +1,5 @@
-Lab 3.1: Bot Protection
+Lab 3.1:
 ----------------------------------------
 
-Task 1 - Explore the API using the TMOS Web Interface
+Task 1 - 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

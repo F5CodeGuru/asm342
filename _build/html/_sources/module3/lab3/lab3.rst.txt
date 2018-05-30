@@ -1,5 +1,5 @@
-Lab 3.3: API Security
+Lab 3.3:
 ----------------------------------------
 
-Task 1 - Explore the API using the TMOS Web Interface
+Task 1 -
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

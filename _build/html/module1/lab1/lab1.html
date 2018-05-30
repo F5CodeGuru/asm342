@@ -253,15 +253,272 @@
         
   <div class="section" id="lab-1-1-ansible-policy-creation">
 <h1>Lab 1.1: Ansible Policy Creation<a class="headerlink" href="#lab-1-1-ansible-policy-creation" title="Permalink to this headline">¶</a></h1>
+<p>Ansible is an automated configuration tool that uses config files written in YAML.</p>
 <div class="section" id="task-1-using-ansible-to-create-a-asm-policy">
 <h2>Task 1 - Using Ansible to create a ASM Policy<a class="headerlink" href="#task-1-using-ansible-to-create-a-asm-policy" title="Permalink to this headline">¶</a></h2>
-<p>Run the following command to create an ASM policy named ansible1</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>client01# ansible-playbook createasmpolicyansible1.yaml
+<p>Run the following command to create an ASM policy named <strong>ansible1</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ansible-playbook /etc/ansible/playbooks/ansible1.yaml -i /etc/ansible/inventory/  -vvv
 </pre></div>
 </div>
 <p>Go to the Bigip WebUI and navigate to Security-&gt;Application Security-&gt;Security Policies-&gt;Policies List</p>
 <p>You should now see a policy named ansible1</p>
 <p>Inspect the policy</p>
+<p><strong>Ansible Configuration Explained</strong></p>
+<p>First ansible must know which hosts to apply the configuration, here we have defined a group called “bigips”.</p>
+<p><strong>ansible1.yaml:</strong></p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">---</span>
+
+<span class="c1">#### This playbook creates a ASM policy named ansible1</span>
+
+<span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">create</span> <span class="n">ansible1</span> <span class="n">policy</span>
+<span class="hll">  <span class="n">hosts</span><span class="p">:</span> <span class="n">bigips</span>
+</span>  <span class="n">connection</span><span class="p">:</span> <span class="n">local</span>
+  <span class="n">gather_facts</span><span class="p">:</span> <span class="kc">False</span>
+  <span class="n">environment</span><span class="p">:</span>
+      <span class="n">F5_SERVER</span><span class="p">:</span> <span class="s2">&quot;{{ ansible_ssh_host }}&quot;</span>
+      <span class="n">F5_USER</span><span class="p">:</span> <span class="s2">&quot;{{ bigip_user }}&quot;</span>
+      <span class="n">F5_PASSWORD</span><span class="p">:</span> <span class="s2">&quot;{{ bigip_password }}&quot;</span> 
+      <span class="n">F5_SERVER_PORT</span><span class="p">:</span> <span class="s2">&quot;{{ bigip_port }}&quot;</span>
+      <span class="n">F5_VALIDATE_CERTS</span><span class="p">:</span> <span class="s2">&quot;{{ validate_certs }}&quot;</span>
+ 
+  <span class="n">tasks</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">Create</span> <span class="n">ASM</span> <span class="n">policy</span><span class="p">,</span> <span class="n">compact</span> <span class="n">XML</span> <span class="n">file</span>
+      <span class="n">bigip_asm_policy</span><span class="p">:</span>
+        <span class="n">name</span><span class="p">:</span> <span class="n">ansible1</span>
+        <span class="n">template</span><span class="p">:</span> <span class="n">SharePoint</span> <span class="mi">2007</span> <span class="p">(</span><span class="n">http</span><span class="p">)</span>
+
+  <span class="n">post_tasks</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">Save</span> <span class="n">the</span> <span class="n">running</span> <span class="n">BIG</span><span class="o">-</span><span class="n">IP</span> <span class="n">configuration</span> <span class="n">to</span> <span class="n">disk</span>
+      <span class="n">bigip_config</span><span class="p">:</span>
+        <span class="n">save</span><span class="p">:</span> <span class="kc">True</span>
+      <span class="n">register</span><span class="p">:</span> <span class="n">result</span>
+</pre></div>
+</td></tr></table></div>
+<p>The group bigips is pulled from /etc/ansible/inventory/hosts, here we only have one host defined, more can be added under the [bigips] stanza.</p>
+<p><strong>hosts:</strong></p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">bigips</span><span class="p">]</span>
+<span class="n">bigip01</span>
+</pre></div>
+</td></tr></table></div>
+<p>The environment variables are pulled from /etc/ansible/inventory/groups_vars/bigips/all.yaml</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">---</span>
+
+<span class="c1">#### This playbook creates a ASM policy named ansible1</span>
+
+<span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">create</span> <span class="n">ansible1</span> <span class="n">policy</span>
+  <span class="n">hosts</span><span class="p">:</span> <span class="n">bigips</span>
+  <span class="n">connection</span><span class="p">:</span> <span class="n">local</span>
+  <span class="n">gather_facts</span><span class="p">:</span> <span class="kc">False</span>
+<span class="hll">  <span class="n">environment</span><span class="p">:</span>
+</span><span class="hll">      <span class="n">F5_SERVER</span><span class="p">:</span> <span class="s2">&quot;{{ ansible_ssh_host }}&quot;</span>
+</span><span class="hll">      <span class="n">F5_USER</span><span class="p">:</span> <span class="s2">&quot;{{ bigip_user }}&quot;</span>
+</span><span class="hll">      <span class="n">F5_PASSWORD</span><span class="p">:</span> <span class="s2">&quot;{{ bigip_password }}&quot;</span> 
+</span><span class="hll">      <span class="n">F5_SERVER_PORT</span><span class="p">:</span> <span class="s2">&quot;{{ bigip_port }}&quot;</span>
+</span><span class="hll">      <span class="n">F5_VALIDATE_CERTS</span><span class="p">:</span> <span class="s2">&quot;{{ validate_certs }}&quot;</span>
+</span> 
+  <span class="n">tasks</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">Create</span> <span class="n">ASM</span> <span class="n">policy</span><span class="p">,</span> <span class="n">compact</span> <span class="n">XML</span> <span class="n">file</span>
+      <span class="n">bigip_asm_policy</span><span class="p">:</span>
+        <span class="n">name</span><span class="p">:</span> <span class="n">ansible1</span>
+        <span class="n">template</span><span class="p">:</span> <span class="n">SharePoint</span> <span class="mi">2007</span> <span class="p">(</span><span class="n">http</span><span class="p">)</span>
+
+  <span class="n">post_tasks</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">Save</span> <span class="n">the</span> <span class="n">running</span> <span class="n">BIG</span><span class="o">-</span><span class="n">IP</span> <span class="n">configuration</span> <span class="n">to</span> <span class="n">disk</span>
+      <span class="n">bigip_config</span><span class="p">:</span>
+        <span class="n">save</span><span class="p">:</span> <span class="kc">True</span>
+      <span class="n">register</span><span class="p">:</span> <span class="n">result</span>
+</pre></div>
+</td></tr></table></div>
+<p><strong>all.yaml:</strong></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Note that the password variable is masked.</p>
+</div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">bigip_user</span><span class="p">:</span> <span class="n">admin</span>
+<span class="n">bigip_password</span><span class="p">:</span> <span class="o">******</span> 
+<span class="n">bigip_port</span><span class="p">:</span> <span class="s2">&quot;443&quot;</span>
+<span class="n">bigip_partition</span><span class="p">:</span> <span class="s2">&quot;Common&quot;</span>
+<span class="n">validate_certs</span><span class="p">:</span> <span class="s2">&quot;false&quot;</span>
+</pre></div>
+</td></tr></table></div>
+<p>In line 18, the bigip_asm_policy directive is used to tell ansible we are going to modify/create a policy.
+Line 19 is the name of the policy, line 20 is the Rapid Deployment template that we will use.</p>
+<p><strong>ansible1.yaml:</strong></p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">---</span>
+
+<span class="c1">#### This playbook creates a ASM policy named ansible1</span>
+
+<span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">create</span> <span class="n">ansible1</span> <span class="n">policy</span>
+  <span class="n">hosts</span><span class="p">:</span> <span class="n">bigips</span>
+  <span class="n">connection</span><span class="p">:</span> <span class="n">local</span>
+  <span class="n">gather_facts</span><span class="p">:</span> <span class="kc">False</span>
+  <span class="n">environment</span><span class="p">:</span>
+      <span class="n">F5_SERVER</span><span class="p">:</span> <span class="s2">&quot;{{ ansible_ssh_host }}&quot;</span>
+      <span class="n">F5_USER</span><span class="p">:</span> <span class="s2">&quot;{{ bigip_user }}&quot;</span>
+      <span class="n">F5_PASSWORD</span><span class="p">:</span> <span class="s2">&quot;{{ bigip_password }}&quot;</span> 
+      <span class="n">F5_SERVER_PORT</span><span class="p">:</span> <span class="s2">&quot;{{ bigip_port }}&quot;</span>
+      <span class="n">F5_VALIDATE_CERTS</span><span class="p">:</span> <span class="s2">&quot;{{ validate_certs }}&quot;</span>
+ 
+  <span class="n">tasks</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">Create</span> <span class="n">ASM</span> <span class="n">policy</span><span class="p">,</span> <span class="n">compact</span> <span class="n">XML</span> <span class="n">file</span>
+<span class="hll">      <span class="n">bigip_asm_policy</span><span class="p">:</span>
+</span><span class="hll">        <span class="n">name</span><span class="p">:</span> <span class="n">ansible1</span>
+</span><span class="hll">        <span class="n">template</span><span class="p">:</span> <span class="n">SharePoint</span> <span class="mi">2007</span> <span class="p">(</span><span class="n">http</span><span class="p">)</span>
+</span>
+  <span class="n">post_tasks</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">Save</span> <span class="n">the</span> <span class="n">running</span> <span class="n">BIG</span><span class="o">-</span><span class="n">IP</span> <span class="n">configuration</span> <span class="n">to</span> <span class="n">disk</span>
+      <span class="n">bigip_config</span><span class="p">:</span>
+        <span class="n">save</span><span class="p">:</span> <span class="kc">True</span>
+      <span class="n">register</span><span class="p">:</span> <span class="n">result</span>
+</pre></div>
+</td></tr></table></div>
+<p>Starting with line 22, post tasks are declared. These are tasks that will take place after the policy has been create, here we will save the policy to disk (otherwise it is only in the running config).</p>
+<p><strong>ansible1.yaml:</strong></p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">---</span>
+
+<span class="c1">#### This playbook creates a ASM policy named ansible1</span>
+
+<span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">create</span> <span class="n">ansible1</span> <span class="n">policy</span>
+  <span class="n">hosts</span><span class="p">:</span> <span class="n">bigips</span>
+  <span class="n">connection</span><span class="p">:</span> <span class="n">local</span>
+  <span class="n">gather_facts</span><span class="p">:</span> <span class="kc">False</span>
+  <span class="n">environment</span><span class="p">:</span>
+      <span class="n">F5_SERVER</span><span class="p">:</span> <span class="s2">&quot;{{ ansible_ssh_host }}&quot;</span>
+      <span class="n">F5_USER</span><span class="p">:</span> <span class="s2">&quot;{{ bigip_user }}&quot;</span>
+      <span class="n">F5_PASSWORD</span><span class="p">:</span> <span class="s2">&quot;{{ bigip_password }}&quot;</span> 
+      <span class="n">F5_SERVER_PORT</span><span class="p">:</span> <span class="s2">&quot;{{ bigip_port }}&quot;</span>
+      <span class="n">F5_VALIDATE_CERTS</span><span class="p">:</span> <span class="s2">&quot;{{ validate_certs }}&quot;</span>
+ 
+  <span class="n">tasks</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">Create</span> <span class="n">ASM</span> <span class="n">policy</span><span class="p">,</span> <span class="n">compact</span> <span class="n">XML</span> <span class="n">file</span>
+      <span class="n">bigip_asm_policy</span><span class="p">:</span>
+        <span class="n">name</span><span class="p">:</span> <span class="n">ansible1</span>
+        <span class="n">template</span><span class="p">:</span> <span class="n">SharePoint</span> <span class="mi">2007</span> <span class="p">(</span><span class="n">http</span><span class="p">)</span>
+
+<span class="hll">  <span class="n">post_tasks</span><span class="p">:</span>
+</span><span class="hll">    <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">Save</span> <span class="n">the</span> <span class="n">running</span> <span class="n">BIG</span><span class="o">-</span><span class="n">IP</span> <span class="n">configuration</span> <span class="n">to</span> <span class="n">disk</span>
+</span><span class="hll">      <span class="n">bigip_config</span><span class="p">:</span>
+</span><span class="hll">        <span class="n">save</span><span class="p">:</span> <span class="kc">True</span>
+</span><span class="hll">      <span class="n">register</span><span class="p">:</span> <span class="n">result</span>
+</span></pre></div>
+</td></tr></table></div>
+<p><strong>Why Ansible and Limitations of the F5 ASM Ansible module</strong></p>
+<p>More information on F5’s ansible module can be found here <a class="reference external" href="https://www.ansible.com/integrations/networks/f5">F5 and Ansible</a>
+<a class="reference external" href="https://github.com/F5Networks/f5-ansible">On GitHub</a></p>
+<p>F5’s SYS and LTM Ansible module are capability rich, the ASM module is currently limited to policy import, activation/deactivation and creation.
+Over time this will change as F5 has a strong partnership with Ansible.</p>
+<p><strong>Current F5 ASM Ansible Capabilities</strong></p>
+<p><a href="#id1"><span class="problematic" id="id2">*</span></a>Policy Activation/Deactivation
+<a href="#id3"><span class="problematic" id="id4">*</span></a>Blank Policy Creation
+<a href="#id5"><span class="problematic" id="id6">*</span></a>XML Policy Import
+<a href="#id7"><span class="problematic" id="id8">*</span></a>Binary Policy Import
+<a href="#id9"><span class="problematic" id="id10">*</span></a>Policy Creation using Application-Ready Templates</p>
+<p><a class="reference external" href="http://clouddocs.f5.com/products/orchestration/ansible/devel/modules/bigip_asm_policy_module.html">F5 ASM Ansible capabilities</a></p>
 </div>
 </div>
 

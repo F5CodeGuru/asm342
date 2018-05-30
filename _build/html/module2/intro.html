@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Module 2: Viewing and Manipulating the Rest API via curl &#8212; ASM 342 Docs 1.0 documentation</title>
+    <title>&lt;no title&gt; &#8212; ASM 342 Docs 1.0 documentation</title>
     <link rel="stylesheet" href="../_static/css/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/css/f5.css" type="text/css" />
@@ -18,8 +18,6 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Lab 2.1: Intro to ASM Rest API using curl" href="lab1/lab1.html" />
-    <link rel="prev" title="Review" href="../module1/review.html" />
 <!--
 # Copyright 2017 F5 Networks
 #
@@ -208,26 +206,10 @@
     <div class="row">
       <div class="col-sm-3 col-md-3 sidebartoc">
          <h4><a href="../">ASM 342 Docs 1.0</a></h4>
-  <p class="caption">
-   <span class="caption-text">Current Page</span>
-  </p>
-  <ul>
-<li><a class="reference internal" href="#">Module 2: Viewing and Manipulating the Rest API via curl</a><ul>
-<li><a class="reference internal" href="#intro">Intro</a></li>
-</ul>
-</li>
-</ul>
-
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="../module1/review.html"
-                        title="previous chapter">Review</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="lab1/lab1.html"
-                        title="next chapter">Lab 2.1: Intro to ASM Rest API using curl</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/module2/module2.rst.txt"
+      <li><a href="../_sources/module2/intro.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -251,137 +233,9 @@
           <span class="right"><a href="../genindex.html">Index</a></span>
         </h4>
         
-  <div class="section" id="module-2-viewing-and-manipulating-the-rest-api-via-curl">
-<h1>Module 2: Viewing and Manipulating the Rest API via curl<a class="headerlink" href="#module-2-viewing-and-manipulating-the-rest-api-via-curl" title="Permalink to this headline">¶</a></h1>
-<p>Expected time to complete: <strong>1 hours</strong></p>
-<p>Topics:</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="lab1/lab1.html">Lab 2.1: Intro to ASM Rest API using curl</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab2/lab2.html">Lab 2.2: Using Postman to manioulate the Rest API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="review.html">Review</a></li>
-</ul>
-</div>
-<div class="section" id="intro">
-<h2>Intro<a class="headerlink" href="#intro" title="Permalink to this headline">¶</a></h2>
-<p>If you have familiarity with another RestFul API, the F5 RestFul API will be very similar. If you have no familiarity with a RestFul API, don’t worry there a few key concepts to understand.</p>
-<p>The Rest API uses HTTP requests with a combination certain uri and HTTP verbs/commands</p>
-<p>For example the querying the uri /mgmt/tm/asm/policies (<a class="reference external" href="https:/">https:/</a>/&lt;mgmt ip&gt;/mgmt/tm/asm/policies) will display all asm policies in JSON format.</p>
-<p>Other uris</p>
-<p>/mgmt/tm/asm (root asm configuration)</p>
-<p>/mgmt/tm/asm/signatures (lists all attack signatures that are installed)</p>
-<p>/mgmt/tm/asm/events (lists asm events)</p>
-<p>/mgmt/tm/asm/requests (lists asm requests)</p>
-<p>/mgmt/tm/asm/policies/MrLpFzRHNarvj_zuAOD0fw (whoa what is this? its a way of accessing a policy directly. We will investigate this further later)</p>
-<p>What about the HTTP commands? HTTP commands determine the operation/type of the request, in other words whether data is simply retrieved, created or modified.</p>
-<div class="line-block">
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-<table border="1" class="colwidths-given docutils" id="id1">
-<caption><span class="caption-text">HTTP Method Uses</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col width="25%" />
-<col width="75%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">METHOD</th>
-<th class="head">RESULT</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>GET</td>
-<td>retrieves configuration properties or run-time statistics on the resource specified by the URI in the request</td>
-</tr>
-<tr class="row-odd"><td>PATCH</td>
-<td>modifies only the properties of the resource specified in the URI</td>
-</tr>
-<tr class="row-even"><td>PUT</td>
-<td>modifies the properties of the resource specified in the URI and sets the remaining properties to either default values or empty values</td>
-</tr>
-<tr class="row-odd"><td>POST</td>
-<td>creates a new resource based on the URI (eg new ASM policy)</td>
-</tr>
-<tr class="row-even"><td>DELETE</td>
-<td>deletes a resource based on the URI (eg delete an ASM policy) <em>Note: this method only takes a URI as an option</em></td>
-</tr>
-</tbody>
-</table>
-<div class="line-block">
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-<table border="1" class="colwidths-given docutils" id="id2">
-<caption><span class="caption-text">HTTP Method Use Cases</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col width="38%" />
-<col width="25%" />
-<col width="38%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">USE CASE</th>
-<th class="head">METHOD</th>
-<th class="head">Example</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>Create a new asm policy</td>
-<td>POST</td>
-<td>&#160;</td>
-</tr>
-<tr class="row-odd"><td>View the settings of the new asm policy</td>
-<td>GET</td>
-<td>&#160;</td>
-</tr>
-<tr class="row-even"><td>Add a whitelist ip to the new APM policy</td>
-<td>POST</td>
-<td>&#160;</td>
-</tr>
-<tr class="row-odd"><td>Enable the “Ignore in learning Suggestions” setting for a whitelist IP (by default disabled), leaving all other whitelist settings alone</td>
-<td>PATCH</td>
-<td>&#160;</td>
-</tr>
-<tr class="row-even"><td>Enable the “Policy Builder trusted IP” settings for the whitelist IP (by default disabled), leaving all other whitelist settings alone</td>
-<td>PATCH</td>
-<td>&#160;</td>
-</tr>
-<tr class="row-odd"><td>Enable the “Never log traffic from this IP Address” setting for the whitelist IP (by default disabled), restoring all other settings to their defaults</td>
-<td>PUT</td>
-<td>&#160;</td>
-</tr>
-<tr class="row-even"><td>Delete the whitelist ip</td>
-<td>DELETE</td>
-<td>&#160;</td>
-</tr>
-</tbody>
-</table>
-<div class="line-block">
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Hello</p>
-</div>
-<p><strong>Example</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -sk -u admin:password -X GET https://10.1.1.245/mgmt/tm/asm/policies
-</pre></div>
-</div>
-</div>
-</div>
+  <p>Hello</p>
 
 
-        
-		     <div class="row next-prev-btn-row">
-           <div class="col-lg-12">
-           
-		        <a href="../module1/review.html" title="Review" accesskey="p" class="btn btn-primary pull-left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
-           
-           
-              <a href="lab1/lab1.html" title="Lab 2.1: Intro to ASM Rest API using curl" accesskey="n" class="btn btn-primary pull-right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
-           
-		     </div>
-         </div>
         
       </div>
     </div>

@@ -19,7 +19,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Lab 2.2: Using Postman to manioulate the Rest API" href="../lab2/lab2.html" />
-    <link rel="prev" title="Module 2: Viewing and Manipulating the Rest API via curl and Postman" href="../module2.html" />
+    <link rel="prev" title="Module 2: Viewing and Manipulating the Rest API via curl" href="../module2.html" />
 <!--
 # Copyright 2017 F5 Networks
 #
@@ -220,7 +220,7 @@
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="../module2.html"
-                        title="previous chapter">Module 2: Viewing and Manipulating the Rest API via curl and Postman</a></p>
+                        title="previous chapter">Module 2: Viewing and Manipulating the Rest API via curl</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="../lab2/lab2.html"
                         title="next chapter">Lab 2.2: Using Postman to manioulate the Rest API</a></p>
@@ -253,9 +253,13 @@
         
   <div class="section" id="lab-2-1-intro-to-asm-rest-api-using-curl">
 <h1>Lab 2.1: Intro to ASM Rest API using curl<a class="headerlink" href="#lab-2-1-intro-to-asm-rest-api-using-curl" title="Permalink to this headline">¶</a></h1>
-<p>curl is a great way to get introduced to the REST API. I this lab we will explore a couple</p>
 <div class="section" id="task-1-explore-the-api-using-curl">
 <h2>Task 1 - Explore the API using curl<a class="headerlink" href="#task-1-explore-the-api-using-curl" title="Permalink to this headline">¶</a></h2>
+<p>Run the following command</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -k -u admin:password -X GET https://10.1.1.245/mgmt/tm/asm/policies/
+</pre></div>
+</div>
+<p>curl <strong>-k</strong> -u admin:password -X GET https://10.1.1.245/mgmt/tm/asm/policies/</p>
 </div>
 </div>
 
@@ -264,7 +268,7 @@
 		     <div class="row next-prev-btn-row">
            <div class="col-lg-12">
            
-		        <a href="../module2.html" title="Module 2: Viewing and Manipulating the Rest API via curl and Postman" accesskey="p" class="btn btn-primary pull-left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
+		        <a href="../module2.html" title="Module 2: Viewing and Manipulating the Rest API via curl" accesskey="p" class="btn btn-primary pull-left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
            
            
               <a href="../lab2/lab2.html" title="Lab 2.2: Using Postman to manioulate the Rest API" accesskey="n" class="btn btn-primary pull-right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>

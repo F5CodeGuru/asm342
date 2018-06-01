@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Lab 2.2: Using Postman to manioulate the Rest API &#8212; ASM 342 Docs 1.0 documentation</title>
+    <title>Lab 2.2: Accessing data within the JSON payload using curl &#8212; ASM 342 Docs 1.0 documentation</title>
     <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/css/f5.css" type="text/css" />
@@ -212,8 +212,8 @@
    <span class="caption-text">Current Page</span>
   </p>
   <ul>
-<li><a class="reference internal" href="#">Lab 2.2: Using Postman to manioulate the Rest API</a><ul>
-<li><a class="reference internal" href="#task-1-explore-the-api-using-postman">Task 1 - Explore the API using Postman</a></li>
+<li><a class="reference internal" href="#">Lab 2.2: Accessing data within the JSON payload using curl</a><ul>
+<li><a class="reference internal" href="#task-1-using-jq">Task 1 - Using jq</a></li>
 </ul>
 </li>
 </ul>
@@ -251,10 +251,83 @@
           <span class="right"><a href="../../genindex.html">Index</a></span>
         </h4>
         
-  <div class="section" id="lab-2-2-using-postman-to-manioulate-the-rest-api">
-<h1>Lab 2.2: Using Postman to manioulate the Rest API<a class="headerlink" href="#lab-2-2-using-postman-to-manioulate-the-rest-api" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="task-1-explore-the-api-using-postman">
-<h2>Task 1 - Explore the API using Postman<a class="headerlink" href="#task-1-explore-the-api-using-postman" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="lab-2-2-accessing-data-within-the-json-payload-using-curl">
+<h1>Lab 2.2: Accessing data within the JSON payload using curl<a class="headerlink" href="#lab-2-2-accessing-data-within-the-json-payload-using-curl" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="task-1-using-jq">
+<h2>Task 1 - Using jq<a class="headerlink" href="#task-1-using-jq" title="Permalink to this headline">¶</a></h2>
+<p>One way to parse JSON data is to use a program called jq</p>
+<p>Run the following command</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -sk -u admin:password -X GET https://10.1.1.245/mgmt/tm/asm/policies <span class="p">|</span> jq
+</pre></div>
+</div>
+<p>The output (truncated) will look something similar to:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;kind&quot;</span><span class="p">:</span> <span class="s2">&quot;tm:asm:policies:policycollectionstate&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;selfLink&quot;</span><span class="p">:</span> <span class="s2">&quot;https://localhost/mgmt/tm/asm/policies?ver=13.1.0&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;totalItems&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+  <span class="nt">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;plainTextProfileReference&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;link&quot;</span><span class="p">:</span> <span class="s2">&quot;https://localhost/mgmt/tm/asm/policies/u-6T62j_f0XMkjJ_s_Z-gg/plain-text-profiles?ver=13.1.0&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;isSubCollection&quot;</span><span class="p">:</span> <span class="kc">true</span>
+      <span class="p">},</span>
+      <span class="nt">&quot;dataGuardReference&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;link&quot;</span><span class="p">:</span> <span class="s2">&quot;https://localhost/mgmt/tm/asm/policies/u-6T62j_f0XMkjJ_s_Z-gg/data-guard?ver=13.1.0&quot;</span>
+      <span class="p">},</span>
+      <span class="nt">&quot;createdDatetime&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-05-21T04:30:17Z&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;databaseProtectionReference&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;link&quot;</span><span class="p">:</span> <span class="s2">&quot;https://localhost/mgmt/tm/asm/policies/u-6T62j_f0XMkjJ_s_Z-gg/database-protection?ver=13.1.0&quot;</span>
+      <span class="p">},</span>
+      <span class="nt">&quot;csrfUrlReference&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;link&quot;</span><span class="p">:</span> <span class="s2">&quot;https://localhost/mgmt/tm/asm/policies/u-6T62j_f0XMkjJ_s_Z-gg/csrf-urls?ver=13.1.0&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;isSubCollection&quot;</span><span class="p">:</span> <span class="kc">true</span>
+      <span class="p">},</span>
+      <span class="nt">&quot;cookieSettingsReference&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;link&quot;</span><span class="p">:</span> <span class="s2">&quot;https://localhost/mgmt/tm/asm/policies/u-6T62j_f0XMkjJ_s_Z-gg/cookie-settings?ver=13.1.0&quot;</span>
+      <span class="p">},</span>
+      <span class="nt">&quot;versionLastChange&quot;</span><span class="p">:</span> <span class="s2">&quot; Security Policy /Common/ansible1 [add] { audit: policy = /Common/ansible1, username = admin, client IP = 10.1.1.51 }&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;ansible1&quot;</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>jq really helps to show JSON structure and different layers, which helps to give you an idea on how to access different items.</p>
+<p>Recall from lab1 that there are 2 items (we know this from the totalItems value, 2) and that each item represents a policy.</p>
+<p>To display the first policy (index start at 0), run the following command</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -sk -u admin:password -X GET https://10.1.1.245/mgmt/tm/asm/policies <span class="p">|</span> jq .items<span class="o">[</span><span class="m">0</span><span class="o">]</span>
+</pre></div>
+</div>
+<p>The output should look similar to:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;plainTextProfileReference&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;link&quot;</span><span class="p">:</span> <span class="s2">&quot;https://localhost/mgmt/tm/asm/policies/u-6T62j_f0XMkjJ_s_Z-gg/plain-text-profiles?ver=13.1.0&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;isSubCollection&quot;</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">},</span>
+  <span class="nt">&quot;dataGuardReference&quot;</span><span class="p">:</span> <span class="p">{</span>
+   <span class="nt">&quot;link&quot;</span><span class="p">:</span> <span class="s2">&quot;https://localhost/mgmt/tm/asm/policies/u-6T62j_f0XMkjJ_s_Z-gg/data-guard?ver=13.1.0&quot;</span>
+<span class="p">},</span>
+  <span class="nt">&quot;createdDatetime&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-05-21T04:30:17Z&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;databaseProtectionReference&quot;</span><span class="p">:</span> <span class="p">{</span>
+   <span class="nt">&quot;link&quot;</span><span class="p">:</span> <span class="s2">&quot;https://localhost/mgmt/tm/asm/policies/u-6T62j_f0XMkjJ_s_Z-gg/database-protection?ver=13.1.0&quot;</span>
+<span class="p">},</span>
+  <span class="nt">&quot;csrfUrlReference&quot;</span><span class="p">:</span> <span class="p">{</span>
+   <span class="nt">&quot;link&quot;</span><span class="p">:</span> <span class="s2">&quot;https://localhost/mgmt/tm/asm/policies/u-6T62j_f0XMkjJ_s_Z-gg/csrf-urls?ver=13.1.0&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;isSubCollection&quot;</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">},</span>
+ <span class="nt">&quot;cookieSettingsReference&quot;</span><span class="p">:</span> <span class="p">{</span>
+  <span class="nt">&quot;link&quot;</span><span class="p">:</span> <span class="s2">&quot;https://localhost/mgmt/tm/asm/policies/u-6T62j_f0XMkjJ_s_Z-gg/cookie-settings?ver=13.1.0&quot;</span>
+<span class="p">},</span>
+ <span class="nt">&quot;versionLastChange&quot;</span><span class="p">:</span> <span class="s2">&quot; Security Policy /Common/ansible1 [add] { audit: policy = /Common/ansible1, username = admin, client IP = 10.1.1.51 }&quot;</span><span class="p">,</span>
+ <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;ansible1&quot;</span>
+</pre></div>
+</div>
+<p>Notice the lines leading up to and including items are not displayed</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+ <span class="nt">&quot;kind&quot;</span><span class="p">:</span><span class="s2">&quot;tm:asm:policies:policycollectionstate&quot;</span>
+ <span class="s2">&quot;selfLink&quot;</span><span class="p">:</span><span class="s2">&quot;https://localhost/mgmt/tm/asm/policies?ver=13.1.0&quot;</span>
+ <span class="s2">&quot;totalItems&quot;</span><span class="p">:</span><span class="mi">2</span>
+ <span class="s2">&quot;items&quot;</span><span class="p">:[{</span><span class="nt">&quot;plainTextProfileReference&quot;</span><span class="p">:{</span><span class="nt">&quot;link&quot;</span><span class="p">:</span><span class="s2">&quot;https://localhost/mgmt/tm/asm/policies/u-6T62j_f0XMkjJ_s_Z-gg/plain-text-profiles?ver=13.1.0&quot;</span>
+</pre></div>
+</div>
+<p>We have told jq to only display collections wihtin the items values, specifically we are specifying the first one.</p>
 </div>
 </div>
 

@@ -1,0 +1,14 @@
+ curl -sk -u admin:f5DEMOs4u! https://10.1.1.245/mgmt/tm/asm/policies?\$filter=name+eq+ansible1\&\$select=name | jq
+{
+  "kind": "tm:asm:policies:policycollectionstate",
+  "selfLink": "https://localhost/mgmt/tm/asm/policies?$select=name&ver=13.1.0&$filter=name%20eq%20ansible1",
+  "totalItems": 1,
+  "items": [
+    {
+      "kind": "tm:asm:policies:policystate",
+      "selfLink": "https://localhost/mgmt/tm/asm/policies/u-6T62j_f0XMkjJ_s_Z-gg?ver=13.1.0",
+      "name": "ansible1"
+    }
+  ]
+}
+

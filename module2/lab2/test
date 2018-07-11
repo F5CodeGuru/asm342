@@ -1,21 +1,32 @@
 {
-  "plainTextProfileReference": {
-    "link": "https://localhost/mgmt/tm/asm/policies/u-6T62j_f0XMkjJ_s_Z-gg/plain-text-profiles?ver=13.1.0",
-    "isSubCollection": true
-  },
-  "dataGuardReference": {
-    "link": "https://localhost/mgmt/tm/asm/policies/u-6T62j_f0XMkjJ_s_Z-gg/data-guard?ver=13.1.0"
-  },
-  "createdDatetime": "2018-05-21T04:30:17Z",
-  "databaseProtectionReference": {
-    "link": "https://localhost/mgmt/tm/asm/policies/u-6T62j_f0XMkjJ_s_Z-gg/database-protection?ver=13.1.0"
-  },
-  "csrfUrlReference": {
-    "link": "https://localhost/mgmt/tm/asm/policies/u-6T62j_f0XMkjJ_s_Z-gg/csrf-urls?ver=13.1.0",
-    "isSubCollection": true
-  },
-  "cookieSettingsReference": {
-    "link": "https://localhost/mgmt/tm/asm/policies/u-6T62j_f0XMkjJ_s_Z-gg/cookie-settings?ver=13.1.0"
-  },
-  "versionLastChange": " Security Policy /Common/ansible1 [add] { audit: policy = /Common/ansible1, username = admin, client IP = 10.1.1.51 }",
-  "name": "ansible1"
+  "kind": "tm:asm:policies:parameters:parametercollectionstate",
+  "selfLink": "https://localhost/mgmt/tm/asm/policies/u-6T62j_f0XMkjJ_s_Z-gg/parameters?ver=13.1.0",
+  "totalItems": 441,
+  "items": [
+    {
+      "isBase64": false,
+      "checkMetachars": true,
+      "dataType": "alpha-numeric",
+      "lastLearnedNewEntityDatetime": "2018-05-21T04:30:22Z",
+      "sensitiveParameter": false,
+      "valueType": "user-input",
+      "kind": "tm:asm:policies:parameters:parameterstate",
+      "selfLink": "https://localhost/mgmt/tm/asm/policies/u-6T62j_f0XMkjJ_s_Z-gg/parameters/-5Mv4LmXybsPORDg7A4N0g?ver=13.1.0",
+      "inClassification": false,
+      "nameMetacharOverrides": [],
+      "metacharsOnParameterValueCheck": true,
+      "id": "-5Mv4LmXybsPORDg7A4N0g",
+      "allowEmptyValue": true,
+      "checkMaxValueLength": false,
+      "valueMetacharOverrides": [],
+      "name": "*pgsz*",
+      "lastUpdateMicros": 1526877024000000,
+      "allowRepeatedParameterName": false,
+      "level": "global",
+      "attackSignaturesCheck": true,
+      "signatureOverrides": [],
+      "performStaging": true,
+      "type": "wildcard",
+      "enableRegularExpression": false,
+      "wildcardOrder": 27
+    },

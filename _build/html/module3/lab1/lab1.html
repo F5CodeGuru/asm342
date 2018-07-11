@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Lab 3.1: &#8212; ASM 342 Docs 1.0 documentation</title>
+    <title>Lab 3.1: Using Postman to interact with the ASM Rest API &#8212; ASM 342 Docs 1.0 documentation</title>
     <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/css/f5.css" type="text/css" />
@@ -212,8 +212,8 @@
    <span class="caption-text">Current Page</span>
   </p>
   <ul>
-<li><a class="reference internal" href="#">Lab 3.1:</a><ul>
-<li><a class="reference internal" href="#task-1">Task 1 -</a></li>
+<li><a class="reference internal" href="#">Lab 3.1: Using Postman to interact with the ASM Rest API</a><ul>
+<li><a class="reference internal" href="#task-1-intro-to-postman">Task 1 - Intro to Postman</a></li>
 </ul>
 </li>
 </ul>
@@ -251,10 +251,83 @@
           <span class="right"><a href="../../genindex.html">Index</a></span>
         </h4>
         
-  <div class="section" id="lab-3-1">
-<h1>Lab 3.1:<a class="headerlink" href="#lab-3-1" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="task-1">
-<h2>Task 1 -<a class="headerlink" href="#task-1" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="lab-3-1-using-postman-to-interact-with-the-asm-rest-api">
+<h1>Lab 3.1: Using Postman to interact with the ASM Rest API<a class="headerlink" href="#lab-3-1-using-postman-to-interact-with-the-asm-rest-api" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="task-1-intro-to-postman">
+<h2>Task 1 - Intro to Postman<a class="headerlink" href="#task-1-intro-to-postman" title="Permalink to this headline">¶</a></h2>
+<p>Start Postman by double-clicking the “Postman” icon on the Desktop</p>
+<p>Once Postman has finished starting (this may take a minute) you will see a collection namedi “Agility2018-ASM342” like</p>
+<a class="reference internal image-reference" href="../../_images/module3lab1-1.png"><img alt="ASM342 Collection (2018)" src="../../_images/module3lab1-1.png" style="width: 500px; height: 350px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>No action needed. For future use, this collection can be found here</p>
+<p><a class="reference external" href="https://github.com/below-average-f5-admin/agility2018-asm342-postman">Asm 342 Postman repository</a></p>
+<p>The raw/json version of the file that can be imported into Postman using the import (import link) feature is here</p>
+<p class="last"><a class="reference external" href="https://raw.githubusercontent.com/below-average-f5-admin/agility2018-asm342-postman/master/Agility2018-ASM342.postman_collection.json">Asm 342 Postman json</a></p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Click on the first request: Module3Lab1-ex1-GetAllASMPolicies
+When the a request is selected it displays in a tab on the right-hand side, popuplating the request URL, headers fields and other depending on the the type of request</p>
+<p>Recall the first curl request from Lab 2.1</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -sk -u admin:password -X GET https://10.1.1.245/mgmt/tm/asm/policies/
+</pre></div>
+</div>
+<p>Here is how that command maps to this request in Postman, they both get all ASM policies</p>
+<img alt="../../_images/module3lab1-2.png" src="../../_images/module3lab1-2.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>If you click on the request/method type (GET) you will see a list of all the possible HTTP methods, this is obviously how you would devise a request that would create using a POST versus simply retrieving data (GET). The username and password are sent as a header, curl does this for you automatically when you specify the -u option. You won’t see this Authorization header in your request until you have clicked SEND, this is because it generated dynamically. The Content-Type header is also specified here, however its not really needed for a GET request. It will be needed for POST requests to inform the webserver the type of the incoming data. Lastly the url field specifies the url of the host and reesource. Notice the {{bigipa_host}} in the url, this is a variable that is dynamically filled from an environment. Environments can be global or per collection, here we are using a collection specific environment. Environments allow for sharing variables, in this lab they are used to be able quickly modify values across many requests and to share variables among requests.</p>
+<p>Now take a look at the enviroment, right-click on collection Agility2018-ASM342 and select edit from the menu and select the Variables column.</p>
+<img alt="../../_images/module3lab1-3.png" src="../../_images/module3lab1-3.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Each entry in the “Key” column is a variable, with the value specified in the “Value” column. Variables are used by enclosing them in double curly braces  e.g. {{variable}}</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Now take a look at the Authorization tab to see how authentication works.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<img alt="../../_images/module3lab1-4.png" src="../../_images/module3lab1-4.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Postman uses this setting for the entire collection, assuming each request’s Authorization type is set to “inherit from parent”</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<img alt="../../_images/module3lab1-5.png" src="../../_images/module3lab1-5.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Run the request</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-rest notranslate"><div class="highlight"><pre><span></span>Module3Lab1-ex1-GetAllASMPolicies
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>If the request was succesful the Status will be 200 OK. Take a look at the response, this is show in the “Body” (response body) section</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<img alt="../../_images/module3lab1-6.png" src="../../_images/module3lab1-6.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Notice the body can be displayed in “Pretty” format or “Raw”, must like curl with or without jq. Scroll down through the output. Just as in Lab 2.1, we need to filter on a policy name to get the id. Lab 2 if module 3 will show a couple of ways to filter.</p>
 </div>
 </div>
 

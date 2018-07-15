@@ -1,2 +1,2 @@
-Module 4: Using Python to manipulate the API 
-===================================================
+Module 4: Using Python to Program Advanced WAF (AWAF) 
+=======================================================

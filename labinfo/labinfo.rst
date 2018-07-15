@@ -86,3 +86,9 @@ A graphical representation of the lab:
 
 .. image:: images/Agility2018LabDiagram.png
 
+|
+
+.. note:: 
+        
+        External links are not required reading for the lab, rather supplemental if you you would like to get a different take or additional info.
+

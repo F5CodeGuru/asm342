@@ -214,6 +214,7 @@
   <ul>
 <li><a class="reference internal" href="#">Lab 3.2: Filtering JSON data in Postman</a><ul>
 <li><a class="reference internal" href="#task-1-filtering-json-data-in-postman-using-parameters">Task 1 - Filtering JSON data in Postman using parameters</a></li>
+<li><a class="reference internal" href="#task-2-filtering-json-data-in-postman-using-tests">Task 2 - Filtering JSON data in Postman using Tests</a></li>
 </ul>
 </li>
 </ul>
@@ -253,12 +254,105 @@
         
   <div class="section" id="lab-3-2-filtering-json-data-in-postman">
 <h1>Lab 3.2: Filtering JSON data in Postman<a class="headerlink" href="#lab-3-2-filtering-json-data-in-postman" title="Permalink to this headline">¶</a></h1>
+<p>This lab builds off of the concepts in Lab 2.1-1 Filtering json data and demonstrates how to filter json data in Postman.</p>
+<p>Two ways exists to filter on data</p>
+<ul class="simple">
+<li>Parameters</li>
+<li>Postman Tests (javascript based), more background on this in Task 2</li>
+</ul>
 <div class="section" id="task-1-filtering-json-data-in-postman-using-parameters">
 <h2>Task 1 - Filtering JSON data in Postman using parameters<a class="headerlink" href="#task-1-filtering-json-data-in-postman-using-parameters" title="Permalink to this headline">¶</a></h2>
+<p>This task demonstrates how to filter on the policy named ansible1 and display only the id value.</p>
 <p>Click on the request Module3Lab1-ex2-GetAllASMPoliciesFilteredParam</p>
 <div class="highlight-rest notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
+<img alt="../../_images/module3lab2-1.png" src="../../_images/module3lab2-1.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Notice the parameters passed to the url <a class="reference external" href="https:/">https:/</a>/{bigipa_host}}/mgmt/tm/asm/policies/</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<img alt="../../_images/module3lab2-2.png" src="../../_images/module3lab2-2.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>How does this compare to the url parameters used in Lab2.1-1?</p>
+<p>The special characters $, &amp; are not escaped.</p>
+<p>Run the request</p>
+<div class="highlight-rest notranslate"><div class="highlight"><pre><span></span>Module3Lab1-ex2-GetAllASMPoliciesFilteredParam
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Take a look at the response, this is show in the “Body” (response body) section</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<img alt="../../_images/module3lab2-3.png" src="../../_images/module3lab2-3.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Is the “id” (asm policy id) displayed the same as in lab2.1-1?
+It should be the same id.</p>
+</div>
+<div class="section" id="task-2-filtering-json-data-in-postman-using-tests">
+<h2>Task 2 - Filtering JSON data in Postman using Tests<a class="headerlink" href="#task-2-filtering-json-data-in-postman-using-tests" title="Permalink to this headline">¶</a></h2>
+<p>Postman offers the ability to programmatically ingest responses to request and make decisions on the data retrieved. Tests are written in javascript, which is a very common language, rather than some proprietary or obsucre language. Even if you are not familiar with js, there are many examples written for Postman and many examples of javascript in general.</p>
+<p><a class="reference external" href="https://www.getpostman.com/docs/v6/postman/scripts/test_scripts">Writing Postman tests</a>
+<a class="reference external" href="https://www.getpostman.com/docs/v6/postman/scripts/test_examples">Tests examples</a></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Note that iRules LX (iLX) and iApps LX foundations are based on javascript.</p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Tests are executed post request, which means the Test has access to the response data. In addition a test is on a per request basis, meaning they only apply to the request to which they are assigned. Though Tests can influence the flow of the next request and can be used to provide Orchestration to a collection. More on this later.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Postman also suports Pre-Request Scripts, which are executed before the Request is sent. Use cases are a dynamically generated timestamp or dynamically gnereated Post data.</p>
+<p class="last"><a class="reference external" href="https://www.getpostman.com/docs/v6/postman/scripts/pre_request_scripts">Pre-request scripts</a></p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Click on the request</p>
+<div class="highlight-rest notranslate"><div class="highlight"><pre><span></span>Module3Lab1-ex3-GetAllASMPoliciesFilteredTests
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Notice this request is exactly the same as Module3Lab1-ex1-GetAllASMPolicies with the exception that there is a Test assigned.</p>
+<p>The test, examine the comments to understand how it works.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<img alt="../../_images/module3lab2-4.png" src="../../_images/module3lab2-4.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>The console.log statement logs to the javascript console, to open it click View-&gt;Show Postman Console</p>
+<img alt="../../_images/module3lab2-5.png" src="../../_images/module3lab2-5.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Execute the request, then view the Postman console (it must be open before running the request to display the data).</p>
+<div class="highlight-rest notranslate"><div class="highlight"><pre><span></span>Module3Lab1-ex3-GetAllASMPoliciesFilteredTests
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>The policy id should be displayed</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<img alt="../../_images/module3lab2-6.png" src="../../_images/module3lab2-6.png" />
 </div>
 </div>
 

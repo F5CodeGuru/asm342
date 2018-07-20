@@ -20,6 +20,7 @@ Linux client (client01):
  * `Slowhttptest <https://github.com/shekyan/slowhttptest>`_ - HTTP DOS Tool
  * `wapiti <http://wapiti.sourceforge.net/>`_ - web application auditor
  * `w3af <http://w3af.org/>`_ - web application auditor
+ * `Burp Suite Community Edition <https://portswigger.net/burp>`_ - HTTP Request Manipulation
 
 * Api Tools:
 

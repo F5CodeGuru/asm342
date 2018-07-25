@@ -250,24 +250,27 @@ $select
 $skip
 $top
 Yes, the dollar sign is important and necessary on these parameters. The operators you can use on these parameters are below. Note that the eq operator can only be used with the filter.</p>
-<p>eq - equal
-ne - not equal
-lt - less than
-le - less than or equal
-gt - greater than
-ge - greater than or equal
-Logical Operators:
-and
-or
-not
-Beyond the OData parameters, there are a few custom parameters as well.</p>
+<p>eq - equal</p>
+<p>ne - not equal</p>
+<p>lt - less than</p>
+<p>le - less than or equal</p>
+<p>gt - greater than</p>
+<p>ge - greater than or equal</p>
+<p><strong>Logical Operators:</strong></p>
+<p>and - both conditions must be true</p>
+<p>or - either condition can be true</p>
+<p>not - to negate the condition</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Beyond the OData parameters, there are a few custom parameters as well.</p>
 <p>expandSubcollections - allows you to get the subcollection data in the initial request for objects that have subcollections.
 options - allows you to add arguments to the tmsh equivalent command. An example will be shown below.
 ver - This is for the specific TMOS version. Setting this parameter guarantees consistent behavior through code upgrades. Please note that the JSON return data for a number of calls has changed between the initial release in 11.5.0 and the current release. No items have been removed, but key/value pairs in the output have been added.</p>
 <p>Run the following code to get just the names of the existing policies</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">expandSubcoolections does not work on ASM data, if it did one could use it instead of following the link for a subCollection in order to retrieve the data.</p>
+<p class="last">expandSubcollections does not work on ASM data, if it did one could use it instead of following the link for a subCollection in order to retrieve the data.</p>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -sk -u admin:password https://10.1.1.245/mgmt/tm/asm/policies/?<span class="se">\$</span><span class="k">select</span><span class="o">=</span>name <span class="p">|</span> sed <span class="s1">&#39;s/,/\&#39;$&#39;\n/g&#39;</span>
 </pre></div>

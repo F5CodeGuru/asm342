@@ -2,17 +2,7 @@ Module 2: Viewing and Manipulating the Rest API via curl
 =====================================================================
 Expected time to complete: **1 hours**
 
-Topics:
-
-.. toctree::
-   :maxdepth: 1
-   :glob:
-
-   lab*/lab*
-   review
-
-Intro
----------
+**Intro**
 
 If you have familiarity with another RestFul API, the F5 RestFul API will be very similar. If you have no familiarity with a RestFul API, don't worry there a few key concepts to understand.
 
@@ -100,4 +90,15 @@ What about the HTTP commands? HTTP commands determine the operation/type of the 
 .. code-block:: bash
 
         curl -sk -u admin:password -X GET https://10.1.1.245/mgmt/tm/asm/policies
+
+
+Topics:
+
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
+   lab*/lab*
+   review
+
 

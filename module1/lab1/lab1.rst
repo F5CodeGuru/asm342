@@ -69,8 +69,8 @@ Starting with line 22, post tasks are declared. These are tasks that will take p
         :emphasize-lines: 22-26
         :linenos:
 
-.. |br| raw:: html
-        <br>
+|
+
 
 **Why Ansible and Limitations of the F5 ASM Ansible module**
 
@@ -82,11 +82,17 @@ Over time this will change as F5 has a strong partnership with Ansible.
 
 **Current F5 ASM Ansible Capabilities**
 
-*Policy Activation/Deactivation
-*Blank Policy Creation
-*XML Policy Import
-*Binary Policy Import
-*Policy Creation using Application-Ready Templates
+|
+
+        Policy Activation/Deactivation
+
+        Blank Policy Creation
+
+        XML Policy Import
+
+        Binary Policy Import
+
+        Policy Creation using Application-Ready Templates
 
 
 `F5 ASM Ansible capabilities <http://clouddocs.f5.com/products/orchestration/ansible/devel/modules/bigip_asm_policy_module.html>`_

@@ -94,9 +94,12 @@ After the opening "{", is the first key of collection "kind". The value is "tm:a
 
         {"kind":"tm:asm:policies:policycollectionstate"
 
+|
+
 Next is the key "selfLink" and its value of "https://localhost/mgmt/tm/asm/policies?ver=13.1.0". This tells us how to get to the resource, its usefulness may not be completely apprarent now, its usefulness will be apparent in subsequent excercises.
 Also take note that is essential the same url used in the curl command. The "?" is a parameter passed to request to the Rest API to use version 13.1.0 of the API. Ignore this for now.
 
+|
 .. code-block:: json
 
         "selfLink":"https://localhost/mgmt/tm/asm/policies?ver=13.1.0"

@@ -12,7 +12,7 @@ Environment
 
 Linux client (client01):
 
-* Web Attack Tools:
+* Web Attack Tools: (Only used in 141,241,341 classes)
 
  * `Goldeneye <https://github.com/jseidl/GoldenEye>`_ - HTTP DOS Tool
  * `Metasploit <https://www.metasploit.com/>`_ - Pen testing framework
@@ -22,14 +22,14 @@ Linux client (client01):
  * `w3af <http://w3af.org/>`_ - web application auditor
  * `Burp Suite Community Edition <https://portswigger.net/burp>`_ - HTTP Request Manipulation
 
-* Api Tools:
+* Api Tools: (Only used in 342 Programmability class)
 
  * `Ansible <https://www.ansible.com/>`_ - Automation platform
  * `curl <https://curl.haxx.se/>`_ - command line webclient, will be used to interact with the iControl Rest API
  * `Postman <https://www.getpostman.com/>`_ - Graphical based Restful Client, will be used to interact with the iControl Rest API
  * `python <https://www.python.org/>`_ - general programming language used to interact with the iControl Rest API 
 
-Linux server (server01):
+Linux server (server01): (Only used in 141,241,341 classes)
 
 * `WebGoat 8 <https://github.com/WebGoat/WebGoat/wiki>`_ - deliberately insecure application
 
@@ -71,17 +71,20 @@ components:
      - 10.1.1.51
      - 10.1.10.51
      - N/A
-     - https-``f5student:f5DEMOs4u!``
+     - https-``f5student:password``
    * - Bigip (bigip01)
      - 10.1.1.245
      - 10.1.10.245
      - 10.1.20.245
-     - https - ``admin:f5DEMOs4u!`` ssh - ``f5student:f5DEMOs4u!``
+     - https - ``admin:password`` ssh - ``f5student:f5DEMOs4u!``
    * - Linux Server (server01)
      - 10.1.1.252
      - N/A
      - 10.1.20.252
-     - ssh - ``f5student:f5DEMOs4u!``
+     - ssh - ``f5student:password``
+
+|
+|
 
 A graphical representation of the lab:
 

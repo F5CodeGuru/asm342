@@ -208,16 +208,6 @@
     <div class="row">
       <div class="col-sm-3 col-md-3 sidebartoc">
          <h4><a href="../">ASM 342 Docs 1.0</a></h4>
-  <p class="caption">
-   <span class="caption-text">Current Page</span>
-  </p>
-  <ul>
-<li><a class="reference internal" href="#">Module 2: Viewing and Manipulating the Rest API via curl</a><ul>
-<li><a class="reference internal" href="#intro">Intro</a></li>
-</ul>
-</li>
-</ul>
-
   <h4>Previous topic</h4>
   <p class="topless"><a href="../module1/review.html"
                         title="previous chapter">Review</a></p>
@@ -254,17 +244,7 @@
   <div class="section" id="module-2-viewing-and-manipulating-the-rest-api-via-curl">
 <h1>Module 2: Viewing and Manipulating the Rest API via curl<a class="headerlink" href="#module-2-viewing-and-manipulating-the-rest-api-via-curl" title="Permalink to this headline">¶</a></h1>
 <p>Expected time to complete: <strong>1 hours</strong></p>
-<p>Topics:</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="lab1/lab1.html">Lab 2.1: Intro to ASM Rest API using curl</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab1/lab1-1.html">Lab 2.1-1 Filtering json data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab2/lab2.html">Lab 2.2: Accessing data within the JSON payload using curl</a></li>
-<li class="toctree-l1"><a class="reference internal" href="review.html">Review</a></li>
-</ul>
-</div>
-<div class="section" id="intro">
-<h2>Intro<a class="headerlink" href="#intro" title="Permalink to this headline">¶</a></h2>
+<p><strong>Intro</strong></p>
 <p>If you have familiarity with another RestFul API, the F5 RestFul API will be very similar. If you have no familiarity with a RestFul API, don’t worry there a few key concepts to understand.</p>
 <p>The Rest API uses HTTP requests with a combination certain uri and HTTP verbs/commands</p>
 <p>For example the querying the uri /mgmt/tm/asm/policies (<a class="reference external" href="https:/">https:/</a>/&lt;mgmt ip&gt;/mgmt/tm/asm/policies) will display all asm policies in JSON format.</p>
@@ -368,6 +348,14 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -sk -u admin:password -X GET https://10.1.1.245/mgmt/tm/asm/policies
 </pre></div>
 </div>
+<p>Topics:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="lab1/lab1.html">Lab 2.1: Intro to ASM Rest API using curl</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab1/lab1-1.html">Lab 2.1-1 Filtering json data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab2/lab2.html">Lab 2.2: Accessing data within the JSON payload using curl</a></li>
+<li class="toctree-l1"><a class="reference internal" href="review.html">Review</a></li>
+</ul>
 </div>
 </div>
 

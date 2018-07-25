@@ -1,14 +1,68 @@
-Lab 1.1: Ansible Policy Creation 
-----------------------------------------
+Lab 4.1: Python Intro - Getting the data 
+-------------------------------------------
 
-Ansible is an automated configuration tool that uses config files written in YAML.
+Task 1 - Using Python to display an ASM Policy in json format
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Task 1 - Using Ansible to create a ASM Policy
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Run the following command to create an ASM policy named **ansible1**
+Run the following command to display all asm policy data in json format
 
 .. code-block:: bash
         
-       ansible-playbook /etc/ansible/playbooks/ansible1.yaml -i /etc/ansible/inventory/  -vvv 
+        python3 /home/f5student/agility2018/python/Module4Lab1-ex1-getAllAsmPolicies.py 
 
+|
+
+You should see similar output to what was seen running curl (lab 2.1) and Postman (Lab 3.1) to get the configuration from policies.
+
+|
+
+.. note::
+        If the output from the python script is all json, which in the Module4Lab1-ex1-getAllAsmPolicies.py script the output is, jq can be used to get syntax highlighting and other formatting features. To test run
+       **python3 /home/f5student/agility2018/python/Module4Lab1-ex1-getAllAsmPolicies.py | jq**
+
+|
+
+Now double-click on the "Home" folder icon on your desktop and navigato to /home/f5student/pythong and double click on the script Module4Lab1-ex1-getAllAsmPolicies.py
+
+|
+
+.. image:: images/Module4Lab1-1.png
+        :width: 600px
+
+|
+
+Notice the script is commented throughout to give the student a walk-through of what is occuring. Also note that the script has a curl command that can be used to simulate what is occuring, run the command.
+
+|
+
+.. note..
+
+        Each script contains the equivalent curl commands so that the script can be debugged and to help the student understand the interaction
+
+|
+
+
+Run the following command to create an ASM policy named **python1**
+
+|
+
+.. code-block:: bash
+
+        python3 /home/f5student/agility2018/python/Module4Lab1-ex2-createAsmPolicy.py
+
+|
+
+In the Bigip Gui, navigate to Security->Application Security->Security Policies to ensure the policy "python1" was created.
+Open the Module4Lab1-ex2-createAsmPolicy.py in the gui editor by double-clicking the script. Analyze the script, run the curl command from the script.
+
+|
+
+Run the following coomand to display the python1 policy in json format
+
+|
+
+.. code-block:: bash
+
+        
+
+        

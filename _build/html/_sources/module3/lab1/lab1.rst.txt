@@ -88,3 +88,4 @@ If the request was succesful the Status will be 200 OK. Take a look at the respo
 
 Notice the body can be displayed in "Pretty" format or "Raw", must like curl with or without jq. Scroll down through the output. Just as in Lab 2.1, we need to filter on a policy name to get the id. Lab 2 if module 3 will show a couple of ways to filter.
 
+

@@ -14,15 +14,27 @@ $top
 Yes, the dollar sign is important and necessary on these parameters. The operators you can use on these parameters are below. Note that the eq operator can only be used with the filter.
 
 eq - equal
+
 ne - not equal
+
 lt - less than
+
 le - less than or equal
+
 gt - greater than
+
 ge - greater than or equal
-Logical Operators:
-and
-or
-not
+
+**Logical Operators:**
+
+and - both conditions must be true
+
+or - either condition can be true
+
+not - to negate the condition
+
+|
+
 Beyond the OData parameters, there are a few custom parameters as well.
 
 expandSubcollections - allows you to get the subcollection data in the initial request for objects that have subcollections.
@@ -33,7 +45,7 @@ Run the following code to get just the names of the existing policies
 
 .. note::
 
-        expandSubcoolections does not work on ASM data, if it did one could use it instead of following the link for a subCollection in order to retrieve the data.
+        expandSubcollections does not work on ASM data, if it did one could use it instead of following the link for a subCollection in order to retrieve the data.
 
 
 .. code-block:: bash

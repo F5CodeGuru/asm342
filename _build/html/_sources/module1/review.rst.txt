@@ -1,6 +1,8 @@
 Review
 ==========
 
+Once again the features that are supported for ASM ansible module:
+
 
         Policy Activation/Deactivation
 
@@ -11,6 +13,12 @@ Review
         Binary Policy Import
 
         Policy Creation using Application-Ready Templates
+
+
+The LTM and Sys modules are much more feature rich, where most configuration options are available.
+
+|
+|
 
 **Further Reading (optional)**
 

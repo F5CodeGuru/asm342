@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Lab 2.1-1 Filtering json data &#8212; ASM 342 Docs 1.0 documentation</title>
+    <title>Lab 2.4: Curl Policy Creation and Modification &#8212; ASM 342 Docs 1.0 documentation</title>
     <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/css/f5.css" type="text/css" />
@@ -18,8 +18,8 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Lab 2.2: Accessing data within the JSON payload using curl" href="../lab2/lab2.html" />
-    <link rel="prev" title="Lab 2.1: Intro to ASM Rest API using curl" href="lab1.html" />
+    <link rel="next" title="Review" href="../review.html" />
+    <link rel="prev" title="Lab 2.3: Accessing data within the JSON payload using curl" href="../lab3/lab3.html" />
 <!--
 # Copyright 2017 F5 Networks
 #
@@ -208,16 +208,26 @@
     <div class="row">
       <div class="col-sm-3 col-md-3 sidebartoc">
          <h4><a href="../../">ASM 342 Docs 1.0</a></h4>
+  <p class="caption">
+   <span class="caption-text">Current Page</span>
+  </p>
+  <ul>
+<li><a class="reference internal" href="#">Lab 2.4: Curl Policy Creation and Modification</a><ul>
+<li><a class="reference internal" href="#task-1-using-curl-to-create-a-asm-policy">Task 1 - Using curl to create a ASM policy</a></li>
+</ul>
+</li>
+</ul>
+
   <h4>Previous topic</h4>
-  <p class="topless"><a href="lab1.html"
-                        title="previous chapter">Lab 2.1: Intro to ASM Rest API using curl</a></p>
+  <p class="topless"><a href="../lab3/lab3.html"
+                        title="previous chapter">Lab 2.3: Accessing data within the JSON payload using curl</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="../lab2/lab2.html"
-                        title="next chapter">Lab 2.2: Accessing data within the JSON payload using curl</a></p>
+  <p class="topless"><a href="../review.html"
+                        title="next chapter">Review</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../../_sources/module2/lab1/lab1-1.rst.txt"
+      <li><a href="../../_sources/module2/lab4/lab4.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -241,71 +251,24 @@
           <span class="right"><a href="../../genindex.html">Index</a></span>
         </h4>
         
-  <div class="section" id="lab-2-1-1-filtering-json-data">
-<h1>Lab 2.1-1 Filtering json data<a class="headerlink" href="#lab-2-1-1-filtering-json-data" title="Permalink to this headline">¶</a></h1>
-<p>The output yields lots of good information that can be used, the problem is there can be a lot of output. Fortunately a way to filter exists</p>
-<p>F5 has documented a number of query parameters that can be passed into iControl ReST calls in order to modify their behavior. The first set follows the OData (open data protocol) standard. The filter parameter also supports several operators.</p>
-<p>$filter
-$select
-$skip
-$top
-Yes, the dollar sign is important and necessary on these parameters. The operators you can use on these parameters are below. Note that the eq operator can only be used with the filter.</p>
-<p>eq - equal</p>
-<p>ne - not equal</p>
-<p>lt - less than</p>
-<p>le - less than or equal</p>
-<p>gt - greater than</p>
-<p>ge - greater than or equal</p>
-<p><strong>Logical Operators:</strong></p>
-<p>and - both conditions must be true</p>
-<p>or - either condition can be true</p>
-<p>not - to negate the condition</p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<p>Beyond the OData parameters, there are a few custom parameters as well.</p>
-<p>expandSubcollections - allows you to get the subcollection data in the initial request for objects that have subcollections.
-options - allows you to add arguments to the tmsh equivalent command. An example will be shown below.
-ver - This is for the specific TMOS version. Setting this parameter guarantees consistent behavior through code upgrades. Please note that the JSON return data for a number of calls has changed between the initial release in 11.5.0 and the current release. No items have been removed, but key/value pairs in the output have been added.</p>
-<p>Run the following code to get just the names of the existing policies</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">expandSubcollections does not work on ASM data, if it did one could use it instead of following the link for a subCollection in order to retrieve the data.</p>
-</div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -sk -u admin:password https://10.1.1.245/mgmt/tm/asm/policies/?<span class="se">\$</span><span class="k">select</span><span class="o">=</span>name <span class="p">|</span> sed <span class="s1">&#39;s/,/\&#39;$&#39;\n/g&#39;</span>
-</pre></div>
-</div>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;kind&quot;</span><span class="p">:</span><span class="s2">&quot;tm:asm:policies:policycollectionstate&quot;</span>
-<span class="s2">&quot;selfLink&quot;</span><span class="p">:</span><span class="s2">&quot;https://localhost/mgmt/tm/asm/policies?$select=name&amp;ver=13.1.0&quot;</span>
-<span class="s2">&quot;totalItems&quot;</span><span class="p">:</span><span class="mi">2</span>
-<span class="s2">&quot;items&quot;</span><span class="p">:[{</span><span class="nt">&quot;kind&quot;</span><span class="p">:</span><span class="s2">&quot;tm:asm:policies:policystate&quot;</span>
-<span class="s2">&quot;selfLink&quot;</span><span class="p">:</span><span class="s2">&quot;https://localhost/mgmt/tm/asm/policies/u-6T62j_f0XMkjJ_s_Z-gg?ver=13.1.0&quot;</span>
-<span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;ansible1&quot;</span><span class="p">}</span>
-<span class="p">{</span><span class="nt">&quot;kind&quot;</span><span class="p">:</span><span class="s2">&quot;tm:asm:policies:policystate&quot;</span>
-<span class="s2">&quot;selfLink&quot;</span><span class="p">:</span><span class="s2">&quot;https://localhost/mgmt/tm/asm/policies/r3deT9IMy0gBkM65PTVlzA?ver=13.1.0&quot;</span>
-<span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;WebScrapingPolicy&quot;</span><span class="p">}]}</span>
+  <div class="section" id="lab-2-4-curl-policy-creation-and-modification">
+<h1>Lab 2.4: Curl Policy Creation and Modification<a class="headerlink" href="#lab-2-4-curl-policy-creation-and-modification" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="task-1-using-curl-to-create-a-asm-policy">
+<h2>Task 1 - Using curl to create a ASM policy<a class="headerlink" href="#task-1-using-curl-to-create-a-asm-policy" title="Permalink to this headline">¶</a></h2>
+<p>Run the following command to create a new ASM policy “curl1”</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -sk -u admin:pass -X POST https://&lt;bigip&gt;/mgmt/tm/asm/policies -d <span class="s1">&#39;{&quot;name&quot;:&quot;curl1&quot;}&#39;</span>
 </pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
-<div class="line"><br /></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -sk -u admin:f5DEMOs4u! https://10.1.1.245/mgmt/tm/asm/policies?<span class="se">\$</span><span class="nv">filter</span><span class="o">=</span>name+eq+ansible1<span class="se">\&amp;\$</span><span class="k">select</span><span class="o">=</span>name <span class="p">|</span> jq
+<p>Navigate to Security-&gt;Application Security-&gt;Security Policies-&gt;Policies List to verify the “curl1” policy was created</p>
+<p>Before running the script, navigate to Security-&gt;Application Security-&gt;IP Addresses-&gt;IP Address Exceptions for the “curl1” policy. Note to select the different policies by using the “Current edited security policy” dropdown.</p>
+<p>Run the following command to modify the policy by adding a whitelist ip</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -sk -u admin:pass https://&lt;bigip&gt;/mgmt/tm/asm/policies/&lt;policyId&gt;/whitelist-ips -H <span class="s2">&quot;Content-Type: application/json&quot;</span> -d <span class="s1">&#39;{&quot;ipAddress&quot;:&quot;165.25.76.234&quot;, &quot;ipMask&quot;:&quot;255.255.255.255&quot;}&#39;</span> -X POST
 </pre></div>
 </div>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="nt">&quot;kind&quot;</span><span class="p">:</span> <span class="s2">&quot;tm:asm:policies:policycollectionstate&quot;</span><span class="p">,</span>
-<span class="nt">&quot;selfLink&quot;</span><span class="p">:</span> <span class="s2">&quot;https://localhost/mgmt/tm/asm/policies?$select=name&amp;ver=13.1.0&amp;$filter=name%20eq%20ansible1&quot;</span><span class="p">,</span>
-<span class="nt">&quot;totalItems&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-<span class="nt">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-        <span class="nt">&quot;kind&quot;</span><span class="p">:</span> <span class="s2">&quot;tm:asm:policies:policystate&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;selfLink&quot;</span><span class="p">:</span> <span class="s2">&quot;https://localhost/mgmt/tm/asm/policies/u-6T62j_f0XMkjJ_s_Z-gg?ver=13.1.0&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;ansible1&quot;</span>
-        <span class="p">}</span>
-        <span class="p">]</span>
-<span class="p">}</span>
-</pre></div>
+<p>Refresh the IP Address Exceptions to verify the whitelist ip 165.25.76.234/255.255.255.255 was added.</p>
 </div>
 </div>
 
@@ -314,10 +277,10 @@ ver - This is for the specific TMOS version. Setting this parameter guarantees c
 		     <div class="row next-prev-btn-row">
            <div class="col-lg-12">
            
-		        <a href="lab1.html" title="Lab 2.1: Intro to ASM Rest API using curl" accesskey="p" class="btn btn-primary pull-left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
+		        <a href="../lab3/lab3.html" title="Lab 2.3: Accessing data within the JSON payload using curl" accesskey="p" class="btn btn-primary pull-left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
            
            
-              <a href="../lab2/lab2.html" title="Lab 2.2: Accessing data within the JSON payload using curl" accesskey="n" class="btn btn-primary pull-right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+              <a href="../review.html" title="Review" accesskey="n" class="btn btn-primary pull-right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
            
 		     </div>
          </div>

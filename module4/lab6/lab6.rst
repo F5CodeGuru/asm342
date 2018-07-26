@@ -1,4 +1,4 @@
-Lab 4.6: Getting data across all polciies and providing a report 
+Lab 4.6: Getting data across all policies and providing a report 
 ------------------------------------------------------------------
 
 Task 1 - Using Python to report on the CVE that each policy provides protection against

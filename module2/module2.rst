@@ -77,10 +77,6 @@ What about the HTTP commands? HTTP commands determine the operation/type of the 
 |
 |
                   
-.. note::
-
-        Hello
-
 
 **Example**
 

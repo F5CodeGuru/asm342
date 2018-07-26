@@ -41,28 +41,3 @@ Notice the script is commented throughout to give the student a walk-through of 
 
 |
 
-
-Run the following command to create an ASM policy named **python1**
-
-|
-
-.. code-block:: bash
-
-        python3 /home/f5student/agility2018/python/Module4Lab1-ex2-createAsmPolicy.py
-
-|
-
-In the Bigip Gui, navigate to Security->Application Security->Security Policies to ensure the policy "python1" was created.
-Open the Module4Lab1-ex2-createAsmPolicy.py in the gui editor by double-clicking the script. Analyze the script, run the curl command from the script.
-
-|
-
-Run the following coomand to display the python1 policy in json format
-
-|
-
-.. code-block:: bash
-
-        
-
-        

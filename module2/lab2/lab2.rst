@@ -1,187 +1,87 @@
-Lab 2.2: Accessing data within the JSON payload using curl 
---------------------------------------------------------------
-
-Task 1 - Using jq 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-One way to parse JSON data is to use a program called jq
-
-Run the following command
-
-.. code-block:: bash
-
-       curl -sk -u admin:password -X GET https://10.1.1.245/mgmt/tm/asm/policies | jq 
-
-The output (truncated) will look something similar to:
-
-.. code-block:: json
+Lab 2.2 Filtering json data
+------------------------------
 
 
-        {
-          "kind": "tm:asm:policies:policycollectionstate",
-          "selfLink": "https://localhost/mgmt/tm/asm/policies?ver=13.1.0",
-          "totalItems": 2,
-          "items": [
-            {
-              "plainTextProfileReference": {
-              "link": "https://localhost/mgmt/tm/asm/policies/u-6T62j_f0XMkjJ_s_Z-gg/plain-text-profiles?ver=13.1.0",
-              "isSubCollection": true
-              },
-              "dataGuardReference": {
-                "link": "https://localhost/mgmt/tm/asm/policies/u-6T62j_f0XMkjJ_s_Z-gg/data-guard?ver=13.1.0"
-              },
-              "createdDatetime": "2018-05-21T04:30:17Z",
-              "databaseProtectionReference": {
-                "link": "https://localhost/mgmt/tm/asm/policies/u-6T62j_f0XMkjJ_s_Z-gg/database-protection?ver=13.1.0"
-              },
-              "csrfUrlReference": {
-                "link": "https://localhost/mgmt/tm/asm/policies/u-6T62j_f0XMkjJ_s_Z-gg/csrf-urls?ver=13.1.0",
-                "isSubCollection": true
-              },
-              "cookieSettingsReference": {
-                "link": "https://localhost/mgmt/tm/asm/policies/u-6T62j_f0XMkjJ_s_Z-gg/cookie-settings?ver=13.1.0"
-              },
-              "versionLastChange": " Security Policy /Common/ansible1 [add] { audit: policy = /Common/ansible1, username = admin, client IP = 10.1.1.51 }",
-              "name": "ansible1",
+The output yields lots of good information that can be used, the problem is there can be a lot of output. Fortunately a way to filter exists
 
 
-jq really helps to show JSON structure and different layers, which helps to give you an idea on how to access different items.
+F5 has documented a number of query parameters that can be passed into iControl ReST calls in order to modify their behavior. The first set follows the OData (open data protocol) standard. The filter parameter also supports several operators.
 
-Recall from lab1 that there are 2 items (we know this from the totalItems value, 2) and that each item represents a policy.
+$filter
+$select
+$skip
+$top
+Yes, the dollar sign is important and necessary on these parameters. The operators you can use on these parameters are below. Note that the eq operator can only be used with the filter.
 
-To display the first policy (index start at 0), run the following command
+eq - equal
 
-.. code-block:: bash
+ne - not equal
 
-        curl -sk -u admin:password -X GET https://10.1.1.245/mgmt/tm/asm/policies | jq .items[0]
+lt - less than
 
-The output should look similar to:
+le - less than or equal
 
-.. code-block:: json
+gt - greater than
 
+ge - greater than or equal
 
+**Logical Operators:**
 
-        {
-          "plainTextProfileReference": {
-            "link": "https://localhost/mgmt/tm/asm/policies/u-6T62j_f0XMkjJ_s_Z-gg/plain-text-profiles?ver=13.1.0",
-            "isSubCollection": true
-        },
-          "dataGuardReference": {
-           "link": "https://localhost/mgmt/tm/asm/policies/u-6T62j_f0XMkjJ_s_Z-gg/data-guard?ver=13.1.0"
-        },
-          "createdDatetime": "2018-05-21T04:30:17Z",
-          "databaseProtectionReference": {
-           "link": "https://localhost/mgmt/tm/asm/policies/u-6T62j_f0XMkjJ_s_Z-gg/database-protection?ver=13.1.0"
-        },
-          "csrfUrlReference": {
-           "link": "https://localhost/mgmt/tm/asm/policies/u-6T62j_f0XMkjJ_s_Z-gg/csrf-urls?ver=13.1.0",
-           "isSubCollection": true
-        },
-         "cookieSettingsReference": {
-          "link": "https://localhost/mgmt/tm/asm/policies/u-6T62j_f0XMkjJ_s_Z-gg/cookie-settings?ver=13.1.0"
-        },
-         "versionLastChange": " Security Policy /Common/ansible1 [add] { audit: policy = /Common/ansible1, username = admin, client IP = 10.1.1.51 }",
-         "name": "ansible1"
+and - both conditions must be true
 
-Notice the lines leading up to and including items are not displayed
- 
-.. code-block:: json
+or - either condition can be true
 
-       {
-        "kind":"tm:asm:policies:policycollectionstate"
-        "selfLink":"https://localhost/mgmt/tm/asm/policies?ver=13.1.0"
-        "totalItems":2 
-        "items":[{"plainTextProfileReference":{"link":"https://localhost/mgmt/tm/asm/policies/u-6T62j_f0XMkjJ_s_Z-gg/plain-text-profiles?ver=13.1.0"
-
-We have told jq to only display collections wihtin the items values, specifically we are specifying the first one, which is the first ASM policy.
-
-
-Recall that ASM policy id are actually a random string and not the actually name, think about how one could extract the name using jq.
-
-
-`Answer jq Name <answermodule2lab2-jqName.html>`_
-
-How would one extract the enforcement mode?
-
-`Answer jq Enforcement Mode <answermodule2lab2-jqEnforcement.html>`_
-
-
-
+not - to negate the condition
 
 |
-|
-|
 
-Next take a look at the parameter settings for this policy, run the following
+Beyond the OData parameters, there are a few custom parameters as well.
+
+expandSubcollections - allows you to get the subcollection data in the initial request for objects that have subcollections.
+options - allows you to add arguments to the tmsh equivalent command. An example will be shown below.
+ver - This is for the specific TMOS version. Setting this parameter guarantees consistent behavior through code upgrades. Please note that the JSON return data for a number of calls has changed between the initial release in 11.5.0 and the current release. No items have been removed, but key/value pairs in the output have been added.
+
+Run the following code to get just the names of the existing policies
+
+.. note::
+
+        expandSubcollections does not work on ASM data, if it did one could use it instead of following the link for a subCollection in order to retrieve the data.
 
 
 .. code-block:: bash
 
-        curl -sk -u admin:password -X GET https://10.1.1.245/mgmt/tm/asm/policies | jq .items[0].parameterReference
+        curl -sk -u admin:password https://10.1.1.245/mgmt/tm/asm/policies/?\$select=name | sed 's/,/\'$'\n/g'
 
+.. code-block:: json
 
-The output will look somehting like
+        {"kind":"tm:asm:policies:policycollectionstate"
+        "selfLink":"https://localhost/mgmt/tm/asm/policies?$select=name&ver=13.1.0"
+        "totalItems":2
+        "items":[{"kind":"tm:asm:policies:policystate"
+        "selfLink":"https://localhost/mgmt/tm/asm/policies/u-6T62j_f0XMkjJ_s_Z-gg?ver=13.1.0"
+        "name":"ansible1"}
+        {"kind":"tm:asm:policies:policystate"
+        "selfLink":"https://localhost/mgmt/tm/asm/policies/r3deT9IMy0gBkM65PTVlzA?ver=13.1.0"
+        "name":"WebScrapingPolicy"}]}
+|
+|
+
+.. code-block:: bash
+
+        curl -sk -u admin:f5DEMOs4u! https://10.1.1.245/mgmt/tm/asm/policies?\$filter=name+eq+ansible1\&\$select=name | jq
 
 .. code-block:: json
 
         {
-          "link": "https://localhost/mgmt/tm/asm/policies/u-6T62j_f0XMkjJ_s_Z-gg/parameters?ver=13.1.0",
-            "isSubCollection": true
-        }
+        "kind": "tm:asm:policies:policycollectionstate",
+        "selfLink": "https://localhost/mgmt/tm/asm/policies?$select=name&ver=13.1.0&$filter=name%20eq%20ansible1",
+        "totalItems": 1,
+        "items": [
+                {
+                "kind": "tm:asm:policies:policystate",
+                "selfLink": "https://localhost/mgmt/tm/asm/policies/u-6T62j_f0XMkjJ_s_Z-gg?ver=13.1.0",
+                "name": "ansible1"
+                }
+                ]
+        }              
 
-
-|
-
-Recall any item with a "isSubCollection" with a value of true, will have a link to the actual items
-|
-What would the request look like?
-
-`Answer jq Parameters <answermodule2lab2-jqParameters.html>`_
-        
-
-
-What if you wanted to filter on a specific value with jq? Lets filter on the parameter with the name "displaymode"
-
-Run the following
-
-.. code-block:: bash
-
-        curl -sk -u admin:password https://10.1.1.245/mgmt/tm/asm/policies/u-6T62j_f0XMkjJ_s_Z-gg/parameters | jq '.items[] | select(.name ==  "displaymode")'
-
-
-The output should look something like:
-
-.. code-block:: json
-
-        {
-          "isBase64": false,
-          "dataType": "alpha-numeric",
-          "sensitiveParameter": false,
-          "valueType": "user-input",
-          "kind": "tm:asm:policies:parameters:parameterstate",
-          "selfLink": "https://localhost/mgmt/tm/asm/policies/u-6T62j_f0XMkjJ_s_Z-gg/parameters/_Ott1aSMBOPupVbKbovX0A?ver=13.1.0",
-          "inClassification": false,
-          "metacharsOnParameterValueCheck": true,
-          "id": "_Ott1aSMBOPupVbKbovX0A",
-          "allowEmptyValue": false,
-          "checkMaxValueLength": false,
-          "valueMetacharOverrides": [],
-          "name": "displaymode",
-          "lastUpdateMicros": 1526877023000000,
-          "allowRepeatedParameterName": false,
-          "level": "global",
-          "attackSignaturesCheck": true,
-          "signatureOverrides": [],
-          "performStaging": true,
-          "type": "explicit",
-          "enableRegularExpression": false
-         }
-
-|
-|
-
-
-
-.. code-block:: bash
-
-        curl -sk -u admin:bigip123 -X GET https://10.4.6.10/mgmt/tm/asm/policies | jq '.items[] | "\(.name) \(.id)"'

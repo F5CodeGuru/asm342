@@ -68,7 +68,7 @@ Run the following code to get just the names of the existing policies
 
 .. code-block:: bash
 
-        curl -sk -u admin:f5DEMOs4u! https://10.1.1.245/mgmt/tm/asm/policies?\$filter=name+eq+ansible1\&\$select=name | jq
+        curl -sk -u admin:password https://10.1.1.245/mgmt/tm/asm/policies?\$filter=name+eq+ansible1\&\$select=name | jq
 
 .. code-block:: json
 

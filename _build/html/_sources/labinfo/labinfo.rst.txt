@@ -76,7 +76,7 @@ components:
      - 10.1.1.245
      - 10.1.10.245
      - 10.1.20.245
-     - https - ``admin:password`` ssh - ``f5student:f5DEMOs4u!``
+     - https - ``admin:password`` ssh - ``f5student:password``
    * - Linux Server (server01)
      - 10.1.1.252
      - N/A

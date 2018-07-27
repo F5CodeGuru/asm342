@@ -351,16 +351,21 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>Recall any item with a “isSubCollection” with a value of true, will have a link to the actual items
-|
-What would the request look like?</p>
+<p>Recall any item with a “isSubCollection” with a value of true, will have a link to the actual items</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>What would the request look like?</p>
 <p><a class="reference external" href="answermodule2lab3-jqParameters.html">Answer jq Parameters</a></p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 <p>What if you wanted to filter on a specific value with jq? Lets filter on the parameter with the name “displaymode”</p>
 <p>Run the following</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -sk -u admin:password -X GET https://10.1.1.245/mgmt/tm/asm/policies/u-6T62j_f0XMkjJ_s_Z-gg/parameters <span class="p">|</span> jq <span class="s1">&#39;.items[] | select(.name ==  &quot;displaymode&quot;)&#39;</span>
 </pre></div>
 </div>
-<p>The output should look something like:</p>
+<p>The output should resemble:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;isBase64&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
   <span class="nt">&quot;dataType&quot;</span><span class="p">:</span> <span class="s2">&quot;alpha-numeric&quot;</span><span class="p">,</span>

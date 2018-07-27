@@ -78,7 +78,7 @@ Run the request
 
 |
 
-If the request was succesful the Status will be 200 OK. Take a look at the response, this is show in the "Body" (response body) section
+If the request was succesful the Status will be 200 OK. Take a look at the response, this is shown in the "Body" (response body) section
 
 |
 

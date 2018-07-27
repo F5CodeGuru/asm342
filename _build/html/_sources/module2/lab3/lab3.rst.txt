@@ -133,11 +133,14 @@ The output will look somehting like
 |
 
 Recall any item with a "isSubCollection" with a value of true, will have a link to the actual items
+
 |
+
 What would the request look like?
 
 `Answer jq Parameters <answermodule2lab3-jqParameters.html>`_
-        
+
+|
 
 
 What if you wanted to filter on a specific value with jq? Lets filter on the parameter with the name "displaymode"
@@ -149,7 +152,7 @@ Run the following
         curl -sk -u admin:password -X GET https://10.1.1.245/mgmt/tm/asm/policies/u-6T62j_f0XMkjJ_s_Z-gg/parameters | jq '.items[] | select(.name ==  "displaymode")'
 
 
-The output should look something like:
+The output should resemble:
 
 .. code-block:: json
 

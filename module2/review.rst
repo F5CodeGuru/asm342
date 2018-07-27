@@ -1,6 +1,6 @@
 Review
 ==========
-
+This concludes module2 of the class.
 
 Further Reading
 ----------------

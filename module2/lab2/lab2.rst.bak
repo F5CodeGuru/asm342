@@ -1,7 +1,7 @@
-Lab 2.3: Server-side json filtering
+Lab 2.2 Server-side json filtering
 ------------------------------------------------
 
-Task 1 - Server-side json filtering using uri parameters
+Task 1 Server-side json filtering using uri parameters
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The output yields lots of good information that can be used, the problem is there can be a lot of output. Fortunately a way to filter exists

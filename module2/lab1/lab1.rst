@@ -1,6 +1,10 @@
 Lab 2.1: Intro to ASM Rest API using curl
 -------------------------------------------
 
+.. note::
+
+        Replace all instances of <bigip> with the management ip of the bigip1, 10.1.1.245. Replace password with the pssword provided by the instructor.
+
 **JSON Key/Value Pairs**
 
 JSON is comprised of key:value pairs ({“key”:”value”}) sometimes referred to as a hash or in python a dictionary. "Keys" are unique within the same context. Each key/value pair belonging to a set will be enclosed in curly braces “{ …. }”, “{” being the opening curly brace, “}” being the closing curly brace. Note the word “pairs”, most of the JSON will have multiple pairs, each pair separated by a comma ( eg { “key1”:”value1”,”key2”:”value2”}. The commas have been removed in the above output by the sed/awk commands to make the output prettier. Take a look at the output (#1) to see the commas. In the above example, each key/value pair is on a newline thanks to the sed/awk filter.

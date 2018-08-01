@@ -12,7 +12,7 @@ Run the following command to view the output of all ASM policies filtered throug
 
 .. code-block:: bash
 
-       curl -sk -u admin:password -X GET https://10.1.1.245/mgmt/tm/asm/policies | jq 
+       curl -sk -u admin:password -X GET https://<bigip>/mgmt/tm/asm/policies | jq 
 
 The output (truncated) will look something similar to:
 
@@ -55,7 +55,7 @@ To display the first policy (index start at 0), run the following command
 
 .. code-block:: bash
 
-        curl -sk -u admin:password -X GET https://10.1.1.245/mgmt/tm/asm/policies | jq .items[0]
+        curl -sk -u admin:password -X GET https://<bigip>/mgmt/tm/asm/policies | jq .items[0]
 
 The output should look similar to, which is the entire configuration for the first policy, in this case "ansible1":
 
@@ -105,24 +105,26 @@ Run the following command:
 
 .. code-block:: bash
         
-        curl -sk -u admin:password -X GET https://10.1.1.245/mgmt/tm/asm/policies | jq .items[0].id
+        curl -sk -u admin:password -X GET https://<bigip>/mgmt/tm/asm/policies | jq .items[0].id
 
 |
+
+The policy id should be output.
 
 Since the id is attribute of the policy, you add a '.' in to jump into that item's (policy) id field.
 
 |
 |
 
-Recall that ASM policy id are actually a random string and not the actually name, think about how one could extract the name using jq. 
+Recall that ASM policy id are actually a random string and not the actually name, think about how one could extract the name using jq for the first policy. 
 Can you come up with this on your own?
 
 
-`Answer jq Name <answermodule3lab4-jqName.html>`_
+`Answer jq Name <answermodule2lab4-jqName.html>`_
 
 How would one extract the enforcement mode?
 
-`Answer jq Enforcement Mode <answermodule3lab4-jqEnforcement.html>`_
+`Answer jq Enforcement Mode <answermodule2lab4-jqEnforcement.html>`_
 
 
 
@@ -136,7 +138,7 @@ Next take a look at the parameter settings for this policy, run the following
 
 .. code-block:: bash
 
-        curl -sk -u admin:password -X GET https://10.1.1.245/mgmt/tm/asm/policies | jq .items[0].parameterReference
+        curl -sk -u admin:password -X GET https://<bigip>/mgmt/tm/asm/policies | jq .items[0].parameterReference
 
 
 The output will look somehting like
@@ -155,27 +157,39 @@ Recall any item with a "isSubCollection" with a value of true, will have a link 
 
 |
 
-What would the request look like to retrieve the subCollection (the actual configuration)?
+What would the request look like to retrieve the subCollection (the actual paremeters configuration of the policy)?
 
-`Answer jq Parameters <answermodule3lab4-jqParameters.html>`_
+`Answer jq Parameters <answermodule2lab4-jqParameters.html>`_
 
 |
 
+.. note::
 
-What if you wanted to filter on a specific value with jq? Lets filter on the parameter with the name "displaymode"
+        Hint you cannot use localhost
+
+|
+
+What if you wanted to display only select values, more than one? 
 
 First run the following to get the policy id of the "ansible1" policy. This tells jq to display the name and id fileds of any policy (items[], hence the empty square brackets meaning we are not specifying a specific policy, its any policy).
 
 .. code-block:: bash
 
-        curl -sk -u admin:password -X GET https://10.1.1.245/mgmt/tm/asm/policies | jq '.items[] | "\(.name) \(.id)"'
+        curl -sk -u admin:password -X GET https://<bigip>/mgmt/tm/asm/policies | jq '.items[] | "\(.name) \(.id)"'
 
+|
+        
+The output should display the name and policy id of all policies.
 
-Then run the following using the policy id from the previous command as the <ansible1PolicyId>
+|
+
+What if you wanted to display a parameter name "displaymode"?
+
+Run the following using the policy id from the previous command as the <ansible1PolicyId>
 
 .. code-block:: bash
 
-        curl -sk -u admin:password -X GET https://10.1.1.245/mgmt/tm/asm/policies/<ansible1PolicyId>/parameters | jq '.items[] | select(.name ==  "displaymode")'
+        curl -sk -u admin:password -X GET https://<bigip>/mgmt/tm/asm/policies/<ansible1PolicyId>/parameters | jq '.items[] | select(.name ==  "displaymode")'
 
 
 The output should resemble:

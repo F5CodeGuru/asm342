@@ -96,3 +96,8 @@ A graphical representation of the lab:
         
         External links are not required reading for the lab, rather supplemental if you you would like to get a different take or additional info.
 
+|
+
+.. note::
+
+        Replace all instances of <bigip> with the management ip of the bigip1, 10.1.1.245. Replace password with the pssword provided by the instructor.

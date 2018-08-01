@@ -257,6 +257,7 @@
 <h2>Task 1 - Server-side json filtering using uri parameters<a class="headerlink" href="#task-1-server-side-json-filtering-using-uri-parameters" title="Permalink to this headline">¶</a></h2>
 <p>Queries to ASM Rest API yields lots of good information that can be used, the problem is this can be a lot of information. Fortunately a way to filter exists</p>
 <p>F5 has documented a number of query parameters that can be passed into iControl ReST calls in order to modify their behavior. The first set follows the OData (open data protocol) standard. The filter parameter also supports several operators.</p>
+<p>Note that the filtering takes places on the server-side or at the bigip.</p>
 <p>$filter - filter on key/value pairs, such as name eq ansible1 which would only display the ansible1 policy. eq stands for equals</p>
 <p>$select - without select all data is displayed, with select, one can specify which keys to display. Such as displaying only the name field, select=name</p>
 <p>$skip - in conjunction with $top, acts as a pageanator, specifying how many objects to skip</p>

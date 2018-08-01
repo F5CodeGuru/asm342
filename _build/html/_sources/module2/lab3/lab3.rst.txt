@@ -8,6 +8,8 @@ Queries to ASM Rest API yields lots of good information that can be used, the pr
 
 F5 has documented a number of query parameters that can be passed into iControl ReST calls in order to modify their behavior. The first set follows the OData (open data protocol) standard. The filter parameter also supports several operators.
 
+Note that the filtering takes places on the server-side or at the bigip.
+
 $filter - filter on key/value pairs, such as name eq ansible1 which would only display the ansible1 policy. eq stands for equals
 
 $select - without select all data is displayed, with select, one can specify which keys to display. Such as displaying only the name field, select=name

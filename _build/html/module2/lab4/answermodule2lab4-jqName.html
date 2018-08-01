@@ -18,7 +18,7 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Answer Module 2 Lab 3" href="answermodule2lab4-jqParameters.html" />
+    <link rel="next" title="Answer Module 2 Lab 4" href="answermodule2lab4-jqParameters.html" />
     <link rel="prev" title="Answer Module 2 Lab 4" href="answermodule2lab4-jqEnforcement.html" />
 <!--
 # Copyright 2017 F5 Networks
@@ -213,7 +213,7 @@
                         title="previous chapter">Answer Module 2 Lab 4</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="answermodule2lab4-jqParameters.html"
-                        title="next chapter">Answer Module 2 Lab 3</a></p>
+                        title="next chapter">Answer Module 2 Lab 4</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -244,7 +244,7 @@
   <div class="section" id="answer-module-2-lab-4">
 <h1>Answer Module 2 Lab 4<a class="headerlink" href="#answer-module-2-lab-4" title="Permalink to this headline">¶</a></h1>
 <p>To get the name of the policy using jq</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -sk -u admin:password -X GET https://10.1.1.245/mgmt/tm/asm/policies <span class="p">|</span> jq .items<span class="o">[</span><span class="m">0</span><span class="o">]</span>.name
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -sk -u admin:password -X GET https://&lt;bigip&gt;/mgmt/tm/asm/policies <span class="p">|</span> jq .items<span class="o">[</span><span class="m">0</span><span class="o">]</span>.name
 </pre></div>
 </div>
 <div class="line-block">
@@ -261,7 +261,7 @@
 		        <a href="answermodule2lab4-jqEnforcement.html" title="Answer Module 2 Lab 4" accesskey="p" class="btn btn-primary pull-left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
            
            
-              <a href="answermodule2lab4-jqParameters.html" title="Answer Module 2 Lab 3" accesskey="n" class="btn btn-primary pull-right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+              <a href="answermodule2lab4-jqParameters.html" title="Answer Module 2 Lab 4" accesskey="n" class="btn btn-primary pull-right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
            
 		     </div>
          </div>

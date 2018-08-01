@@ -259,7 +259,7 @@
 This differs from passing uri parameters in that the request retrieves all data and the filtering is done on the client-side.
 Of course client programs like jq can be used in conjunction with uri parameters. This lab does not cover this scenario.</p>
 <p>Run the following command to view the output of all ASM policies filtered through jq.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -sk -u admin:password -X GET https://10.1.1.245/mgmt/tm/asm/policies <span class="p">|</span> jq
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -sk -u admin:password -X GET https://&lt;bigip&gt;/mgmt/tm/asm/policies <span class="p">|</span> jq
 </pre></div>
 </div>
 <p>The output (truncated) will look something similar to:</p>
@@ -294,7 +294,7 @@ Of course client programs like jq can be used in conjunction with uri parameters
 <p>jq really helps to show JSON structure and different layers, which helps to give you an idea on how to access different items.</p>
 <p>Recall from lab1 that there are 2 items (we know this from the totalItems value of 2, which represents the “ansible1” and “curl1”) and that each item represents a policy.</p>
 <p>To display the first policy (index start at 0), run the following command</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -sk -u admin:password -X GET https://10.1.1.245/mgmt/tm/asm/policies <span class="p">|</span> jq .items<span class="o">[</span><span class="m">0</span><span class="o">]</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -sk -u admin:password -X GET https://&lt;bigip&gt;/mgmt/tm/asm/policies <span class="p">|</span> jq .items<span class="o">[</span><span class="m">0</span><span class="o">]</span>
 </pre></div>
 </div>
 <p>The output should look similar to, which is the entire configuration for the first policy, in this case “ansible1”:</p>
@@ -335,29 +335,30 @@ Of course client programs like jq can be used in conjunction with uri parameters
 </div>
 <p>Now get the policy id of the first ASM policy</p>
 <p>Run the following command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -sk -u admin:password -X GET https://10.1.1.245/mgmt/tm/asm/policies <span class="p">|</span> jq .items<span class="o">[</span><span class="m">0</span><span class="o">]</span>.id
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -sk -u admin:password -X GET https://&lt;bigip&gt;/mgmt/tm/asm/policies <span class="p">|</span> jq .items<span class="o">[</span><span class="m">0</span><span class="o">]</span>.id
 </pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
+<p>The policy id should be output.</p>
 <p>Since the id is attribute of the policy, you add a ‘.’ in to jump into that item’s (policy) id field.</p>
 <div class="line-block">
 <div class="line"><br /></div>
 <div class="line"><br /></div>
 </div>
-<p>Recall that ASM policy id are actually a random string and not the actually name, think about how one could extract the name using jq.
+<p>Recall that ASM policy id are actually a random string and not the actually name, think about how one could extract the name using jq for the first policy.
 Can you come up with this on your own?</p>
-<p><a class="reference external" href="answermodule3lab4-jqName.html">Answer jq Name</a></p>
+<p><a class="reference external" href="answermodule2lab4-jqName.html">Answer jq Name</a></p>
 <p>How would one extract the enforcement mode?</p>
-<p><a class="reference external" href="answermodule3lab4-jqEnforcement.html">Answer jq Enforcement Mode</a></p>
+<p><a class="reference external" href="answermodule2lab4-jqEnforcement.html">Answer jq Enforcement Mode</a></p>
 <div class="line-block">
 <div class="line"><br /></div>
 <div class="line"><br /></div>
 <div class="line"><br /></div>
 </div>
 <p>Next take a look at the parameter settings for this policy, run the following</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -sk -u admin:password -X GET https://10.1.1.245/mgmt/tm/asm/policies <span class="p">|</span> jq .items<span class="o">[</span><span class="m">0</span><span class="o">]</span>.parameterReference
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -sk -u admin:password -X GET https://&lt;bigip&gt;/mgmt/tm/asm/policies <span class="p">|</span> jq .items<span class="o">[</span><span class="m">0</span><span class="o">]</span>.parameterReference
 </pre></div>
 </div>
 <p>The output will look somehting like</p>
@@ -374,18 +375,33 @@ Can you come up with this on your own?</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>What would the request look like to retrieve the subCollection (the actual configuration)?</p>
-<p><a class="reference external" href="answermodule3lab4-jqParameters.html">Answer jq Parameters</a></p>
+<p>What would the request look like to retrieve the subCollection (the actual paremeters configuration of the policy)?</p>
+<p><a class="reference external" href="answermodule2lab4-jqParameters.html">Answer jq Parameters</a></p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>What if you wanted to filter on a specific value with jq? Lets filter on the parameter with the name “displaymode”</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Hint you cannot use localhost</p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>What if you wanted to display only select values, more than one?</p>
 <p>First run the following to get the policy id of the “ansible1” policy. This tells jq to display the name and id fileds of any policy (items[], hence the empty square brackets meaning we are not specifying a specific policy, its any policy).</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -sk -u admin:password -X GET https://10.1.1.245/mgmt/tm/asm/policies <span class="p">|</span> jq <span class="s1">&#39;.items[] | &quot;\(.name) \(.id)&quot;&#39;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -sk -u admin:password -X GET https://&lt;bigip&gt;/mgmt/tm/asm/policies <span class="p">|</span> jq <span class="s1">&#39;.items[] | &quot;\(.name) \(.id)&quot;&#39;</span>
 </pre></div>
 </div>
-<p>Then run the following using the policy id from the previous command as the &lt;ansible1PolicyId&gt;</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -sk -u admin:password -X GET https://10.1.1.245/mgmt/tm/asm/policies/&lt;ansible1PolicyId&gt;/parameters <span class="p">|</span> jq <span class="s1">&#39;.items[] | select(.name ==  &quot;displaymode&quot;)&#39;</span>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>The output should display the name and policy id of all policies.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>What if you wanted to display a parameter name “displaymode”?</p>
+<p>Run the following using the policy id from the previous command as the &lt;ansible1PolicyId&gt;</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -sk -u admin:password -X GET https://&lt;bigip&gt;/mgmt/tm/asm/policies/&lt;ansible1PolicyId&gt;/parameters <span class="p">|</span> jq <span class="s1">&#39;.items[] | select(.name ==  &quot;displaymode&quot;)&#39;</span>
 </pre></div>
 </div>
 <p>The output should resemble:</p>

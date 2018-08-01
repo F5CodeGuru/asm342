@@ -4,11 +4,13 @@ Expected time to complete: **1 hours**
 
 **Intro**
 
-If you have familiarity with another RestFul API, the F5 RestFul API will be very similar. If you have no familiarity with a RestFul API, don't worry there a few key concepts to understand.
+If you have experience with another RestFul API, the F5 RestFul API will be very familiar. If you have no familiarity with a RestFul API, don't worry there a few key concepts to understand.
 
 The Rest API uses HTTP requests with a combination certain uri and HTTP verbs/commands 
 
-For example the querying the uri /mgmt/tm/asm/policies (https://<mgmt ip>/mgmt/tm/asm/policies) will display all asm policies in JSON format.
+All queries to ASM begin with the uri /mgmt/tm/asm .
+
+For example querying the uri /mgmt/tm/asm/policies (https://<mgmt ip>/mgmt/tm/asm/policies) will display all asm policies in JSON format.
 
 Other uris
 
@@ -22,7 +24,7 @@ Other uris
 
 /mgmt/tm/asm/policies/MrLpFzRHNarvj_zuAOD0fw (whoa what is this? its a way of accessing a policy directly. We will investigate this further later)
 
-What about the HTTP commands? HTTP commands determine the operation/type of the request, in other words whether data is simply retrieved, created or modified.
+HTTP uses commands/verbs such as POST, GET, etc. What roles do they play? HTTP commands determine the operation/type of the request, in other words whether data is simply retrieved, created or modified.
 
 |
 |
@@ -57,7 +59,7 @@ What about the HTTP commands? HTTP commands determine the operation/type of the 
                   -
                 * - View the settings of the new asm policy
                   - GET
-                  -
+                  - curl -sk -u admin:password -X GET https://10.1.1.245/mgmt/tm/asm/policies
                 * - Add a whitelist ip to the new APM policy
                   - POST
                   -
@@ -77,16 +79,6 @@ What about the HTTP commands? HTTP commands determine the operation/type of the 
 |
 |
                   
-
-**Example**
-
-
-
-
-.. code-block:: bash
-
-        curl -sk -u admin:password -X GET https://10.1.1.245/mgmt/tm/asm/policies
-
 
 Topics:
 

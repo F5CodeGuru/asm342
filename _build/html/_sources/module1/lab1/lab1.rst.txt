@@ -1,12 +1,10 @@
 Lab 1.1: Ansible Policy Creation 
 ----------------------------------------
 
-Ansible is an automated configuration tool that uses config files written in YAML.
-
 Task 1 - Using Ansible to create a ASM Policy
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Run the following command to create an ASM policy named **ansible1**
+Run the following command to create an ASM policy named **ansible1** (this may take a couple of minutes):
 
 .. code-block:: bash
         
@@ -77,7 +75,7 @@ Starting with line 22, post tasks are declared. These are tasks that will take p
 More information on F5's ansible module can be found here `F5 and Ansible <https://www.ansible.com/integrations/networks/f5>`_
 `On GitHub <https://github.com/F5Networks/f5-ansible>`_
 
-F5's SYS and LTM Ansible module are capability rich, the ASM module is currently limited to policy import, activation/deactivation and creation.
+F5's SYS and LTM Ansible module are more feature rich (close to covering all features), the ASM module is currently limited to policy import, activation/deactivation and creation.
 Over time this will change as F5 has a strong partnership with Ansible.
 
 **Current F5 ASM Ansible Capabilities**
@@ -94,5 +92,3 @@ Over time this will change as F5 has a strong partnership with Ansible.
 
         Policy Creation using Application-Ready Templates
 
-
-`F5 ASM Ansible capabilities <http://clouddocs.f5.com/products/orchestration/ansible/devel/modules/bigip_asm_policy_module.html>`_

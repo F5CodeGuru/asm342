@@ -6,9 +6,9 @@ Introduction to ASM 342 - WAF Programmability
 
 Welcome to F5's Agility Labs, 2018 edition! This class will focus on how to interact with ASM using the REST API, demonstrating  how the API can be used to help with daily tasks and improve security.
 
-The goal of this class to help students become familar with the iControl Rest API as it related to ASM. It takes the student from little or no knowledge demostrating to the students the concepts and tools to get started, as well as some complex examples written in Python.
+The goal of this class to help students become familar with the iControl Rest API as it is related to ASM. It takes the student from little or no knowledge demostrating to the students the concepts and tools to get started, as well as some more complex examples written in Python.
 
-This is the 4th 4hour class focused on ASM. The other 3 classes are based on
+This is the 4th 4-hour class focused on ASM. The other 3 classes are based on
 
 `Succeeding with Application Security <https://support.f5.com/csp/article/K07359270>`_
 

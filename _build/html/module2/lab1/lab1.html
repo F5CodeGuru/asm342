@@ -264,27 +264,35 @@
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The student can add -v to any curl command to see more verbose output, such as the client and server headers.</p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
 </div>
 <p>The JSON output (#1) (truncated) should look something similar to</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;kind&quot;</span><span class="p">:</span><span class="s2">&quot;tm:asm:policies:policycollectionstate&quot;</span><span class="p">,</span><span class="nt">&quot;selfLink&quot;</span><span class="p">:</span><span class="s2">&quot;https://localhost/mgmt/tm/asm/policies?ver=13.1.0&quot;</span><span class="p">,</span><span class="nt">&quot;totalItems&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="nt">&quot;items&quot;</span><span class="p">:[{</span><span class="nt">&quot;plainTextProfileReference&quot;</span><span class="p">:{</span><span class="nt">&quot;link&quot;</span><span class="p">:</span><span class="s2">&quot;https://localhost/mgmt/tm/asm/policies/u-6T62j_f0XMkjJ_s_Z-gg/plain-text-profiles?ver=13.1.0&quot;</span><span class="p">,</span><span class="nt">&quot;isSubCollection&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">},</span><span class="nt">&quot;dataGuardReference&quot;</span><span class="p">:{</span><span class="nt">&quot;link&quot;</span><span class="p">:</span><span class="s2">&quot;https://localhost/mgmt/tm/asm/policies/u-6T62j_f0XMkjJ_s_Z-gg/data-guard?ver=13.1.0&quot;</span><span class="p">},</span><span class="nt">&quot;createdDatetime&quot;</span><span class="p">:</span><span class="s2">&quot;2018-05-21T04:30:17Z&quot;</span><span class="p">,</span><span class="nt">&quot;databaseProtectionReference&quot;</span><span class="p">:{</span><span class="nt">&quot;link&quot;</span><span class="p">:</span><span class="s2">&quot;https://localhost/mgmt/tm/asm/policies/u-6T62j_f0XMkjJ_s_Z-gg/database-protection?ver=13.1.0&quot;</span><span class="p">},</span><span class="nt">&quot;csrfUrlReference&quot;</span><span class="p">:{</span><span class="nt">&quot;link&quot;</span><span class="p">:</span><span class="s2">&quot;https://localhost/mgmt/tm/asm/policies/u-6T62j_f0XMkjJ_s_Z-gg/csrf-urls?ver=13.1.0&quot;</span><span class="p">,</span><span class="nt">&quot;isSubCollection&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">},</span><span class="nt">&quot;cookieSettingsReference&quot;</span><span class="p">:{</span><span class="nt">&quot;link&quot;</span><span class="p">:</span><span class="s2">&quot;https://localhost/mgmt/tm/asm/policies/u-6T62j_f0XMkjJ_s_Z-gg/cookie-settings?ver=13.1.0&quot;</span><span class="p">},</span><span class="nt">&quot;versionLastChange&quot;</span><span class="p">:</span><span class="s2">&quot; Security Policy /Common/ansible1 [add] { audit: policy = /Common/ansible1, username = admin, client IP = 10.1.1.51 }&quot;</span><span class="p">,</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;ansible1&quot;</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;kind&quot;</span><span class="p">:</span><span class="s2">&quot;tm:asm:policies:policycollectionstate&quot;</span><span class="p">,</span><span class="nt">&quot;selfLink&quot;</span><span class="p">:</span><span class="s2">&quot;https://localhost/mgmt/tm/asm/policies?ver=13.1.0&quot;</span><span class="p">,</span><span class="nt">&quot;totalItems&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="nt">&quot;items&quot;</span><span class="p">:[{</span><span class="nt">&quot;plainTextProfileReference&quot;</span><span class="p">:{</span><span class="nt">&quot;link&quot;</span><span class="p">:</span><span class="s2">&quot;https://localhost/mgmt/tm/asm/policies/u-6T62j_f0XMkjJ_s_Z-gg/plain-text-profiles?ver=13.1.0&quot;</span><span class="p">,</span><span class="nt">&quot;isSubCollection&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">},</span><span class="nt">&quot;dataGuardReference&quot;</span><span class="p">:{</span><span class="nt">&quot;link&quot;</span><span class="p">:</span><span class="s2">&quot;https://localhost/mgmt/tm/asm/policies/u-6T62j_f0XMkjJ_s_Z-gg/data-guard?ver=13.1.0&quot;</span><span class="p">},</span><span class="nt">&quot;createdDatetime&quot;</span><span class="p">:</span><span class="s2">&quot;2018-05-21T04:30:17Z&quot;</span><span class="p">,</span><span class="nt">&quot;databaseProtectionReference&quot;</span><span class="p">:{</span><span class="nt">&quot;link&quot;</span><span class="p">:</span><span class="s2">&quot;https://localhost/mgmt/tm/asm/policies/u-6T62j_f0XMkjJ_s_Z-gg/database-protection?ver=13.1.0&quot;</span><span class="p">},</span><span class="nt">&quot;csrfUrlReference&quot;</span><span class="p">:{</span><span class="nt">&quot;link&quot;</span><span class="p">:</span><span class="s2">&quot;https://localhost/mgmt/tm/asm/policies/u-6T62j_f0XMkjJ_s_Z-gg/csrf-urls?ver=13.1.0&quot;</span><span class="p">,</span><span class="nt">&quot;isSubCollection&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">},</span><span class="nt">&quot;cookieSettingsReference&quot;</span><span class="p">:{</span><span class="nt">&quot;link&quot;</span><span class="p">:</span><span class="s2">&quot;https://localhost/mgmt/tm/asm/policies/u-6T62j_f0XMkjJ_s_Z-gg/cookie-settings?ver=13.1.0&quot;</span><span class="p">},</span><span class="nt">&quot;versionLastChange&quot;</span><span class="p">:</span><span class="s2">&quot; Security Policy /Common/ansible1 [add] { audit: policy = /Common/ansible1, username = admin, client IP = 10.1.1.51 }&quot;</span><span class="p">,</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;ansible1&quot;</span>
 </pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>Not terribly easy to read, lets get something that is easier to decipher, before we get to the output, the curl options deserve some explanation.</p>
+<p>Not terribly easy to read, however before working on the output readability, the curl options deserve some explanation.</p>
 <p>curl <strong>-k</strong> -u admin:password -X GET https://10.1.1.245/mgmt/tm/asm/policies/</p>
-<p>-k: This option tell curl to not verify the server ssl certificate, since we are connected to bigip which has a cert that was signed by its own CA</p>
+<p>-k: This option tell curl to not verify the server ssl certificate, since we are connected to bigip which has a cert that was signed by its own CA, which is untrusted</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <p>curl -k <strong>-u admin:password</strong> -X GET <a class="reference external" href="https://10.1.1.245/mgmt/tm/asm/policies/">https://10.1.1.245/mgmt/tm/asm/policies/</a></p>
-<p>-u: How the logon credentials are specified, a : is used to separate the username and passsword</p>
+<p>-u: How the logon credentials are specified, a : is used to separate the username and passsword. The user:pass are converted into a Base64 encoded authorization header, this can be seen by adding a -v</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>curl -k -u admin:password <strong>-X GET</strong> <a class="reference external" href="https://10.1.1.245/mgmt/tm/asm/policies/">https://10.1.1.245/mgmt/tm/asm/policies/</a>
--X: The HTTP method/verb, since data is being retrieved, GET is used</p>
+<p>curl -k -u admin:password <strong>-X GET</strong> <a class="reference external" href="https://10.1.1.245/mgmt/tm/asm/policies/">https://10.1.1.245/mgmt/tm/asm/policies/</a></p>
+<p>-X: The HTTP method/verb, since data is being retrieved, GET is used</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -301,7 +309,7 @@
 <p>The JSON output (#2) (truncated) is now more readable</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;kind&quot;</span><span class="p">:</span><span class="s2">&quot;tm:asm:policies:policycollectionstate&quot;</span>
 <span class="s2">&quot;selfLink&quot;</span><span class="p">:</span><span class="s2">&quot;https://localhost/mgmt/tm/asm/policies?ver=13.1.0&quot;</span>
-<span class="s2">&quot;totalItems&quot;</span><span class="p">:</span><span class="mi">2</span>
+<span class="s2">&quot;totalItems&quot;</span><span class="p">:</span><span class="mi">1</span>
 <span class="s2">&quot;items&quot;</span><span class="p">:[{</span><span class="nt">&quot;plainTextProfileReference&quot;</span><span class="p">:{</span><span class="nt">&quot;link&quot;</span><span class="p">:</span><span class="s2">&quot;https://localhost/mgmt/tm/asm/policies/u-6T62j_f0XMkjJ_s_Z-gg/plain-text-profiles?ver=13.1.0&quot;</span>
 <span class="s2">&quot;isSubCollection&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">}</span>
 <span class="s2">&quot;dataGuardReference&quot;</span><span class="p">:{</span><span class="nt">&quot;link&quot;</span><span class="p">:</span><span class="s2">&quot;https://localhost/mgmt/tm/asm/policies/u-6T62j_f0XMkjJ_s_Z-gg/data-guard?ver=13.1.0&quot;</span><span class="p">}</span>

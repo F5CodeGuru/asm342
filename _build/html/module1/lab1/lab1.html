@@ -253,10 +253,9 @@
         
   <div class="section" id="lab-1-1-ansible-policy-creation">
 <h1>Lab 1.1: Ansible Policy Creation<a class="headerlink" href="#lab-1-1-ansible-policy-creation" title="Permalink to this headline">¶</a></h1>
-<p>Ansible is an automated configuration tool that uses config files written in YAML.</p>
 <div class="section" id="task-1-using-ansible-to-create-a-asm-policy">
 <h2>Task 1 - Using Ansible to create a ASM Policy<a class="headerlink" href="#task-1-using-ansible-to-create-a-asm-policy" title="Permalink to this headline">¶</a></h2>
-<p>Run the following command to create an ASM policy named <strong>ansible1</strong></p>
+<p>Run the following command to create an ASM policy named <strong>ansible1</strong> (this may take a couple of minutes):</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ansible-playbook /etc/ansible/playbooks/ansible1.yaml -i /etc/ansible/inventory/  -vvv
 </pre></div>
 </div>
@@ -513,7 +512,7 @@ Line 19 is the name of the policy, line 20 is the Rapid Deployment template that
 <p><strong>Why Ansible and Limitations of the F5 ASM Ansible module</strong></p>
 <p>More information on F5’s ansible module can be found here <a class="reference external" href="https://www.ansible.com/integrations/networks/f5">F5 and Ansible</a>
 <a class="reference external" href="https://github.com/F5Networks/f5-ansible">On GitHub</a></p>
-<p>F5’s SYS and LTM Ansible module are capability rich, the ASM module is currently limited to policy import, activation/deactivation and creation.
+<p>F5’s SYS and LTM Ansible module are more feature rich (close to covering all features), the ASM module is currently limited to policy import, activation/deactivation and creation.
 Over time this will change as F5 has a strong partnership with Ansible.</p>
 <p><strong>Current F5 ASM Ansible Capabilities</strong></p>
 <div class="line-block">
@@ -526,7 +525,6 @@ Over time this will change as F5 has a strong partnership with Ansible.</p>
 <p>Binary Policy Import</p>
 <p>Policy Creation using Application-Ready Templates</p>
 </div></blockquote>
-<p><a class="reference external" href="http://clouddocs.f5.com/products/orchestration/ansible/devel/modules/bigip_asm_policy_module.html">F5 ASM Ansible capabilities</a></p>
 </div>
 </div>
 

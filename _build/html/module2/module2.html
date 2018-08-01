@@ -245,16 +245,17 @@
 <h1>Module 2: Viewing and Manipulating the Rest API via curl<a class="headerlink" href="#module-2-viewing-and-manipulating-the-rest-api-via-curl" title="Permalink to this headline">¶</a></h1>
 <p>Expected time to complete: <strong>1 hours</strong></p>
 <p><strong>Intro</strong></p>
-<p>If you have familiarity with another RestFul API, the F5 RestFul API will be very similar. If you have no familiarity with a RestFul API, don’t worry there a few key concepts to understand.</p>
+<p>If you have experience with another RestFul API, the F5 RestFul API will be very familiar. If you have no familiarity with a RestFul API, don’t worry there a few key concepts to understand.</p>
 <p>The Rest API uses HTTP requests with a combination certain uri and HTTP verbs/commands</p>
-<p>For example the querying the uri /mgmt/tm/asm/policies (<a class="reference external" href="https:/">https:/</a>/&lt;mgmt ip&gt;/mgmt/tm/asm/policies) will display all asm policies in JSON format.</p>
+<p>All queries to ASM begin with the uri /mgmt/tm/asm .</p>
+<p>For example querying the uri /mgmt/tm/asm/policies (<a class="reference external" href="https:/">https:/</a>/&lt;mgmt ip&gt;/mgmt/tm/asm/policies) will display all asm policies in JSON format.</p>
 <p>Other uris</p>
 <p>/mgmt/tm/asm (root asm configuration)</p>
 <p>/mgmt/tm/asm/signatures (lists all attack signatures that are installed)</p>
 <p>/mgmt/tm/asm/events (lists asm events)</p>
 <p>/mgmt/tm/asm/requests (lists asm requests)</p>
 <p>/mgmt/tm/asm/policies/MrLpFzRHNarvj_zuAOD0fw (whoa what is this? its a way of accessing a policy directly. We will investigate this further later)</p>
-<p>What about the HTTP commands? HTTP commands determine the operation/type of the request, in other words whether data is simply retrieved, created or modified.</p>
+<p>HTTP uses commands/verbs such as POST, GET, etc. What roles do they play? HTTP commands determine the operation/type of the request, in other words whether data is simply retrieved, created or modified.</p>
 <div class="line-block">
 <div class="line"><br /></div>
 <div class="line"><br /></div>
@@ -312,7 +313,7 @@
 </tr>
 <tr class="row-odd"><td>View the settings of the new asm policy</td>
 <td>GET</td>
-<td>&#160;</td>
+<td>curl -sk -u admin:password -X GET https://10.1.1.245/mgmt/tm/asm/policies</td>
 </tr>
 <tr class="row-even"><td>Add a whitelist ip to the new APM policy</td>
 <td>POST</td>
@@ -339,10 +340,6 @@
 <div class="line-block">
 <div class="line"><br /></div>
 <div class="line"><br /></div>
-</div>
-<p><strong>Example</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -sk -u admin:password -X GET https://10.1.1.245/mgmt/tm/asm/policies
-</pre></div>
 </div>
 <p>Topics:</p>
 <div class="toctree-wrapper compound">

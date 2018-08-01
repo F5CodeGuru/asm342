@@ -255,16 +255,20 @@
 <h1>Lab 2.2: Curl Policy Creation and Modification<a class="headerlink" href="#lab-2-2-curl-policy-creation-and-modification" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="task-1-using-curl-to-create-a-asm-policy">
 <h2>Task 1 - Using curl to create a ASM policy<a class="headerlink" href="#task-1-using-curl-to-create-a-asm-policy" title="Permalink to this headline">¶</a></h2>
-<p>Run the following command to create a new ASM policy “curl1”:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -sk -u admin:password -X POST https://&lt;bigip&gt;/mgmt/tm/asm/policies -d <span class="s1">&#39;{&quot;name&quot;:&quot;curl1&quot;}&#39;</span>
+<p>Run the following command to create a new ASM policy “curl1” (this may take a couple of minutes). JSON will be displayed showing the policy creation and the policy’s attributes:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -sk -u admin:password -X POST https://&lt;bigip&gt;/mgmt/tm/asm/policies -d <span class="s1">&#39;{&quot;name&quot;:&quot;curl1&quot;}&#39;</span> <span class="p">|</span> sed <span class="s1">&#39;s/,/\&#39;$&#39;\n/g&#39;</span>
 </pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <p>Navigate to Security-&gt;Application Security-&gt;Security Policies-&gt;Policies List to verify the “curl1” policy was created</p>
-<p>Before running the script, navigate to Security-&gt;Application Security-&gt;IP Addresses-&gt;IP Address Exceptions for the “curl1” policy. Note to select the different policies by using the “Current edited security policy” dropdown.</p>
-<p>Run the following command to modify the policy by adding a whitelist ip:</p>
+<p>Before running the below command, navigate to Security-&gt;Application Security-&gt;IP Addresses-&gt;IP Address Exceptions for the “curl1” policy, noting the configuration.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">To select the different policies by using the “Current edited security policy” dropdown.</p>
+</div>
+<p>Run the following command to modify the policy by adding a whitelist ip, using the policy id from the output of “curl1” policy creation:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -sk -u admin:password -X POST https://&lt;bigip&gt;/mgmt/tm/asm/policies/&lt;policyId&gt;/whitelist-ips -H <span class="s2">&quot;Content-Type: application/json&quot;</span> -d <span class="s1">&#39;{&quot;ipAddress&quot;:&quot;165.25.76.234&quot;, &quot;ipMask&quot;:&quot;255.255.255.255&quot;}&#39;</span>
 </pre></div>
 </div>
@@ -272,6 +276,7 @@
 <div class="line"><br /></div>
 </div>
 <p>Refresh the IP Address Exceptions to verify the whitelist ip 165.25.76.234/255.255.255.255 was added.</p>
+<p>Notice the policy was not applied, click “Apply Policy”, this is a separate command.</p>
 </div>
 </div>
 

@@ -253,6 +253,42 @@
         
   <div class="section" id="lab-2-1-intro-to-asm-rest-api-using-curl">
 <h1>Lab 2.1: Intro to ASM Rest API using curl<a class="headerlink" href="#lab-2-1-intro-to-asm-rest-api-using-curl" title="Permalink to this headline">¶</a></h1>
+<p><strong>JSON Key/Value Pairs</strong></p>
+<p>JSON is comprised of key:value pairs ({“key”:”value”}) sometimes referred to as a hash or in python a dictionary. “Keys” are unique within the same context. Each key/value pair belonging to a set will be enclosed in curly braces “{ …. }”, “{” being the opening curly brace, “}” being the closing curly brace. Note the word “pairs”, most of the JSON will have multiple pairs, each pair separated by a comma ( eg { “key1”:”value1”,”key2”:”value2”}. The commas have been removed in the above output by the sed/awk commands to make the output prettier. Take a look at the output (#1) to see the commas. In the above example, each key/value pair is on a newline thanks to the sed/awk filter.</p>
+<p>To access a value in a collection, a key must be specified.</p>
+<p>For example in the json output</p>
+<p>{“key1”:”value1”,”key2”:”value2”,”key3”:”value3”}</p>
+<p>specifying “key2” will yield “value2”. To retrieve “value2”, “key3” must be specified.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Note the difference between an array and a hash, so far we ha`ve discussed hashes. Arrays, denoted with [] are similar, they store keys and values, however the keys are numerical, 1,2,3, etc. This is because the key value may be no existent and is definitely dynamic. More on this later, you will see an array below, the virtualServers entry.</p>
+</div>
+<p>Here is a real world ASM output example, truncated with a “…” to show relevant parts</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>&quot;name&quot;: &quot;asm1&quot;,
+&quot;caseInsensitive&quot;: true,
+...
+&quot;kind&quot;: &quot;tm:asm:policies:policystate&quot;,
+&quot;virtualServers&quot;: [
+  &quot;/Common/sharepoint_vs&quot;,
+  &quot;/Common/exchange_vs&quot;
+  ],
+...
+&quot;whitelistIpReference&quot;: {
+  &quot;link&quot;: &quot;https://localhost/mgmt/tm/asm/policies/ouO97l-EOX-zt3sDWA7Dag/whitelist-ips?ver=13.1.0&quot;,
+  &quot;isSubCollection&quot;: true
+  },
+...
+&quot;id&quot;: &quot;ouO97l-EOX-zt3sDWA7Dag&quot;,
+&quot;modifierName&quot;: &quot;admin&quot;,
+&quot;manualVirtualServers&quot;: [],
+&quot;versionDatetime&quot;: &quot;2018-07-28T20:18:54Z&quot;,
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>To access the “name” of the policy, you would use the key “name” and in this case “asm1” would be returned as the value. To retrieve the policy “id”, use the “id” key and “ouO97l-EOX-zt3sDWA7Dag” would be returned as the value, more on this later.</p>
+<p>For the assigned virtual servers (virtualServers key) if you specify a key of 0, the value would be “/Common/sharepoint_vs”. If 1 is used as the key for the virtualServers “/Common/exchange_vs” is returned as the value.</p>
 <div class="section" id="task-1-explore-the-api-using-curl">
 <h2>Task 1 - Explore the API using curl<a class="headerlink" href="#task-1-explore-the-api-using-curl" title="Permalink to this headline">¶</a></h2>
 <div class="line-block">
@@ -327,10 +363,7 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>Time to decipher this JSON output (#2).</p>
-<p>JSON is comprised of key:value pairs ({“key”:”value”}) sometimes referred to as a hash or in python a dictionary. Each key/value pair belonging to a set will be enclosed in curly braces “{ …. }”, “{” being the opening curly brace, “}” being the closing curly brace. Note the word “pairs”, most of the JSON will have multiple pairs, each pair separated by a comma ( eg { “key1”:”value1”,”key2”:”value2”}. The commas have been removed in the above output by the sed/awk commands to make the output prettier. Take a look at the output (#1) to see the commas. In the above example, each key/value pair is on a newline thanks to the sed/awk filter.</p>
-<p>To access a value in a collection, a key must be specified.</p>
-<p>Lets step through output #2 to understand that key/value pairs</p>
+<p>Lets decipher this JSON output (#2).</p>
 <p>After the opening “{“, is the first key of collection “kind”. The value is “tm:asm:policies:policycollectionstate” which tells us we are looking the asm policies.</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;kind&quot;</span><span class="p">:</span><span class="s2">&quot;tm:asm:policies:policycollectionstate&quot;</span>
 </pre></div>
@@ -346,13 +379,13 @@ Also take note that is essential the same url used in the curl command. The “?
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span>&quot;selfLink&quot;:&quot;https://localhost/mgmt/tm/asm/policies?ver=13.1.0&quot;
 </pre></div>
 </div>
-<p>Next is “totalItems” key which has value of 2, meaning there are two policies. Go to Security-&gt;Application Security-&gt;Security Policies in Web Gui to verify the value from your output of totalItems matches the number of asm security policies from the Web Gui.</p>
-<p>Now the interesting stuff, The next key is “items” which is a nested collection of polciies, the actual ASM policies and their settings. Items contains multiple collections, that is why the value begins with a opening square bracket “[“. The value of items contains the two ASM policies with links to their policy settings such as the link to the csrfUrlReference “<a class="reference external" href="https://localhost/mgmt/tm/asm/policies/u-6T62j_f0XMkjJ_s_Z-gg/csrf-urls?ver=13.1.0">https://localhost/mgmt/tm/asm/policies/u-6T62j_f0XMkjJ_s_Z-gg/csrf-urls?ver=13.1.0</a>”</p>
+<p>Next is “totalItems” key which has value of 1, meaning there is one policy. Go to Security-&gt;Application Security-&gt;Security Policies in Web Gui to verify the value from your output of totalItems matches the number of asm security policies from the Web Gui.</p>
+<p>Now the interesting stuff, The next key is “items” which is a nested collection of polciies, the actual ASM policies and their settings. Items contains multiple collections, that is why the value begins with a opening square bracket “[“. Remember if its an array, its dynamic, you could have zero policies The value of items contains the AWAF policy with links to itspolicy settings such as the link to the csrfUrlReference “<a class="reference external" href="https://localhost/mgmt/tm/asm/policies/u-6T62j_f0XMkjJ_s_Z-gg/csrf-urls?ver=13.1.0">https://localhost/mgmt/tm/asm/policies/u-6T62j_f0XMkjJ_s_Z-gg/csrf-urls?ver=13.1.0</a>”</p>
 <p>If you followed this url, of course substituting localhost for the mgmt ip of the BIGIP, you would get the setting for the csrf Url for that policy. That is the power of the link value, you can use that to get to other configuration items. Later in the class, we will go into how to get at this data programmatically. This also demonstrated that not all configuration data can be retrieved by a single query, depending on the need, you may have to make more than one HTTP request.</p>
 <p>What about the crazy string “u-6T62j_f0XMkjJ_s_Z-gg” after policies/ ? This is a randomly generated (as such your value will not be u-6T62j_f0XMkjJ_s_Z-gg, rather something similar) id for the ASM security policy, in other words you cannot simply access the ansible1 security policy by going to <a class="reference external" href="https://10.1.1.245/mgmt/tm/asm/polciies/ansible1">https://10.1.1.245/mgmt/tm/asm/polciies/ansible1</a>, you have to search for the “name” key in the JSON output until it mateches ansible1 to figure which generated id is ansible1.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">All ASM objects which includes policies, parameters, URLS have a randomly generated unique id, where the name you see in the Web Gui is just a display name. Thereforce to get at this objects via the Rest API, you must filter on each unique ID until you find the “name” key’s value equals to the name you are looking for.</p>
+<p class="last">All ASM objects which includes policies, parameters, URLs have a randomly generated unique id, where the name you see in the Web Gui is just a display name. Therefore to get at this objects via the Rest API, you must filter on each unique ID until you find the “name” key’s value equals to the name you are looking for.</p>
 </div>
 <p>Wouldn’t it be nice if we had something that could do the filtering for us?</p>
 <p>We have covered a lot, time for questions and a discussion as these are all important topics.</p>

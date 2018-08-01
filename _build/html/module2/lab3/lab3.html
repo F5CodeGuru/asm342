@@ -255,19 +255,22 @@
 <h1>Lab 2.3: Server-side json filtering<a class="headerlink" href="#lab-2-3-server-side-json-filtering" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="task-1-server-side-json-filtering-using-uri-parameters">
 <h2>Task 1 - Server-side json filtering using uri parameters<a class="headerlink" href="#task-1-server-side-json-filtering-using-uri-parameters" title="Permalink to this headline">¶</a></h2>
-<p>The output yields lots of good information that can be used, the problem is there can be a lot of output. Fortunately a way to filter exists</p>
+<p>Queries to ASM Rest API yields lots of good information that can be used, the problem is this can be a lot of information. Fortunately a way to filter exists</p>
 <p>F5 has documented a number of query parameters that can be passed into iControl ReST calls in order to modify their behavior. The first set follows the OData (open data protocol) standard. The filter parameter also supports several operators.</p>
-<p>$filter
-$select
-$skip
-$top
-Yes, the dollar sign is important and necessary on these parameters. The operators you can use on these parameters are below. Note that the eq operator can only be used with the filter.</p>
+<p>$filter - filter on key/value pairs, such as name eq ansible1 which would only display the ansible1 policy. eq stands for equals</p>
+<p>$select - without select all data is displayed, with select, one can specify which keys to display. Such as displaying only the name field, select=name</p>
+<p>$skip - in conjunction with $top, acts as a pageanator, specifying how many objects to skip</p>
+<p>$top - takes a numeric value, used to display the top number of objects specified.</p>
+<p>Yes, the dollar sign is important and necessary on these parameters. The operators you can use on these parameters are below. Note that the eq operator can only be used with the filter.</p>
 <p>eq - equal</p>
 <p>ne - not equal</p>
 <p>lt - less than</p>
 <p>le - less than or equal</p>
 <p>gt - greater than</p>
 <p>ge - greater than or equal</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 <p><strong>Logical Operators:</strong></p>
 <p>and - both conditions must be true</p>
 <p>or - either condition can be true</p>
@@ -276,15 +279,20 @@ Yes, the dollar sign is important and necessary on these parameters. The operato
 <div class="line"><br /></div>
 </div>
 <p>Beyond the OData parameters, there are a few custom parameters as well.</p>
-<p>expandSubcollections - allows you to get the subcollection data in the initial request for objects that have subcollections.
-options - allows you to add arguments to the tmsh equivalent command. An example will be shown below.
-ver - This is for the specific TMOS version. Setting this parameter guarantees consistent behavior through code upgrades. Please note that the JSON return data for a number of calls has changed between the initial release in 11.5.0 and the current release. No items have been removed, but key/value pairs in the output have been added.</p>
-<p>Run the following code to get just the names of the existing policies</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">expandSubcollections does not work on ASM data, if it did one could use it instead of following the link for a subCollection in order to retrieve the data.</p>
+<p>expandSubcollections - allows you to get the subcollection data in the initial request for objects that have subcollections. Examples of subcollections are any key that ends in “reference” such as whitelistIpReference as seen in lab1 of this module. The options follows the “link” to retrieve that configuration data automatically.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>&quot;whitelistIpReference&quot;: {
+   &quot;link&quot;: &quot;https://localhost/mgmt/tm/asm/policies/ouO97l-EOX-zt3sDWA7Dag/whitelist-ips?ver=13.1.0&quot;,
+    &quot;isSubCollection&quot;: true
+   },
+</pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -sk -u admin:password https://10.1.1.245/mgmt/tm/asm/policies/?<span class="se">\$</span><span class="k">select</span><span class="o">=</span>name <span class="p">|</span> sed <span class="s1">&#39;s/,/\&#39;$&#39;\n/g&#39;</span>
+<p>options - allows you to add arguments to the tmsh equivalent command. An example will be shown below.</p>
+<p>ver - This is for the specific TMOS version. Setting this parameter guarantees consistent behavior through code upgrades.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Run the following code to get just the names of the existing policies</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -sk -u admin:password https://&lt;bigip&gt;/mgmt/tm/asm/policies/?<span class="se">\$</span><span class="k">select</span><span class="o">=</span>name <span class="p">|</span> sed <span class="s1">&#39;s/,/\&#39;$&#39;\n/g&#39;</span>
 </pre></div>
 </div>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;kind&quot;</span><span class="p">:</span><span class="s2">&quot;tm:asm:policies:policycollectionstate&quot;</span>
@@ -302,7 +310,8 @@ ver - This is for the specific TMOS version. Setting this parameter guarantees c
 <div class="line"><br /></div>
 <div class="line"><br /></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -sk -u admin:password https://10.1.1.245/mgmt/tm/asm/policies?<span class="se">\$</span><span class="nv">filter</span><span class="o">=</span>name+eq+ansible1<span class="se">\&amp;\$</span><span class="k">select</span><span class="o">=</span>name <span class="p">|</span> jq
+<p>Run the following code to filter on just the policy named “ansible1” and only the display its “name” field.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -sk -u admin:password https://&lt;bigip&gt;/mgmt/tm/asm/policies?<span class="se">\$</span><span class="nv">filter</span><span class="o">=</span>name+eq+ansible1<span class="se">\&amp;\$</span><span class="k">select</span><span class="o">=</span>name <span class="p">|</span> sed <span class="s1">&#39;s/,/\&#39;$&#39;\n/g&#39;</span>
 </pre></div>
 </div>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>

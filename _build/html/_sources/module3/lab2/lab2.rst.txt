@@ -31,7 +31,7 @@ Click on the request
 
 |
 
-Notice the parameters passed to the url https://{bigipa_host}}/mgmt/tm/asm/policies/
+Notice the parameters passed to the url https://{bigipa_host}}/mgmt/tm/asm/policies/. They tell the rest server to only display the the "id" field for the "ansible1" policy.
 
 |
 
@@ -44,9 +44,11 @@ How does this compare to the url parameters used in Module 2 Lab 3?
 
 Notice the special characters $, & are not escaped, in the curl requests they had to be. 
 
+Click "Send" to run the request.
+
 |
 
-Take a look at the response, this is show in the “Body” (response body) section
+Take a look at the response, the response is shown in the “Body” (response body) section. The response should look similar to the below, only showing the "id" field.
 
 |
 
@@ -69,7 +71,7 @@ Postman offers the ability to programmatically ingest responses and make decisio
 
 |
 
-Tests are executed post request, which means the Test has access to the response data. In addition a test is on a per request basis, meaning they only apply to the request to which they are assigned. Though Tests can influence the flow of the next request and can be used to provide orchestration to a collection. More on this later.
+Tests are executed post request, which means the Test has access to the response data. In addition a test is on a per-request basis, meaning they only apply to the request to which they are assigned. Though Tests can influence the flow of the next request and can be used to provide orchestration to a collection. More on this later.
 
 .. note:: 
 
@@ -109,7 +111,7 @@ The console.log statement logs to the javascript console, to open it click View-
 
 |
 
-Execute the request, then view the Postman console (it must be open before running the request to display the data).
+Execute the request by clicking "Send", then view the Postman console (it must be open before running the request to display the data).
 
 .. code-block:: rest
 
@@ -117,7 +119,7 @@ Execute the request, then view the Postman console (it must be open before runni
 
 |
 
-The policy id should be displayed
+The policy id should be displayed in the Postman Console.
 
 |
 

@@ -8,7 +8,7 @@ Run the following script to create a new ASM policy "python1"
 
 .. code-block:: bash
         
-        python3 /home/f5student/agility2018/python/Module4Lab2-ex1-createAsmPolicy.py
+        python3 /home/f5student/agility2018/asm342/python/Module4Lab2-ex1-createAsmPolicy.py
 
 |
 

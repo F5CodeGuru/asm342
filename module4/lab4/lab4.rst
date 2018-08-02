@@ -10,7 +10,7 @@ Run the following script to disable staging on all signatures in the "python1" p
 
 .. code-block:: bash
         
-        python3 /home/f5student/agility2018/python/Module4Lab4-ex1-takeAllSigsOutOfStaging.py
+        python3 /home/f5student/agility2018/asm342/python/Module4Lab4-ex1-takeAllSigsOutOfStaging.py
 
 |
 

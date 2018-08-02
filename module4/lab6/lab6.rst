@@ -4,13 +4,13 @@ Lab 4.6: Getting data across all policies and providing a report
 Task 1 - Using Python to report on the CVE that each policy provides protection against
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This script loops through all attack signatures installed and inventories which CVE each signatures protects against. Then it will loop through all policies, determining if it has signatures applied to it that protect against a CVE.
+This script loops through all attack signatures installed and inventories which CVE each signature protects against. Then it will loop through all policies, determining if the policy has signatures applied to it that protect against a CVE. The script thens generates a report displaying which CVE each policy protects against.
 
 Run the following script
 
 .. code-block:: bash
         
-        python3 /home/f5student/agility2018/python/Module4Lab6-ex1-getCveProtectedPerPolicy.py
+        python3 /home/f5student/agility2018/asm342/python/Module4Lab6-ex1-getCveProtectedPerPolicy.py
 
 |
 

@@ -279,7 +279,7 @@ This task is much like the Module 2 Lab 3  task, Server-side json filtering usin
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>Notice the parameters passed to the url <a class="reference external" href="https:/">https:/</a>/{bigipa_host}}/mgmt/tm/asm/policies/</p>
+<p>Notice the parameters passed to the url <a class="reference external" href="https:/">https:/</a>/{bigipa_host}}/mgmt/tm/asm/policies/. They tell the rest server to only display the the “id” field for the “ansible1” policy.</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -289,10 +289,11 @@ This task is much like the Module 2 Lab 3  task, Server-side json filtering usin
 </div>
 <p>How does this compare to the url parameters used in Module 2 Lab 3?</p>
 <p>Notice the special characters $, &amp; are not escaped, in the curl requests they had to be.</p>
+<p>Click “Send” to run the request.</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>Take a look at the response, this is show in the “Body” (response body) section</p>
+<p>Take a look at the response, the response is shown in the “Body” (response body) section. The response should look similar to the below, only showing the “id” field.</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -313,7 +314,7 @@ This task is much like the Module 2 Lab 3  task, Server-side json filtering usin
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>Tests are executed post request, which means the Test has access to the response data. In addition a test is on a per request basis, meaning they only apply to the request to which they are assigned. Though Tests can influence the flow of the next request and can be used to provide orchestration to a collection. More on this later.</p>
+<p>Tests are executed post request, which means the Test has access to the response data. In addition a test is on a per-request basis, meaning they only apply to the request to which they are assigned. Though Tests can influence the flow of the next request and can be used to provide orchestration to a collection. More on this later.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p>Postman also suports Pre-Request Scripts, which are executed before the Request is sent. Use cases are a dynamically generated timestamp or dynamically gnereated Post data.</p>
@@ -346,14 +347,14 @@ This task is much like the Module 2 Lab 3  task, Server-side json filtering usin
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>Execute the request, then view the Postman console (it must be open before running the request to display the data).</p>
+<p>Execute the request by clicking “Send”, then view the Postman console (it must be open before running the request to display the data).</p>
 <div class="highlight-rest notranslate"><div class="highlight"><pre><span></span>Module3Lab2-ex2-GetAllASMPoliciesFilteredTests
 </pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>The policy id should be displayed</p>
+<p>The policy id should be displayed in the Postman Console.</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>

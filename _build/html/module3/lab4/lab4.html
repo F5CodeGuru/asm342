@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Lab 3.2: Filtering JSON data in Postman &#8212; ASM 342 Docs 1.0 documentation</title>
+    <title>Lab 3.4: Using Postman for workflows &#8212; ASM 342 Docs 1.0 documentation</title>
     <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/css/f5.css" type="text/css" />
@@ -18,8 +18,8 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Lab 3.3: Using Postman to generate code" href="../lab3/lab3.html" />
-    <link rel="prev" title="Lab 3.1: Using Postman to interact with the ASM Rest API" href="../lab1/lab1.html" />
+    <link rel="next" title="Review" href="../review.html" />
+    <link rel="prev" title="Lab 3.3: Using Postman to generate code" href="../lab3/lab3.html" />
 <!--
 # Copyright 2017 F5 Networks
 #
@@ -212,23 +212,22 @@
    <span class="caption-text">Current Page</span>
   </p>
   <ul>
-<li><a class="reference internal" href="#">Lab 3.2: Filtering JSON data in Postman</a><ul>
-<li><a class="reference internal" href="#task-1-filtering-json-data-in-postman-using-parameters">Task 1 - Filtering JSON data in Postman using parameters</a></li>
-<li><a class="reference internal" href="#task-2-filtering-json-data-in-postman-using-tests">Task 2 - Filtering JSON data in Postman using Tests</a></li>
+<li><a class="reference internal" href="#">Lab 3.4: Using Postman for workflows</a><ul>
+<li><a class="reference internal" href="#task-1-using-postman-for-workflow-to-push-out-standardized-policies">Task 1 - Using Postman for workflow to push out standardized policies</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="../lab1/lab1.html"
-                        title="previous chapter">Lab 3.1: Using Postman to interact with the ASM Rest API</a></p>
-  <h4>Next topic</h4>
   <p class="topless"><a href="../lab3/lab3.html"
-                        title="next chapter">Lab 3.3: Using Postman to generate code</a></p>
+                        title="previous chapter">Lab 3.3: Using Postman to generate code</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../review.html"
+                        title="next chapter">Review</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../../_sources/module3/lab2/lab2.rst.txt"
+      <li><a href="../../_sources/module3/lab4/lab4.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -252,112 +251,21 @@
           <span class="right"><a href="../../genindex.html">Index</a></span>
         </h4>
         
-  <div class="section" id="lab-3-2-filtering-json-data-in-postman">
-<h1>Lab 3.2: Filtering JSON data in Postman<a class="headerlink" href="#lab-3-2-filtering-json-data-in-postman" title="Permalink to this headline">¶</a></h1>
-<p>This lab builds off of the concepts in Module 2 dealing with filtering Json data and demonstrates how to filter json data in Postman.</p>
-<p>Two ways exists to filter on data</p>
-<ul class="simple">
-<li>Parameters</li>
-<li>Postman Tests (javascript based), more background on this in Task 2</li>
-</ul>
-<div class="section" id="task-1-filtering-json-data-in-postman-using-parameters">
-<h2>Task 1 - Filtering JSON data in Postman using parameters<a class="headerlink" href="#task-1-filtering-json-data-in-postman-using-parameters" title="Permalink to this headline">¶</a></h2>
-<p>This task demonstrates how to filter on the policy named ansible1 and display only the id value.</p>
-<p>Just like any Rest client, Postman can send parameters to the server so that the output is a customized response or a subset of the Json data.
-This task is much like the Module 2 Lab 3  task, Server-side json filtering using uri parameters.</p>
-<p>Click on the request</p>
+  <div class="section" id="lab-3-4-using-postman-for-workflows">
+<h1>Lab 3.4: Using Postman for workflows<a class="headerlink" href="#lab-3-4-using-postman-for-workflows" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="task-1-using-postman-for-workflow-to-push-out-standardized-policies">
+<h2>Task 1 - Using Postman for workflow to push out standardized policies<a class="headerlink" href="#task-1-using-postman-for-workflow-to-push-out-standardized-policies" title="Permalink to this headline">¶</a></h2>
+<p>Select the Module3Lab1-ex3-GetAllASMPoliciesFilteredTests request and click on the “code” option on the right hand side.</p>
+<img alt="module3/lab4/images/module3lab3-1.png" src="module3/lab4/images/module3lab3-1.png" />
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<div class="highlight-rest notranslate"><div class="highlight"><pre><span></span>Module3Lab2-ex1-GetAllASMPoliciesFilteredParam
-</pre></div>
-</div>
+<p>Then select “Python Requests” from the code drop down to show the request in Python Requests</p>
 <div class="line-block">
 <div class="line"><br /></div>
-</div>
-<img alt="../../_images/module3lab2-1.png" src="../../_images/module3lab2-1.png" />
-<div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>Notice the parameters passed to the url <a class="reference external" href="https:/">https:/</a>/{bigipa_host}}/mgmt/tm/asm/policies/</p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<img alt="../../_images/module3lab2-2.png" src="../../_images/module3lab2-2.png" />
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<p>How does this compare to the url parameters used in Module 2 Lab 3?</p>
-<p>Notice the special characters $, &amp; are not escaped, in the curl requests they had to be.</p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<p>Take a look at the response, this is show in the “Body” (response body) section</p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<img alt="../../_images/module3lab2-3.png" src="../../_images/module3lab2-3.png" />
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-</div>
-<div class="section" id="task-2-filtering-json-data-in-postman-using-tests">
-<h2>Task 2 - Filtering JSON data in Postman using Tests<a class="headerlink" href="#task-2-filtering-json-data-in-postman-using-tests" title="Permalink to this headline">¶</a></h2>
-<p>Postman offers the ability to programmatically ingest responses and make decisions on the data retrieved. Tests are written in javascript, which is a very common language, rather than some proprietary or obsucre language. Even if you are not familiar with js, there are many examples written for Postman and many examples of javascript in general.</p>
-<p><a class="reference external" href="https://www.getpostman.com/docs/v6/postman/scripts/test_scripts">Writing Postman tests</a>
-<a class="reference external" href="https://www.getpostman.com/docs/v6/postman/scripts/test_examples">Tests examples</a></p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Note that iRules LX (iLX) and iApps LX foundations are based on javascript.</p>
-</div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<p>Tests are executed post request, which means the Test has access to the response data. In addition a test is on a per request basis, meaning they only apply to the request to which they are assigned. Though Tests can influence the flow of the next request and can be used to provide orchestration to a collection. More on this later.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p>Postman also suports Pre-Request Scripts, which are executed before the Request is sent. Use cases are a dynamically generated timestamp or dynamically gnereated Post data.</p>
-<p class="last"><a class="reference external" href="https://www.getpostman.com/docs/v6/postman/scripts/pre_request_scripts">Pre-request scripts</a></p>
-</div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<p>Click on the request</p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<div class="highlight-rest notranslate"><div class="highlight"><pre><span></span>Module3Lab2-ex2-GetAllASMPoliciesFilteredTests
-</pre></div>
-</div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<p>Notice this request is exactly the same as Module3Lab1-ex1-GetAllASMPolicies with the exception that there is a Test assigned.</p>
-<p>The test, examine the comments to understand how it works.</p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<img alt="../../_images/module3lab2-4.png" src="../../_images/module3lab2-4.png" />
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<p>The console.log statement logs to the javascript console, to open it click View-&gt;Show Postman Console</p>
-<img alt="../../_images/module3lab2-5.png" src="../../_images/module3lab2-5.png" />
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<p>Execute the request, then view the Postman console (it must be open before running the request to display the data).</p>
-<div class="highlight-rest notranslate"><div class="highlight"><pre><span></span>Module3Lab2-ex2-GetAllASMPoliciesFilteredTests
-</pre></div>
-</div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<p>The policy id should be displayed</p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<a class="reference internal image-reference" href="../../_images/module3lab2-6.png"><img alt="../../_images/module3lab2-6.png" src="../../_images/module3lab2-6.png" style="width: 800px;" /></a>
+<img alt="module3/lab4/images/module3lab3-2.png" src="module3/lab4/images/module3lab3-2.png" />
 </div>
 </div>
 
@@ -366,10 +274,10 @@ This task is much like the Module 2 Lab 3  task, Server-side json filtering usin
 		     <div class="row next-prev-btn-row">
            <div class="col-lg-12">
            
-		        <a href="../lab1/lab1.html" title="Lab 3.1: Using Postman to interact with the ASM Rest API" accesskey="p" class="btn btn-primary pull-left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
+		        <a href="../lab3/lab3.html" title="Lab 3.3: Using Postman to generate code" accesskey="p" class="btn btn-primary pull-left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
            
            
-              <a href="../lab3/lab3.html" title="Lab 3.3: Using Postman to generate code" accesskey="n" class="btn btn-primary pull-right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+              <a href="../review.html" title="Review" accesskey="n" class="btn btn-primary pull-right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
            
 		     </div>
          </div>

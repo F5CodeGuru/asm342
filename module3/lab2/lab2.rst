@@ -14,6 +14,8 @@ Task 1 - Filtering JSON data in Postman using parameters
 
 This task demonstrates how to filter on the policy named ansible1 and display only the id value.
 
+Just like any Rest client, Postman can send parameters to the server so that the output is a customized response or a subset of the Json data.
+This task is much like the Module 2 Lab 3  task, Server-side json filtering using uri parameters.
 
 Click on the request 
 
@@ -40,16 +42,7 @@ Notice the parameters passed to the url https://{bigipa_host}}/mgmt/tm/asm/polic
 How does this compare to the url parameters used in Module 2 Lab 3?
 
 
-The special characters $, & are not escaped. 
-
-Run the request 
-
-|
-
-.. code-block:: rest
-
-        Module3Lab1-ex2-GetAllASMPoliciesFilteredParam
-
+Notice the special characters $, & are not escaped, in the curl requests they had to be. 
 
 |
 
@@ -61,14 +54,11 @@ Take a look at the response, this is show in the “Body” (response body) sect
 
 |
 
-Is the "id" (asm policy id) displayed the same as in lab2.1-1?
-It should be the same id.
-
 
 Task 2 - Filtering JSON data in Postman using Tests
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Postman offers the ability to programmatically ingest responses to request and make decisions on the data retrieved. Tests are written in javascript, which is a very common language, rather than some proprietary or obsucre language. Even if you are not familiar with js, there are many examples written for Postman and many examples of javascript in general. 
+Postman offers the ability to programmatically ingest responses and make decisions on the data retrieved. Tests are written in javascript, which is a very common language, rather than some proprietary or obsucre language. Even if you are not familiar with js, there are many examples written for Postman and many examples of javascript in general. 
 
 `Writing Postman tests <https://www.getpostman.com/docs/v6/postman/scripts/test_scripts>`_
 `Tests examples <https://www.getpostman.com/docs/v6/postman/scripts/test_examples>`_
@@ -79,7 +69,7 @@ Postman offers the ability to programmatically ingest responses to request and m
 
 |
 
-Tests are executed post request, which means the Test has access to the response data. In addition a test is on a per request basis, meaning they only apply to the request to which they are assigned. Though Tests can influence the flow of the next request and can be used to provide Orchestration to a collection. More on this later.
+Tests are executed post request, which means the Test has access to the response data. In addition a test is on a per request basis, meaning they only apply to the request to which they are assigned. Though Tests can influence the flow of the next request and can be used to provide orchestration to a collection. More on this later.
 
 .. note:: 
 
@@ -91,9 +81,11 @@ Tests are executed post request, which means the Test has access to the response
 
 Click on the request
 
+|
+
 .. code-block:: rest
 
-        Module3Lab1-ex3-GetAllASMPoliciesFilteredTests
+        Module3Lab2-ex2-GetAllASMPoliciesFilteredTests
         
 |
 
@@ -121,7 +113,7 @@ Execute the request, then view the Postman console (it must be open before runni
 
 .. code-block:: rest
 
-        Module3Lab1-ex3-GetAllASMPoliciesFilteredTests
+        Module3Lab2-ex2-GetAllASMPoliciesFilteredTests
 
 |
 
@@ -130,4 +122,5 @@ The policy id should be displayed
 |
 
 .. image:: images/module3lab2-6.png
-        
+        :width: 800px       
+

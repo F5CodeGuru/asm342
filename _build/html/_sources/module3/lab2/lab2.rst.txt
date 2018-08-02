@@ -1,7 +1,7 @@
 Lab 3.2: Filtering JSON data in Postman
 ----------------------------------------
 
-This lab builds off of the concepts in Lab 2.1-1 Filtering json data and demonstrates how to filter json data in Postman.
+This lab builds off of the concepts in Module 2 dealing with filtering Json data and demonstrates how to filter json data in Postman.
 
 Two ways exists to filter on data
 
@@ -15,11 +15,16 @@ Task 1 - Filtering JSON data in Postman using parameters
 This task demonstrates how to filter on the policy named ansible1 and display only the id value.
 
 
-Click on the request Module3Lab1-ex2-GetAllASMPoliciesFilteredParam
+Click on the request 
+
+|
 
 .. code-block:: rest
 
-        
+        Module3Lab2-ex1-GetAllASMPoliciesFilteredParam
+
+|
+
 .. image:: images/module3lab2-1.png
 
 |
@@ -32,16 +37,19 @@ Notice the parameters passed to the url https://{bigipa_host}}/mgmt/tm/asm/polic
 
 |
 
-How does this compare to the url parameters used in Lab2.1-1?
+How does this compare to the url parameters used in Module 2 Lab 3?
 
 
 The special characters $, & are not escaped. 
 
 Run the request 
 
+|
+
 .. code-block:: rest
 
         Module3Lab1-ex2-GetAllASMPoliciesFilteredParam
+
 
 |
 

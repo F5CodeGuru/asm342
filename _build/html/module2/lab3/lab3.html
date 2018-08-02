@@ -311,6 +311,14 @@
 <div class="line"><br /></div>
 <div class="line"><br /></div>
 </div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Note the escape character for the $ and &amp; characters.</p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
 <p>Run the following code to filter on just the policy named “ansible1” and only the display its “name” field.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -sk -u admin:password https://&lt;bigip&gt;/mgmt/tm/asm/policies?<span class="se">\$</span><span class="nv">filter</span><span class="o">=</span>name+eq+ansible1<span class="se">\&amp;\$</span><span class="k">select</span><span class="o">=</span>name <span class="p">|</span> sed <span class="s1">&#39;s/,/\&#39;$&#39;\n/g&#39;</span>
 </pre></div>

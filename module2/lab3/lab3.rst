@@ -82,6 +82,14 @@ Run the following code to get just the names of the existing policies
 |
 |
 
+
+.. note::
+
+        Note the escape character \ for the $ and & characters.
+
+|
+|
+
 Run the following code to filter on just the policy named "ansible1" and only the display its "name" field.
 
 .. code-block:: bash

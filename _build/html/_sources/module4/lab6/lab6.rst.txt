@@ -16,5 +16,5 @@ Run the following script
 
 Wait until the script is finished, this will take several minutes.
 
-The instructor will talk through the script after all students have completed this task. Feel free to open the script to analyze it and run any of the curl commands to guide the student to the flow.
+The instructor will talk through the script after all students have completed this task. Feel free to open the script to analyze it and run any of the curl commands to guide the student through the flow.
 

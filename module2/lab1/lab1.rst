@@ -56,6 +56,8 @@ For the assigned virtual servers (virtualServers key) if you specify a key of 0,
 Task 1 - Explore the API using curl 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+All scripts are run from the cli (Terminal Emulator icon on the desktop) in this module.
+
 |
 
 Run the following command

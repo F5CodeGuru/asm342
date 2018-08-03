@@ -4,6 +4,9 @@ Lab 4.1: Python Intro - Getting the data
 Task 1 - Using Python to display an ASM Policy in json format
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+All scripts are run from the cli (Terminal Emulator icon on the desktop) in this module.
+
+
 Run the following command to display all asm policy data in json format
 
 .. code-block:: bash
@@ -35,4 +38,4 @@ Notice the script is commented throughout to give the student a walk-through of 
 
 |
 
-
+The instructor will talk through the script after all students have completed this task. Feel free to open the script to analyze it and run any of the curl commands to guide the student through the flow.

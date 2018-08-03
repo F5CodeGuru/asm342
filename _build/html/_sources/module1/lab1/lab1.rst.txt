@@ -4,6 +4,9 @@ Lab 1.1: Ansible Policy Creation
 Task 1 - Using Ansible to create a ASM Policy
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+All scripts are run from the cli (Terminal Emulator icon on the desktop) in this module.)
+
+
 Run the following command to create an ASM policy named **ansible1** (this may take a couple of minutes):
 
 .. code-block:: bash

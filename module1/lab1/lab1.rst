@@ -4,7 +4,7 @@ Lab 1.1: Ansible Policy Creation
 Task 1 - Using Ansible to create a ASM Policy
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-All scripts are run from the cli (Terminal Emulator icon on the desktop) in this module.)
+All scripts in this module are run from the cli (Terminal Emulator icon on the desktop).
 
 
 Run the following command to create an ASM policy named **ansible1** (this may take a couple of minutes):
@@ -62,7 +62,7 @@ Line 19 is the name of the policy, line 20 is the Rapid Deployment template that
         :emphasize-lines: 18-20
         :linenos:
 
-Starting with line 22, post tasks are declared. These are tasks that will take place after the policy has been create, here we will save the policy to disk (otherwise it is only in the running config).
+Starting with line 22, post tasks are declared. These are tasks that will take place after the policy has been created.  Here we will save the policy to disk (otherwise it is only in the running config).
 
 **ansible1.yaml:**
 

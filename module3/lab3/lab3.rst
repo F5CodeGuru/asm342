@@ -73,7 +73,7 @@ Select the Module3Lab1-ex3-GetAllASMPoliciesFilteredTests request and click on t
 
 |
 
-Then select "Python Requests" from the code drop down to show the request in Python Requests
+Then select "Python -> Requests" from the code drop down to show the request in Python Requests
 
 |
 |

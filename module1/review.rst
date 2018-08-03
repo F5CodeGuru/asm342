@@ -3,7 +3,7 @@ Review
 
 This concludes module1 of the class.
 
-Once again the features that are supported for ASM ansible module:
+Once again the features that are supported for the ASM ansible module are:
 
 
         Policy Activation/Deactivation
@@ -17,7 +17,7 @@ Once again the features that are supported for ASM ansible module:
         Policy Creation using Application-Ready Templates
 
 
-The LTM and Sys modules are much more feature rich, where most configuration options are available.
+The LTM and Sys modules are much more feature rich, and most configuration options are available.
 
 |
 |

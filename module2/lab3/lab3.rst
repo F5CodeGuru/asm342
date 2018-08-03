@@ -4,17 +4,17 @@ Lab 2.3: Server-side json filtering
 Task 1 - Server-side json filtering using uri parameters
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Queries to ASM Rest API yields lots of good information that can be used, the problem is this can be a lot of information. Fortunately a way to filter exists
+Queries to ASM's REST API yields lots of useful information, but can be a little extraneous.  Fortunately, the data can be filtered. 
 
-F5 has documented a number of query parameters that can be passed into iControl ReST calls in order to modify their behavior. The first set follows the OData (open data protocol) standard. The filter parameter also supports several operators.
+F5 has documented a number of query parameters that can be passed into iControl REST calls in order to modify their behavior. The first set follows the OData (open data protocol) standard. The filter parameter also supports several operators.
 
-Note that the filtering takes places on the server-side or at the bigip.
+Note that the filtering takes places on the server-side or at the BIG-IP.
 
 $filter - filter on key/value pairs, such as name eq ansible1 which would only display the ansible1 policy. eq stands for equals
 
 $select - without select all data is displayed, with select, one can specify which keys to display. Such as displaying only the name field, select=name
 
-$skip - in conjunction with $top, acts as a pageanator, specifying how many objects to skip
+$skip - in conjunction with $top, acts as a pageanator, specifying how many objects to skip.
 
 $top - takes a numeric value, used to display the top number of objects specified.
 
@@ -62,11 +62,11 @@ ver - This is for the specific TMOS version. Setting this parameter guarantees c
 
 |
 
-Run the following code to get just the names of the existing policies
+Run the following code to get just the names of the existing policies:
 
 .. code-block:: bash
 
-        curl -sk -u admin:password https://<bigip>/mgmt/tm/asm/policies/?\$select=name | sed 's/,/\'$'\n/g'
+        curl -sk -u admin:password https://10.1.1.245/mgmt/tm/asm/policies/?\$select=name | sed 's/,/\'$'\n/g'
 
 .. code-block:: json
 
@@ -94,7 +94,7 @@ Run the following code to filter on just the policy named "ansible1" and only th
 
 .. code-block:: bash
 
-        curl -sk -u admin:password https://<bigip>/mgmt/tm/asm/policies?\$filter=name+eq+ansible1\&\$select=name | sed 's/,/\'$'\n/g' 
+        curl -sk -u admin:password https://10.1.1.245/mgmt/tm/asm/policies?\$filter=name+eq+ansible1\&\$select=name | sed 's/,/\'$'\n/g' 
 
 .. code-block:: json
 

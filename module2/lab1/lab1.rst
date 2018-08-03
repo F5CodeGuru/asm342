@@ -11,7 +11,7 @@ JSON is comprised of key:value pairs ({“key”:”value”}) sometimes referre
 
 To access a value in a collection, a key must be specified.
 
-For example in the json output
+For example in the json output:
 
 {“key1”:”value1”,”key2”:”value2”,”key3”:”value3”}
 
@@ -19,9 +19,9 @@ specifying “key2” will yield “value2”. To retrieve “value2”, “key3
 
 .. note::
 
-        Note the difference between an array and a hash, so far we ha`ve discussed hashes. Arrays, denoted with [] are similar, they store keys and values, however the keys are numerical, 1,2,3, etc. This is because the key value may be no existent and is definitely dynamic. More on this later, you will see an array below, the virtualServers entry. 
+        Note the difference between an array and a hash, so far we have discussed hashes. Arrays, denoted with [] are similar, they store keys and values, however the keys are numerical, 1,2,3, etc. This is because the key value may be non-existent and is definitely dynamic. More on this later.  Below, you will see an array in the virtualServers entry. 
 
-Here is a real world ASM output example, truncated with a “…” to show relevant parts
+Here is a real world ASM output example, truncated with a “…” to show the relevant parts:
 
 .. code-block:: json
 
@@ -56,11 +56,11 @@ For the assigned virtual servers (virtualServers key) if you specify a key of 0,
 Task 1 - Explore the API using curl 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-All scripts are run from the cli (Terminal Emulator icon on the desktop) in this module.
+All scripts in this module are run from the cli (Terminal Emulator icon on the desktop).
 
 |
 
-Run the following command
+Run the following command (don't forget to use the correct password):
 
 .. code-block:: bash
 
@@ -73,7 +73,7 @@ Run the following command
 
 |
 
-The JSON output (#1) (truncated) should look something similar to
+The JSON output (#1) (truncated) should look something similar to:
 
 .. code-block:: json
 
@@ -87,13 +87,13 @@ Not terribly easy to read, however before working on the output readability, the
 curl **\-k** -u admin:password -X GET https://10.1.1.245/mgmt/tm/asm/policies/
 
 
--k: This option tell curl to not verify the server ssl certificate, since we are connected to bigip which has a cert that was signed by its own CA, which is untrusted
+-k: This option tells curl to not verify the server's ssl certificate, since we are connected to a BIG-IP with an untrusted cert signed by its own CA.
 
 |
 
 curl -k **\-u admin:password** -X GET https://10.1.1.245/mgmt/tm/asm/policies/
 
--u: How the logon credentials are specified, a : is used to separate the username and passsword. The user:pass are converted into a Base64 encoded authorization header, this can be seen by adding a -v
+-u: Specifies the logon credentials. A ":" is used to separate the username and passsword. The user:pass are converted into a Base64 encoded authorization header. This can be seen by adding a -vto the curl command.
 
 |
 
@@ -105,12 +105,12 @@ curl -k -u admin:password **\-X GET** https://10.1.1.245/mgmt/tm/asm/policies/
 
 curl -k -u admin:password -X GET **https://10.1.1.245/mgmt/tm/asm/policies/**
 
-Lastly the full url to the resource
+Lastly the full url to the resource.
 
 |
 |
 
-Now run
+Now run:
 
 .. code-block:: bash
 
@@ -150,8 +150,8 @@ After the opening "{", is the first key of collection "kind". The value is "tm:a
 
 |
 
-Next is the key "selfLink" and its value of "https://localhost/mgmt/tm/asm/policies?ver=13.1.0". This tells us how to get to the resource, its usefulness may not be completely apprarent now, its usefulness will be apparent in subsequent excercises.
-Also take note that is essential the same url used in the curl command. The "?" is a parameter passed to request to the Rest API to use version 13.1.0 of the API. Ignore this for now.
+Next is the key "selfLink" and its value of "https://localhost/mgmt/tm/asm/policies?ver=13.1.0". This tells us how to get to the resource. Its usefulness may not be completely apprarent now, but will be in subsequent excercises.
+Also note that it is essentially the same url used in the curl command. The "?ver" is a parameter passed to the Rest API to request the use of API version 13.1.0.  Ignore this for now.
 
 |
 .. code-block:: json
@@ -159,15 +159,15 @@ Also take note that is essential the same url used in the curl command. The "?" 
         "selfLink":"https://localhost/mgmt/tm/asm/policies?ver=13.1.0"
 
 
-Next is "totalItems" key which has value of 1, meaning there is one policy. Go to Security->Application Security->Security Policies in Web Gui to verify the value from your output of totalItems matches the number of asm security policies from the Web Gui. 
+Next is the "totalItems" key which has value of 1, meaning there is one policy. Go to Security->Application Security->Security Policies in Web Gui to verify the value from your output of totalItems matches the number of asm security policies from the Web Gui. 
 
-Now the interesting stuff, The next key is "items" which is a nested collection of polciies, the actual ASM policies and their settings. Items contains multiple collections, that is why the value begins with a opening square bracket "[". Remember if its an array, its dynamic, you could have zero policies The value of items contains the AWAF policy with links to itspolicy settings such as the link to the csrfUrlReference "https://localhost/mgmt/tm/asm/policies/u-6T62j_f0XMkjJ_s_Z-gg/csrf-urls?ver=13.1.0"
+Now onto the interesting stuff. The next key is "items" which is a nested collection of polciies, the actual ASM policies and their settings. Items contains multiple collections, that is why the value begins with a opening square bracket "[". Remember if it is an array, it's dynamic, you could have zero policies.  The value of items contains the AWAF policy with links to its policy settings such as the link to the csrfUrlReference "https://localhost/mgmt/tm/asm/policies/u-6T62j_f0XMkjJ_s_Z-gg/csrf-urls?ver=13.1.0"
 
-If you followed this url, of course substituting localhost for the mgmt ip of the BIGIP, you would get the setting for the csrf Url for that policy. That is the power of the link value, you can use that to get to other configuration items. Later in the class, we will go into how to get at this data programmatically. This also demonstrated that not all configuration data can be retrieved by a single query, depending on the need, you may have to make more than one HTTP request.
+If you followed this url, of course substituting localhost for the mgmt ip of the BIGIP, you would get the setting for the csrf Url for that policy. That is the power of the link value, you can use it to get to other configuration items. Later in the class, we will go into how to get at this data programmatically. This also demonstrates that not all configuration data can be retrieved by a single query, depending on the need, you may have to make more than one HTTP request.
 
-What about the crazy string "u-6T62j_f0XMkjJ_s_Z-gg" after policies/ ? This is a randomly generated (as such your value will not be u-6T62j_f0XMkjJ_s_Z-gg, rather something similar) id for the ASM security policy, in other words you cannot simply access the ansible1 security policy by going to https://10.1.1.245/mgmt/tm/asm/polciies/ansible1, you have to search for the "name" key in the JSON output until it mateches ansible1 to figure which generated id is ansible1. 
+What about the crazy string "u-6T62j_f0XMkjJ_s_Z-gg" after /policies/ ? This is a randomly generated (as such your value will not be u-6T62j_f0XMkjJ_s_Z-gg, rather something similar) id for the ASM security policy. In other words you cannot simply access the ansible1 security policy by going to https://10.1.1.245/mgmt/tm/asm/polciies/ansible1, you have to search for the "name" key in the JSON output until it matches ansible1 to figure which generated id is ansible1. 
 
-.. note:: All ASM objects which includes policies, parameters, URLs have a randomly generated unique id, where the name you see in the Web Gui is just a display name. Therefore to get at this objects via the Rest API, you must filter on each unique ID until you find the "name" key's value equals to the name you are looking for. 
+.. note:: All ASM objects, which include policies, parameters, and URLs have a randomly generated unique id, where the name you see in the Web Gui is just a display name. Therefore to get at these objects via the REST API, you must filter on each unique ID until you find the "name" key's value equal to the name you are looking for. 
 
 Wouldn't it be nice if we had something that could do the filtering for us?
 

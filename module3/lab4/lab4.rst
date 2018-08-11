@@ -39,11 +39,17 @@ Select the "Agility2018-ASM342-PolicyCreation" collection, the "Agility2018-ASM3
 
 |
 
-Click "Run Agility2018-ASM342-PolicyCreation", watch the Postman Console. This will create a Asm policy named "postman1" and add an ip address to the whitelist. Once the Collection has finished (this may take a couple of minutes), go to the Bigip Gui to verify the policy and whitelist ip address were created. Also ensure the policy was applied, this make take a few minutes, refresh this page if the policy has not been applied.
+Click "Run Agility2018-ASM342-PolicyCreation", watch the Postman Console. This will create an ASM policy named "postman1" and add an ip address to the whitelist. Once the Collection has finished (this may take a couple of minutes), go to the BIG-IP GUI to verify the policy and whitelist ip address were created. Also ensure the policy was applied, this make take a few minutes, refresh this page if the policy has not been applied.
+
+|
+
+For Reference, Policies are in:
 
 Security->Application Security->Security Policies->Policies List
 
 |
+
+Addresses are in:
 
 Security->Application Security->IP Addresses->IP Address Exceptions
 

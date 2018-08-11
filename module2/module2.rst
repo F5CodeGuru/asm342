@@ -4,15 +4,15 @@ Expected time to complete: **1 hours**
 
 **Intro**
 
-If you have experience with another RestFul API, the F5 RestFul API will be very familiar. If you have no familiarity with a RestFul API, don't worry there a few key concepts to understand.
+If you have experience with another RestFul API, the F5 RestFul API will be very familiar. If you have no familiarity with a RestFul API, don't worry there are only a few key concepts to understand.
 
 The Rest API uses HTTP requests with a combination certain uri and HTTP verbs/commands 
 
 All queries to ASM begin with the uri /mgmt/tm/asm .
 
-For example querying the uri /mgmt/tm/asm/policies (https://<mgmt ip>/mgmt/tm/asm/policies) will display all asm policies in JSON format.
+For example, querying the uri /mgmt/tm/asm/policies (https://<mgmt ip>/mgmt/tm/asm/policies) will display all asm policies in JSON format.
 
-Other uris
+**Other URIs:**
 
 /mgmt/tm/asm (root asm configuration)
 
@@ -22,9 +22,9 @@ Other uris
 
 /mgmt/tm/asm/requests (lists asm requests)
 
-/mgmt/tm/asm/policies/MrLpFzRHNarvj_zuAOD0fw (whoa what is this? its a way of accessing a policy directly. We will investigate this further later)
+/mgmt/tm/asm/policies/MrLpFzRHNarvj_zuAOD0fw (Whoa what is this? Its a way of accessing a policy directly. We will investigate this in detail later.)
 
-HTTP uses commands/verbs such as POST, GET, etc. What roles do they play? HTTP commands determine the operation/type of the request, in other words whether data is simply retrieved, created or modified.
+HTTP uses commands/verbs such as POST, GET, etc. What roles do they play? HTTP commands determine the operation/type of the request. In other words whether data is simply retrieved or created/modified.
 
 |
 |

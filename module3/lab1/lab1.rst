@@ -46,7 +46,7 @@ Here is how that command maps to this request in Postman, they both get all ASM 
 
 |
 
-If you click on the request/method type (GET) you will see a list of all the possible HTTP methods, this is obviously how you would devise a request that would create using a POST versus simply retrieving data (GET). The username and password are sent as a header, curl does this for you automatically when you specify the -u option. You won't see this Authorization header in your request until you have clicked SEND, this is because it is generated dynamically. The Content-Type header is also specified here, however its not really needed for a GET request. It will be needed for POST requests to inform the webserver the type of the incoming data. Lastly the url field specifies the url of the host and resource. Notice the {{bigipa_host}} in the url, this is a variable that is dynamically filled from the collection's environment, more on this later. Environments can be global or per collection, here we are using a collection specific environment. Environments allow for sharing variables, in this lab they are used to be able quickly modify values across many requests and to share variables among requests.
+If you click on the request/method type (GET) you will see a list of all the possible HTTP methods, this is obviously how you would devise a request that would create an object using a POST versus simply retrieving data (GET). The username and password are sent as a header. Curl does this for you automatically when you specify the -u option. You won't see this Authorization header in your request until you have clicked SEND, this is because it is generated dynamically. The Content-Type header is also specified here, however its not really needed for a GET request. It will be needed for POST requests to inform the webserver the type of the incoming data. Lastly the url field specifies the url of the host and resource. Notice the {{bigipa_host}} in the url, this is a variable that is dynamically filled from the collection's environment, more on this later. Environments can be global or per collection, here we are using a collection specific environment. Environments allow for sharing variables, in this lab they are used to be able quickly modify values across many requests and to share variables among requests.
 
 Now take a look at the enviroment, right-click on collection Agility2018-ASM342 and select edit from the menu and select the Variables column.
 
@@ -92,6 +92,6 @@ If the request was succesful the Status will be 200 OK. Take a look at the respo
 
 |
 
-Notice the body can be displayed in "Pretty" format or "Raw", much like curl with or without jq. Scroll down through the output. Just as in Lab 2.1, it helps to filter on a policy name to get the id. Lab 2 if module 3 will show a couple of ways to filter.
+Notice the body can be displayed in "Pretty" format or "Raw", much like curl with or without jq. Scroll down through the output. Just as in Lab 2.1, it helps to filter on a policy name to get the id. Lab 2 of module 3 will show a couple of ways to filter.
 
 

@@ -4,7 +4,7 @@ Expected time to complete: **1 hours**
 
 **Intro**
 
-`Postman <https://www.getpostman.com/>`_ is a Application Development Environment (ADE). In its simplest form, Postman is a http client, being able to send an HTTP request and receive a HTTP response.  
+`Postman <https://www.getpostman.com/>`_ is a Application Development Environment (ADE). In its simplest form, Postman is an http client, able to send an HTTP request and receive an HTTP response.  
 
 **In this lab, we will cover the following:**
 

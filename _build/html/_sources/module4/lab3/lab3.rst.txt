@@ -13,7 +13,7 @@ Run the following script that will filter on the "python1" policy using uri para
 |
 
 The output should display only the "python1" policy in json format.
-Feel free to open the script to analyze it and run any of the curl commands to guide the student through the flow.
+Feel free to open the script to analyze it and run any of the curl commands to guide you through the flow.
 
 |
 
@@ -24,11 +24,11 @@ Run the following script that will filter on the "python1" policy by looping thr
 
 .. code-block:: bash
         
-        python3 /home/f5student/agility2018/asm342/python/Module4Lab3-ex2-getSingleAsmPolicyFilterLogic.py
+        python3 /home/f5student/agility2018/asm342/python/Module4Lab3-ex2-getSingleAsmPolicyFilterLogic.py python1
 
 The output should display only the “python1” policy in json format.
 
-The instructor will talk through the script after all students have completed this task. Feel free to open the script to analyze it and run any of the curl commands to guide the student through the flow.
+The instructor will talk through the script after all students have completed this task. Feel free to open the script to analyze it and run any of the curl commands to guide you through the flow.
 
  
 

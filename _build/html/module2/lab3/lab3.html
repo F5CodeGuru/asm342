@@ -255,12 +255,12 @@
 <h1>Lab 2.3: Server-side json filtering<a class="headerlink" href="#lab-2-3-server-side-json-filtering" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="task-1-server-side-json-filtering-using-uri-parameters">
 <h2>Task 1 - Server-side json filtering using uri parameters<a class="headerlink" href="#task-1-server-side-json-filtering-using-uri-parameters" title="Permalink to this headline">¶</a></h2>
-<p>Queries to ASM Rest API yields lots of good information that can be used, the problem is this can be a lot of information. Fortunately a way to filter exists</p>
-<p>F5 has documented a number of query parameters that can be passed into iControl ReST calls in order to modify their behavior. The first set follows the OData (open data protocol) standard. The filter parameter also supports several operators.</p>
-<p>Note that the filtering takes places on the server-side or at the bigip.</p>
+<p>Queries to ASM’s REST API yields lots of useful information, but can be a little extraneous.  Fortunately, the data can be filtered.</p>
+<p>F5 has documented a number of query parameters that can be passed into iControl REST calls in order to modify their behavior. The first set follows the OData (open data protocol) standard. The filter parameter also supports several operators.</p>
+<p>Note that the filtering takes places on the server-side or at the BIG-IP.</p>
 <p>$filter - filter on key/value pairs, such as name eq ansible1 which would only display the ansible1 policy. eq stands for equals</p>
 <p>$select - without select all data is displayed, with select, one can specify which keys to display. Such as displaying only the name field, select=name</p>
-<p>$skip - in conjunction with $top, acts as a pageanator, specifying how many objects to skip</p>
+<p>$skip - in conjunction with $top, acts as a pageanator, specifying how many objects to skip.</p>
 <p>$top - takes a numeric value, used to display the top number of objects specified.</p>
 <p>Yes, the dollar sign is important and necessary on these parameters. The operators you can use on these parameters are below. Note that the eq operator can only be used with the filter.</p>
 <p>eq - equal</p>
@@ -292,8 +292,8 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>Run the following code to get just the names of the existing policies</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -sk -u admin:password https://&lt;bigip&gt;/mgmt/tm/asm/policies/?<span class="se">\$</span><span class="k">select</span><span class="o">=</span>name <span class="p">|</span> sed <span class="s1">&#39;s/,/\&#39;$&#39;\n/g&#39;</span>
+<p>Run the following code to get just the names of the existing policies:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -sk -u admin:<span class="nv">$password</span> https://10.1.1.245/mgmt/tm/asm/policies/?<span class="se">\$</span><span class="k">select</span><span class="o">=</span>name <span class="p">|</span> sed <span class="s1">&#39;s/,/\&#39;$&#39;\n/g&#39;</span>
 </pre></div>
 </div>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;kind&quot;</span><span class="p">:</span><span class="s2">&quot;tm:asm:policies:policycollectionstate&quot;</span>
@@ -320,7 +320,7 @@
 <div class="line"><br /></div>
 </div>
 <p>Run the following code to filter on just the policy named “ansible1” and only the display its “name” field.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -sk -u admin:password https://&lt;bigip&gt;/mgmt/tm/asm/policies?<span class="se">\$</span><span class="nv">filter</span><span class="o">=</span>name+eq+ansible1<span class="se">\&amp;\$</span><span class="k">select</span><span class="o">=</span>name <span class="p">|</span> sed <span class="s1">&#39;s/,/\&#39;$&#39;\n/g&#39;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -sk -u admin:<span class="nv">$password</span> https://10.1.1.245/mgmt/tm/asm/policies?<span class="se">\$</span><span class="nv">filter</span><span class="o">=</span>name+eq+ansible1<span class="se">\&amp;\$</span><span class="k">select</span><span class="o">=</span>name <span class="p">|</span> sed <span class="s1">&#39;s/,/\&#39;$&#39;\n/g&#39;</span>
 </pre></div>
 </div>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>

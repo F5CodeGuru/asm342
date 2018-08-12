@@ -64,7 +64,7 @@ Run the following command (don't forget to use the correct password):
 
 .. code-block:: bash
 
-        curl -sk -u admin:password -X GET https://10.1.1.245/mgmt/tm/asm/policies/
+        curl -sk -u admin:$password -X GET https://10.1.1.245/mgmt/tm/asm/policies/
 |
 |
 .. note::

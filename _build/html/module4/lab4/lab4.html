@@ -256,8 +256,8 @@
 <div class="section" id="task-1-using-python-to-move-attack-signatures-out-of-staging">
 <h2>Task 1 - Using Python to move attack signatures out of staging<a class="headerlink" href="#task-1-using-python-to-move-attack-signatures-out-of-staging" title="Permalink to this headline">¶</a></h2>
 <p>This script uses PATCH to update each attack signature in a policy and move it out of staging.</p>
-<p>Navigate to Security-&gt;Application Security-&gt;Attack Signatures, ensure the python1 policy is the “Current edited security policy”
-Ensure the Staging column is set to “Yes” for the Attack Signatures. Looking at the first page is sufficient.</p>
+<p>Navigate to Security-&gt;Application Security-&gt;Attack Signatures, ensure the python1 policy is the “Current edited security policy”.</p>
+<p>Ensure the Staging column is set to “Yes” for the Attack Signatures. Looking at the first page is sufficient.</p>
 <p>Run the following script to disable staging on all signatures in the “python1” policy (the script takes several minutes due to the number of signatures). The script takes a policy name as an argument.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 /home/f5student/agility2018/asm342/python/Module4Lab4-ex1-takeAllSigsOutOfStaging.py python1
 </pre></div>
@@ -267,7 +267,7 @@ Ensure the Staging column is set to “Yes” for the Attack Signatures. Looking
 </div>
 <p>Wait until the script is finished, this will take several minutes.</p>
 <p>After the script has completed, ensure the Staging column is set to “No” for the Attack Signatures. Looking at the first page is sufficient.</p>
-<p>The instructor will talk through the script after all students have completed this task. Feel free to open the script to analyze it and run any of the curl commands to guide the student through the flow.</p>
+<p>The instructor will talk through the script after all students have completed this task. Feel free to open the script to analyze it and run any of the curl commands to guide you through the flow.</p>
 </div>
 </div>
 

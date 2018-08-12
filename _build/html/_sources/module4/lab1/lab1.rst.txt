@@ -4,10 +4,10 @@ Lab 4.1: Python Intro - Getting the data
 Task 1 - Using Python to display an ASM Policy in json format
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-All scripts are run from the cli (Terminal Emulator icon on the desktop) in this module.
+All scripts in this module are run from the cli (Terminal Emulator icon on the desktop).
 
 
-Run the following command to display all asm policy data in json format
+Run the following command to display all ASM policy data in JSON format:
 
 .. code-block:: bash
         
@@ -15,13 +15,13 @@ Run the following command to display all asm policy data in json format
 
 |
 
-You should see similar output to what was seen running curl (lab 2.1) and Postman (Lab 3.1) to get the configuration from policies.
+You should see similar output to what was seen running curl (lab 2.1) and Postman (Lab 3.1) to retrieve the policy configuration.
 
 |
 
 .. note::
-        If the output from the python script is all json, which in the Module4Lab1-ex1-getAllAsmPolicies.py script the output is, jq can be used to get syntax highlighting and other formatting features. To test run
-       **python3 /home/f5student/agility2018/asm342/python/Module4Lab1-ex1-getAllAsmPolicies.py | jq**
+        If the output from the python script is all JSON, as in the case of the Module4Lab1-ex1-getAllAsmPolicies.py script, jq can be used to get syntax highlighting and other formatting features. To test run:
+      **python3 /home/f5student/agility2018/asm342/python/Module4Lab1-ex1-getAllAsmPolicies.py | jq**
 
 |
 
@@ -38,4 +38,4 @@ Notice the script is commented throughout to give the student a walk-through of 
 
 |
 
-The instructor will talk through the script after all students have completed this task. Feel free to open the script to analyze it and run any of the curl commands to guide the student through the flow.
+The instructor will talk through the script after all students have completed this task. Feel free to open the script to analyze it and run any of the curl commands to guide you through the flow.

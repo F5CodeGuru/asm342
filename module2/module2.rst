@@ -56,25 +56,22 @@ HTTP uses commands/verbs such as POST, GET, etc. What roles do they play? HTTP c
                   - Example
                 * - Create a new asm policy 
                   - POST
-                  -
+                  - curl -sk -u admin:password -X POST https://<bigip>/mgmt/tm/asm/policies -d '{"name":<policyName>}'
                 * - View the settings of the new asm policy
                   - GET
-                  - curl -sk -u admin:password -X GET https://10.1.1.245/mgmt/tm/asm/policies
+                  - curl -sk -u admin:password -X GET https://<bigip>/mgmt/tm/asm/policies
                 * - Add a whitelist ip to the new APM policy
                   - POST
-                  -
-                * - Enable the "Ignore in learning Suggestions" setting for a whitelist IP (by default disabled), leaving all other whitelist settings alone
-                  - PATCH
-                  - 
+                  - curl -sk -u admin:password -X POST https://<bigip>/mgmt/tm/asm/policies/<policyId>/whitelist-ips -H "Content-Type: application/json" -d '{"ipAddress":"<whitelist ip>", "ipMask":"<netmask>"}'
                 * - Enable the "Policy Builder trusted IP" settings for the whitelist IP (by default disabled), leaving all other whitelist settings alone 
                   - PATCH
-                  -
-                * - Enable the "Never log traffic from this IP Address" setting for the whitelist IP (by default disabled), restoring all other settings to their defaults
-                  - PUT
-                  - 
-                * - Delete the whitelist ip
+                  - curl -sk -u admin:password -X PATCH https://<bigip>/mgmt/tm/asm/policies/<policyId>/whitelist-ips/<whitelistIpId> -H “Content-Type: application/json” -d '{"trustedByPolicyBuilder":"true"}'
+                * - Delete a policy 
+		  - DELETE
+		  - curl -sk -u admin:password -X DELETE https://<bigip>/mgmt/tm/asm/policies/<policyId> -H “Content-Type: application/json”
+                * - Delete a whitelist ip from policy
                   - DELETE
-                  -
+                  - curl -sk -u admin:password -X DELETE https://<bigip>/mgmt/tm/asm/policies/<policyId>/whitelist-ips/<whitelistIpId> -H “Content-Type: application/json”
 
 |
 |

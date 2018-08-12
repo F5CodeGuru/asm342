@@ -100,4 +100,4 @@ A graphical representation of the lab:
 
 .. note::
 
-        Replace all instances of <bigip> with the management ip of the bigip1, 10.1.1.245. Replace password with the pssword provided by the instructor.
+        Replace all instances of <bigip> with the management ip of the bigip1, 10.1.1.245. The $password referenced in the curl commands is an environment variable, there is no need to modify it. 

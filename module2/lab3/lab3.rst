@@ -66,7 +66,7 @@ Run the following code to get just the names of the existing policies:
 
 .. code-block:: bash
 
-        curl -sk -u admin:password https://10.1.1.245/mgmt/tm/asm/policies/?\$select=name | sed 's/,/\'$'\n/g'
+        curl -sk -u admin:$password https://10.1.1.245/mgmt/tm/asm/policies/?\$select=name | sed 's/,/\'$'\n/g'
 
 .. code-block:: json
 
@@ -94,7 +94,7 @@ Run the following code to filter on just the policy named "ansible1" and only th
 
 .. code-block:: bash
 
-        curl -sk -u admin:password https://10.1.1.245/mgmt/tm/asm/policies?\$filter=name+eq+ansible1\&\$select=name | sed 's/,/\'$'\n/g' 
+        curl -sk -u admin:$password https://10.1.1.245/mgmt/tm/asm/policies?\$filter=name+eq+ansible1\&\$select=name | sed 's/,/\'$'\n/g' 
 
 .. code-block:: json
 

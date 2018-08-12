@@ -12,7 +12,7 @@ Run the following command to view the output of all ASM policies filtered throug
 
 .. code-block:: bash
 
-       curl -sk -u admin:password -X GET https://10.1.1.245/mgmt/tm/asm/policies | jq 
+       curl -sk -u admin:$password -X GET https://10.1.1.245/mgmt/tm/asm/policies | jq 
 
 The output (truncated) will look something similar to:
 
@@ -55,7 +55,7 @@ To display the first policy (index starts at 0), run the following command:
 
 .. code-block:: bash
 
-        curl -sk -u admin:password -X GET https://10.1.1.245/mgmt/tm/asm/policies | jq .items[0]
+        curl -sk -u admin:$password -X GET https://10.1.1.245/mgmt/tm/asm/policies | jq .items[0]
 
 The output should look similar to, which is the entire configuration for the first policy, in this case "ansible1":
 
@@ -105,7 +105,7 @@ Run the following command:
 
 .. code-block:: bash
         
-        curl -sk -u admin:password -X GET https://10.1.1.245/mgmt/tm/asm/policies | jq .items[0].id
+        curl -sk -u admin:$password -X GET https://10.1.1.245/mgmt/tm/asm/policies | jq .items[0].id
 
 |
 
@@ -138,7 +138,7 @@ Next take a look at the parameter settings for this policy, run the following:
 
 .. code-block:: bash
 
-        curl -sk -u admin:password -X GET https://10.1.1.245/mgmt/tm/asm/policies | jq .items[0].parameterReference
+        curl -sk -u admin:$password -X GET https://10.1.1.245/mgmt/tm/asm/policies | jq .items[0].parameterReference
 
 
 The output will look something like:
@@ -175,7 +175,7 @@ First run the following to get the policy id of the "ansible1" policy. This tell
 
 .. code-block:: bash
 
-        curl -sk -u admin:password -X GET https://10.1.1.245/mgmt/tm/asm/policies | jq '.items[] | "\(.name) \(.id)"'
+        curl -sk -u admin:$password -X GET https://10.1.1.245/mgmt/tm/asm/policies | jq '.items[] | "\(.name) \(.id)"'
 
 |
         
@@ -189,7 +189,7 @@ Run the following using a policy id from the previous command as the <ansible1Po
 
 .. code-block:: bash
 
-        curl -sk -u admin:password -X GET https://10.1.1.245/mgmt/tm/asm/policies/<ansible1PolicyId>/parameters | jq '.items[] | select(.name ==  "displaymode")'
+        curl -sk -u admin:$password -X GET https://10.1.1.245/mgmt/tm/asm/policies/<ansible1PolicyId>/parameters | jq '.items[] | select(.name ==  "displaymode")'
 
 
 The output should resemble:

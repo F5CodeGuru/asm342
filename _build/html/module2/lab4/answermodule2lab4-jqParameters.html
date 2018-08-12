@@ -240,7 +240,7 @@
   <div class="section" id="answer-module-2-lab-4">
 <h1>Answer Module 2 Lab 4<a class="headerlink" href="#answer-module-2-lab-4" title="Permalink to this headline">¶</a></h1>
 <p>To get the parameters defined in a policy, fill in &lt;policy id&gt; which the ansible1 policy id</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -sk -u admin:password -X GET https://&lt;bigip&gt;/mgmt/tm/asm/&lt;policy id&gt;/parameters <span class="p">|</span> jq
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -sk -u admin:<span class="nv">$password</span> -X GET https://10.1.1.245/mgmt/tm/asm/&lt;policy id&gt;/parameters <span class="p">|</span> jq
 </pre></div>
 </div>
 <div class="line-block">

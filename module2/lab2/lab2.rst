@@ -5,17 +5,7 @@ Task 1 - Using curl to create a ASM policy
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Now that you've run a few curl commands yourself, we'll now make it a little easier (this is an automation lab, after all). Run the following command to automate password entry for the remainder of the curl commands in this lab.
-
-.. code-block:: bash
-
-       export password="InstructorProvidedPassword"
-
-You'll notice that the remainder of the curl commands use the ``$password`` environment variable we just created.
-
-.. Note::
-
-        While setting this environment variable is convenient for this class, it's not a secure thing to do on a shared production system.  Furthermore, closing the terminal window will clear the variable and require it to be re-set.
+Now that you've run a few curl commands yourself, we'll now make it a little easier (this is an automation lab, after all). 
 
 |
 

@@ -5,7 +5,7 @@ As mentioned previously, Postman offers a feature called collections. Collection
 
 
 
-Task 1 - Using Postman create workflows to push out standardized policies 
+Task 1 - Using Postman workflows to push out standardized policies 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In this task the student will execute a collection/workflow that will create a policy and add a whitelist ip to the policy.

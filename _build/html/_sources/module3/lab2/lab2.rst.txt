@@ -3,7 +3,7 @@ Lab 3.2: Filtering JSON data in Postman
 
 This lab builds off of the concepts in Module 2 dealing with filtering Json data and demonstrates how to filter json data in Postman.
 
-Two ways exists to filter on data
+Two methods exist to filter on data:
 
 - Parameters
 - Postman Tests (javascript based), more background on this in Task 2
@@ -14,10 +14,10 @@ Task 1 - Filtering JSON data in Postman using parameters
 
 This task demonstrates how to filter on the policy named ansible1 and display only the id value.
 
-Just like any Rest client, Postman can send parameters to the server so that the output is a customized response or a subset of the Json data.
-This task is much like the Module 2 Lab 3  task, Server-side json filtering using uri parameters.
+Just like any Rest client, Postman can send parameters to the server so that the output is a customized response or a subset of the JSON data.
+This task is much like the Module 2 Lab 3  task, Server-side JSON filtering using uri parameters.
 
-Click on the request 
+Click on the request: 
 
 |
 
@@ -48,7 +48,7 @@ Click "Send" to run the request.
 
 |
 
-Take a look at the response, the response is shown in the “Body” (response body) section. The response should look similar to the below, only showing the "id" field.
+Take a look at the response shown in the “Body” (response body) section. The response should look similar to the below, only showing the "id" field.
 
 |
 
@@ -60,9 +60,9 @@ Take a look at the response, the response is shown in the “Body” (response b
 Task 2 - Filtering JSON data in Postman using Tests
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Postman offers the ability to programmatically ingest responses and make decisions on the data retrieved. Tests are written in javascript, which is a very common language, rather than some proprietary or obsucre language. Even if you are not familiar with js, there are many examples written for Postman and many examples of javascript in general. 
+Postman offers the ability to programmatically ingest responses and make decisions on the data retrieved. Tests are written in JavaScript, which is a very common language, rather than some proprietary or obsucre language. Even if you are not familiar with js, there are many examples written for Postman and many examples of JavaScript in general. 
 
-`Writing Postman tests <https://www.getpostman.com/docs/v6/postman/scripts/test_scripts>`_
+See also: `Writing Postman tests <https://www.getpostman.com/docs/v6/postman/scripts/test_scripts>`_ /
 `Tests examples <https://www.getpostman.com/docs/v6/postman/scripts/test_examples>`_
 
 .. note::
@@ -71,7 +71,7 @@ Postman offers the ability to programmatically ingest responses and make decisio
 
 |
 
-Tests are executed post request, which means the Test has access to the response data. In addition a test is on a per-request basis, meaning they only apply to the request to which they are assigned. Though Tests can influence the flow of the next request and can be used to provide orchestration to a collection. More on this later.
+Tests are executed post request, which means the Test has access to the response data. In addition, a test is on a per-request basis, meaning they only apply to the request to which they are assigned. Tests can influence the flow of the next request and can be used to provide orchestration to a collection. More on this later.
 
 .. note:: 
 
@@ -81,7 +81,7 @@ Tests are executed post request, which means the Test has access to the response
 
 |
 
-Click on the request
+Click on the request:
 
 |
 

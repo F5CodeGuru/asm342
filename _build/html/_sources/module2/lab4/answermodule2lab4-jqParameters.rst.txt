@@ -5,7 +5,7 @@ To get the parameters defined in a policy, fill in <policy id> which the ansible
 
 .. code-block:: bash
 
-        curl -sk -u admin:password -X GET https://<bigip>/mgmt/tm/asm/<policy id>/parameters | jq
+        curl -sk -u admin:$password -X GET https://10.1.1.245/mgmt/tm/asm/<policy id>/parameters | jq
 
 |
 

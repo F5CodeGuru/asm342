@@ -114,7 +114,7 @@ Now run:
 
 .. code-block:: bash
 
-       curl -sk -u admin:password -X GET https://10.1.1.245/mgmt/tm/asm/policies  | sed 's/,/\'$'\n/g'
+       curl -sk -u admin:$password -X GET https://10.1.1.245/mgmt/tm/asm/policies  | sed 's/,/\'$'\n/g'
 
 
 The JSON output (#2) (truncated) is now more readable

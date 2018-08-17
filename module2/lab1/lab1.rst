@@ -15,7 +15,7 @@ For example in the json output:
 
 {“key1”:”value1”,”key2”:”value2”,”key3”:”value3”}
 
-specifying “key2” will yield “value2”. To retrieve “value2”, “key3” must be specified.
+specifying “key2” will yield “value2”. To retrieve “value3”, “key3” must be specified.
 
 .. note::
 

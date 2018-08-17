@@ -111,3 +111,8 @@ Run the following code to filter on just the policy named "ansible1" and only th
                 ]
         }              
 
+Run the following code to filter display the names and policy Id of all policies.
+
+.. code-block:: bash
+
+        curl -sk -u admin:$password https://10.1.1.245/mgmt/tm/asm/policies?\&\$select=id,name | jq
